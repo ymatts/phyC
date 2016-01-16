@@ -1,5 +1,5 @@
 # PhyC
-R packages for clustering cancer evolutionary trees
+R packages for clustering cancer evolutionary trees. 
 
 Depend:ape, igraph
 
@@ -12,7 +12,7 @@ Main function is phyC. This function have mainly two functionalities.
         + resolving mono- and multi-furcation tree into bifurcation tree
         + completing the number of leaves among the trees, which do not almost affects the calculation of distances
         + relabeling considering tree toplogies.
-    - Here are some example of registrations.
+    - Here are some example of registrations. The example shows the mono-furcation and multi-furcation trees (upper left most and lower left most). The resoved toplogies are shown in the next two. The upper & lower right most show the illustration of completing the number of leaves (in this case, 64 leaves). This procedure is need to deal with trees in tree space (Birella,et al. 2001).   
     ![registration](https://github.com/ymatts/PhyC/blob/master/img/regis_example.jpeg "registration")
     
 * Clustering trees.
