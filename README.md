@@ -13,7 +13,7 @@ Main function is phyC. This function have mainly two functionalities.
         + completing the number of leaves among the trees, which do not almost affects the calculation of distances
         + relabeling considering tree toplogies.
     - Here are some example of registrations.
-    ![example of registration](https://github.com/ymatts/PhyC/edit/master/img/regis_example.jpeg)
+    ![registration](https://github.com/ymatts/PhyC/blob/master/img/regis_example.jpeg "registration")
     
 * Clustering trees.
     + Hierarchical(Ward's method)
