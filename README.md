@@ -15,15 +15,19 @@ Main function is phyC. This function have mainly two functionalities.
         + resolving mono- and multi-furcation tree into bifurcation tree
         + completing the number of leaves among the trees, which do not almost affects the calculation of distances
         + relabeling considering tree toplogies.
-    - The overall scheme is illustrated here.
+    - The overall scheme is illustrated here. We prepare the maximal trees and we encode the observed tree toplogies(from root to leaf, left to right). The collapsed edges are regarded as zero length edges. 
+    
+     
      <img align="center" src="https://github.com/ymatts/PhyC/blob/master/img/regist.png" width="600" height="400" />
 
     - Here are some example of registrations. The example shows the mono-furcation and multi-furcation trees (upper left most and lower left most). The resoved toplogies are shown in the next two. The upper & lower right most show the illustration of completing the number of leaves (in this case, 64 leaves). This procedure is need to deal with trees in tree space (Birella,et al. 2001).   
+
 <img align="center" src="https://github.com/ymatts/PhyC/blob/master/img/regis_example.jpeg" width="600" height="400" />
 
 * Clustering trees.
     + Hierarchical(Ward's method)
     + Non-hierarchical(k-means)
+    
 <img align="center" src="https://github.com/ymatts/PhyC/blob/master/img/clust.png" width="600" height="400" />
 
 
