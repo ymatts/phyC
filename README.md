@@ -12,7 +12,7 @@ Main function is phyC. This function have mainly two functionalities.
 
 The phyC need the edgeList, edgeLenList and cluster(the number of the cluster) in minimal. Here is an example.
 
-result <- phyC(edgeList,edgeLenList,cluster=3,type='nh',method="ward.D2")
+result <- phyC(edgeList,edgeLenList,cluster=3)
 
 To calculate the diversity of each cluster, we use the diversity function. This function requires only the phyC object.
 
