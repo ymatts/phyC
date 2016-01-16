@@ -26,6 +26,8 @@
 #' @export
 #' 
 phyC <- function(edgeList,edgeLenlist,cluster,type='nh',method=NULL){
+  library(igraph)
+  library(ape)
   cat("staring to resolve mono and multifurcations \n")
   new.edgeList <- vector("list",length(edgeList))
   for(i in 1:length(edgeList)){

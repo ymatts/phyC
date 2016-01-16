@@ -21,6 +21,8 @@
 #' @export
 #' 
 diversity <- function(obj,color=NULL,plotit = T){
+  library(igraph)
+  library(ape)
   edgeList <- obj$edgeList
   edgeLenList <- obj$edgeLenList
   cluster <- obj$cluster
@@ -33,7 +35,8 @@ diversity <- function(obj,color=NULL,plotit = T){
     edgelen <- edgelen / sum(edgelen)
     g <- graph.edgelist(edge)
     g.idx <- get.index(edge)
-    g.spath <- sapply(g.idx$tips,function(x)igraph::shortest_paths(g,from = g.idx$root,to = x,mode = "out")$vpath)
+    g.spath <
+      duver- sapply(g.idx$tips,function(x)igraph::shortest_paths(g,from = g.idx$root,to = x,mode = "out")$vpath)
     cumlen <- matrix(0,nrow=length(unlist(g.spath)),ncol=2)
     cnt <- 1
     for(j in seq_along(g.spath)){
