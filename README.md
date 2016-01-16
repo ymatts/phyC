@@ -30,6 +30,9 @@ Main function is phyC. This function have mainly two functionalities.
     
 <img align="center" src="https://github.com/ymatts/PhyC/blob/master/img/clust.png" width="600" height="400" />
 
+* The configuration of trees in the Euclidean space is here.
+
+<img align="center" src="https://github.com/ymatts/PhyC/blob/master/img/mds.png" width="600" height="400" />
 
 We also provide the function for interpretating resulting clusters. The diversity is defined asthe number of sub-clones at a SSNVs accumulations. This gives us the insights for accerelation of sub-clonal expansions. 
 <img align="center" src="https://github.com/ymatts/PhyC/blob/master/img/diversity.png" width="600" height="400" />
