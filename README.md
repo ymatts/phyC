@@ -14,7 +14,8 @@ Main function is phyC. This function have mainly two functionalities.
         + relabeling considering tree toplogies.
     - Here are some example of registrations. The example shows the mono-furcation and multi-furcation trees (upper left most and lower left most). The resoved toplogies are shown in the next two. The upper & lower right most show the illustration of completing the number of leaves (in this case, 64 leaves). This procedure is need to deal with trees in tree space (Birella,et al. 2001).   
     ![registration](https://github.com/ymatts/PhyC/blob/master/img/regis_example.jpeg "registration")
-    
+    ![clust](https://github.com/ymatts/PhyC/blob/master/img/realdata_cluster_phylo.eps "clust")
+
 * Clustering trees.
     + Hierarchical(Ward's method)
     + Non-hierarchical(k-means)
@@ -22,7 +23,7 @@ Main function is phyC. This function have mainly two functionalities.
 We also provide the function for interpretating resulting clusters. The diversity is defined asthe number of sub-clones at a SSNVs accumulations. This gives us the insights for accerelation of sub-clonal expansions. 
 
 ######Use of phyC
-The phyC need the edgeList, edgeLenList and cluster(the number of the cluster) in minimal. Here is an example.
+The phyC needs the edgeList, edgeLenList and cluster(the number of the cluster) in minimal. Here is an example.
 
 ```r:phyC.R
 result <- phyC(edgeList,edgeLenList,cluster=3)
@@ -34,3 +35,5 @@ To calculate the diversity of each cluster, we use the diversity function. This 
 ```r:diversity.R
 result2 <- diversity(result)
 ```
+
+##Example
