@@ -1,0 +1,12 @@
+Package: phyC
+Type: Package
+Title: Clustering cancer evolutional trees
+Version: 0.1
+Date: 2016-01-16
+Author: Yusuke Matsui & Teppei Shimamura
+Maintainer: Yusuke Matsui <ymatsui@nagoya-u.ac.jp>
+Description: This package includes the tree registration, clustering,
+    visualizing trees' configurations, and calculating diversity.
+License: GPL (>= 2)
+Imports:ape,igraph
+RoxygenNote: 5.0.1
