@@ -11,6 +11,7 @@ Main function is phyC. This function have mainly two functionalities.
   Evaluating diversity. This function evaluates the accerelation of sub-clonal expansion of trees. Graphical ouput is also supported.
 
 The phyC need the edgeList, edgeLenList and cluster(the number of the cluster) in minimal. Here is an example.
+
 result <- phyC(edgeList,edgeLenList,cluster=3,type='nh',method="ward.D2")
 
 To calculate the diversity of each cluster, we use the diversity function. This function requires only the phyC object.
