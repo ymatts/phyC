@@ -1,7 +1,7 @@
 # PhyC
 R packages for clustering cancer evolutionary trees
-Depend:ape, igraph
 
+Depend:ape, igraph
 
 ## Usage
 First, we prepare the list of edge matrices that must include the root and the list of edge length vector.
