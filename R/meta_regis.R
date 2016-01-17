@@ -1,13 +1,11 @@
 #' Internal function
 #' 
 #' @name meta.regis.tree
-#' @docType package
-#' @import igraph,ape
 #' @author Yusuke Matsui & Teppei Shimamura
 #' @export
 #'  
 meta.regis.tree <- function(meta,target){
-  
+
   edge.meta <- meta$edge
   edge.target <- target$edge
   
@@ -19,7 +17,7 @@ meta.regis.tree <- function(meta,target){
   spath.target <- sapply(index.target$tips,function(x)shortest_paths(g.target,from = index.target$root,to = x)$vpath)
   maxdepth <- length(spath.meta[[1]])
   target.depth <- sapply(spath.target,length)
-  target.length <- sapply(spath.target,function(x)sum(target$edge.length[igraph::get.edgeIndex(target$edge,x)]))
+  target.length <- sapply(spath.target,function(x)sum(target$edge.length[get.edgeIndex(target$edge,x)]))
   target.profile <- cbind(target.depth,target.length)
   ord <- order(target.profile[,1],target.profile[,2],decreasing=T)
   trans <- matrix(0,nrow=max(as.vector(target$edge)),ncol=2)
@@ -35,8 +33,8 @@ meta.regis.tree <- function(meta,target){
       cnt <- cnt + 2^(maxdepth - depth.target)
     }
     temp.meta <- spath.meta[[cnt]][1:depth.target]
-    idx.meta <- igraph::get.edgeIndex(meta$edge,temp.meta)
-    idx.target <- igraph::get.edgeIndex(target$edge,temp.target)
+    idx.meta <- get.edgeIndex(meta$edge,temp.meta)
+    idx.target <- get.edgeIndex(target$edge,temp.target)
     tree.regis$edge.length[idx.meta] <- target$edge.length[idx.target]
   }
   tree.regis
