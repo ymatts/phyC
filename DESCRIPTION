@@ -1,8 +1,8 @@
 Package: PhyC
 Type: Package
 Title: Clustering cancer evolutional trees
-Version: 0.1
-Date: 2016-01-16
+Version: 0.1.1
+Date: 2016-01-17
 Author: Yusuke Matsui & Teppei Shimamura
 Maintainer: Yusuke Matsui <ymatsui@nagoya-u.ac.jp>
 Description: This package includes the tree registration, clustering,
@@ -15,4 +15,5 @@ Depends: igraph,
     ggplot2,
     grDevices,
     RColorBrewer,
-    png
+    png,
+    distory
