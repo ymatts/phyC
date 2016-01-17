@@ -109,7 +109,7 @@ We also provide the function <em>phyMDS</em> for plotting configurations of tree
 ####lichee2edge
 As a utility, we implement the function <em>lichee2edge</em> with which we can obtain the evloutionary trees from variant allele frequencies by LICHeE (Popic,2015).
 
-##Usuage
+##Usage
 ######Installation
 
 ```r:install_git.R
