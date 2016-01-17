@@ -107,7 +107,7 @@ The next function <em>diversity</em> is for interpretating clusters. We need som
 We also provide the function <em>phyCMD</em> for plotting configurations of trees as shown in Figure 2.
 
 ####lichee2edge
-As a utility, we implement the function <em>lichee2edge</em> with which we can obtain the evloutionary trees from variant allele frequencies by LICHeE (Popic,2015).
+As a utility, we implement the function <em>lichee2edge</em> with which we can obtain the evloutionary trees from variant allele frequencies by LICHeE (Popic,et al. 2015).
 
 ##Usage
 ######Installation
