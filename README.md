@@ -104,7 +104,7 @@ The secondary function <em>diversity</em> is for interpretating clusters. We nee
 <strong>Figure 6.</strong> Exampmle of diversities for clusters
 
 ####phyCMD
-We also provide the function <em>phyMDS</em> for plotting configurations of trees as shown in Figure 2.
+We also provide the function <em>phyCMD</em> for plotting configurations of trees as shown in Figure 2.
 
 ####lichee2edge
 As a utility, we implement the function <em>lichee2edge</em> with which we can obtain the evloutionary trees from variant allele frequencies by LICHeE (Popic,2015).
