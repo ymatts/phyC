@@ -58,7 +58,7 @@ PhyC classifies those evolutinary trees based on the tree toplogies and edge len
 ## Package overview
 
 ####phyC
-Main function of this package is <em>phyC</em>. This function have mainly the two functionalities; registration and clustering. 
+Main function of this package is <em>phyC</em>. This function has mainly the two functionalities; registration and clustering. 
 
 ######Registration
 * This includes; 
