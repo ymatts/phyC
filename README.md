@@ -24,7 +24,7 @@ In the input, the edge matrix represents cancer evolutionary topology and the ed
 
 <img align="center" src="https://github.com/ymatts/PhyC/blob/master/img/ssnv.png" width="600" height="400" />
 
-<strong>Figure 1.</strong>
+<strong>Figure 1.</strong> The model of cancer evolutionary trees
 
 Our model assumes cancer clonal theory (Nowell,1976; Nik-Zainal {\it et al.,} 2012) that
  
