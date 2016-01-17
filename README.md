@@ -16,7 +16,7 @@ Recently a lot of the reconstruction methods of cancer sub-clonal evolutionary t
 PhyC (Phylogenetic tree Clustering) is designed for classifying cancer evolutionary trees. 
 
 The main inputs are
-* list of edge matrices that must include the root
+* list of edge matrix that must include the root
 * list of edge length vector
 
 and the main outpus are
