@@ -86,7 +86,7 @@ Those clustering algorithms are naturally extended from Euclidean space to tree 
 <strong>Figure 5.</strong> Example of non-hierarchical clustering
 
 ####diversity
-The secondary function <em>diversity</em> is for interpretating clusters. We need some quantifications of trees in the clusters to evaluate them efficiently. We define the diversity as the number of sub-clones at a levels of SSNVs accumulations. This gives us the insights for accerelation of sub-clonal expansions. 
+The secondary function <em>diversity</em> is for interpretating clusters. We need some quantifications of trees in the clusters to evaluate them efficiently. We define the diversity as the number of sub-clones at a levels of SSNVs accumulations. In Figure 6, <em>h</em> indicates the normalized number of additional SSNVs (ranged [0,1]) and <em>g(h)</em> indicates the the number of subclones. This gives us the insights for accerelation of sub-clonal expansions. 
 <img align="center" src="https://github.com/ymatts/PhyC/blob/master/img/diversity.png" width="600" height="400" />
 
 <strong>Figure 6.</strong> Exampmle of diversities for clusters
