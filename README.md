@@ -1,4 +1,4 @@
-# PhyC
+# PhyC: Clustering Cancer Evolutionary Trees
 The R package for clustering cancer evolutionary trees. 
 
 <strong>Version:</strong>
