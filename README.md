@@ -144,7 +144,7 @@ result3 <- phyCMD(phyC.obj)
 library(phyC)
 data(evol)
 result <- phyC(evol$edgeList,evol$edgeLenList,cluster=4,type='nh')
-result2 <- phyCMD(result) # Output the plot as Figure 6.
+result3 <- phyCMD(result) # Output the plot as Figure 6.
 ```
 
 
