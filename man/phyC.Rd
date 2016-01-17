@@ -31,7 +31,7 @@ Clustering cancer evolutionary trees
 This function perform the registration and the clustering. In the registration, we resolve the mono- and multi-furcation trees and we complete the number of leaves among the trees. In the resigration, identical tree toplogies are regarded identical even if the label are different. In the clustering, we classify the trees into predifined number of subsets. When choose type='nh', we perform the Ward's clustering.
 }
 \examples{
-library(phyC)
+library(PhyC)
 data(evol)
 res <- phyC(evol$edgeList,evol$edgeLenList,cluster=4,type='nh')
 res$cluster

@@ -7,7 +7,7 @@
 #' @return ind.div Diversity of each tree.
 #' @return div Diversity of each cluster.
 #' @examples
-#' library(phyC)
+#' library(PhyC)
 #' data(evol)
 #' res <- phyC(edgeList,edgeLenList,cluster=2,type='nh')
 #' div <- diversity(res)
@@ -18,7 +18,14 @@ diversity <- function(obj,color=NULL,plotit = T){
   edgeList <- obj$edgeList
   edgeLenList <- obj$edgeLenList
   cluster <- obj$cluster
-  
+
+if(is.null(color)){
+      cn <- length(unique(cluster))
+      if(cn<3){cn <- 3}
+      color <- brewer.pal(cn,name = "Set2")
+  }
+
+
   if(length(edgeList)!=length(edgeLenList)){print("the number of edgeList and edgLenList is different.");stop()}
   g.cumlen <- vector("list",length(length(edgeList)))
   for(i in seq_along(edgeList)){
@@ -27,8 +34,7 @@ diversity <- function(obj,color=NULL,plotit = T){
     edgelen <- edgelen / sum(edgelen)
     g <- graph.edgelist(edge)
     g.idx <- get.index(edge)
-    g.spath <
-      duver- sapply(g.idx$tips,function(x)igraph::shortest_paths(g,from = g.idx$root,to = x,mode = "out")$vpath)
+    g.spath <- sapply(g.idx$tips,function(x)igraph::shortest_paths(g,from = g.idx$root,to = x,mode = "out")$vpath)
     cumlen <- matrix(0,nrow=length(unlist(g.spath)),ncol=2)
     cnt <- 1
     for(j in seq_along(g.spath)){
@@ -62,6 +68,8 @@ diversity <- function(obj,color=NULL,plotit = T){
   }
   
   if(plotit){
+    para <- par(bg="#f0f0f0")
+
     if(is.null(color)){color <- (min(cluster)):(max(cluster))}
     par(mar=c(4,4,1,1))
     maxnum <- max(unlist(nlist))+1
@@ -75,7 +83,8 @@ diversity <- function(obj,color=NULL,plotit = T){
     }
     mtext("h",side=1,line = 3)
     mtext("g(h)",side=2,line = 3)
+    par(para)
   }
-  return(list(ind.div=nlist,div=div.mean))  
+  return(list(ind.div=nlist,div=div.mean))
 }
 

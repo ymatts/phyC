@@ -5,7 +5,7 @@
 #' @param color Vector of color parameter of each cluster in the plot.
 #' @param label Vector of labels of trees. Default is "Tree i"(i=1,2,...).
 #' @examples
-#' library(phyC)
+#' library(PhyC)
 #' data(evol)
 #' res <- phyC(evol$edgeList,evol$edgeLenList,cluster=4,type='nh')
 #' phyC.plot(res)

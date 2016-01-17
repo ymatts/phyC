@@ -22,7 +22,7 @@ div Diversity of each cluster.
 Evaluating diversity and plot
 }
 \examples{
-library(phyC)
+library(PhyC)
 data(evol)
 res <- phyC(edgeList,edgeLenList,cluster=2,type='nh')
 div <- diversity(res)
