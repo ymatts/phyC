@@ -91,7 +91,7 @@ The secondary function <em>diversity</em> is for interpretating clusters. We nee
 
 <strong>Figure 6.</strong> Exampmle of diversities for clusters
 
-####phyMDS (in preparation)
+####phyCMD (in preparation)
 We also provide the function <em>phyMDS</em> for plotting configurations of trees as shown in Figure 2.
 
 ####lichee2edge (in preparation)
@@ -100,15 +100,79 @@ As a utility, we implement the function <em>lichee2edge</em> with which we can o
 ##Usuage
 
 ######Use of phyC
-The phyC needs the edgeList, edgeLenList and cluster(the number of the cluster) in minimal. Here is an example.
+The phyC needs the edgeList, edgeLenList and cluster(the number of the cluster) in minimal. 
 
 ```r:phyC.R
 result <- phyC(edgeList,edgeLenList,cluster=3)
 ```
 
+Here is an example.
+```r:phyC.R
+library(phyC)
+data(evol)
+result <- phyC(evol$edgeList,evol$edgeLenList,cluster=4,type='nh')
+result$cluster # Assignment of clusters
+phyC.plot(result) # Output the plot as Figure 5.
+```
+
+
 ######Use of diversity
 To calculate the diversity of each cluster, we use the diversity function. This function requires only the phyC object.
 
 ```r:diversity.R
-result2 <- diversity(result)
+result2 <- diversity(phyC.obj)
 ```
+
+Here is an example.
+
+```r:diversity.R
+library(phyC)
+data(evol)
+result <- phyC(evol$edgeList,evol$edgeLenList,cluster=4,type='nh')
+result2 <- diversity(result) # Output the plot as Figure 6.
+```
+
+######Use of phyCMD
+To obtain the configuration of trees in Euclidean space as Figure 2, we use phyCMD function. The input is phyC object.
+
+```r:phyCMD.R
+result3 <- phyCMD(phyC.obj)
+```
+
+
+```r:phyCMD.R
+library(phyC)
+data(evol)
+result <- phyC(evol$edgeList,evol$edgeLenList,cluster=4,type='nh')
+result2 <- phyCMD(result) # Output the plot as Figure 6.
+```
+
+
+######Use of lichee2edge
+To reconstruct the cacer evolutionary trees, we adopt LICHeE (Popic, et al. 2015). You need to get the LICHeE engine from <a href="url">http://viq854.github.io/lichee/</a>. Here we provide the utility function to utilize the LICHeE from R. The input is VAF matrix (the format is described in the above site). You can specify the parameters of LICHeE as you need. If you don't specify them, lichee2edge automatically set the default values that are suggested in (Popic et al. 2015). The output is edge matrix and edge length. 
+
+
+```r:lichee2edge.R
+result4 <- lichee2edge('Path to lichee.jar',vaf)
+```
+
+```r:phyCMD.R
+library(phyC)
+data(vaf) #The list of VAF matrices of ccRCC and HGSC studies
+
+#### We set the parameter of <em>absent</em>, <em>present</em>, <em>minPrivateClsuterSize</em>, <em>maxClusterDist</em> for each patient.
+
+absent <- c(rep(0.005,6),0.01,0.005,rep(0.005,4),0.01,0.005)
+present <- c(rep(0.005,6),0.01,0.005,rep(0.01,4),0.04,0.01)
+minPrivateClusterSize  <- c(rep(1,7),2,rep(1,3),3,3,1,2)
+maxClusterDist <- c(rep(0.2,9),rep(0.2,5),0.1)
+
+result4 <- vector("list",length(vaf))
+for(i in seq_along(vaf)){  
+  licheeParamIO <- list(normal=1) ## INPUT/OUTPUT AND DISPLAY OPTIONS
+  licheeParamFilter <- list(absent=absent[i],present=present[i]) ## SSNV FILTERING AND CALLING parameter
+  licheeParamPhy <- list(minPrivateClusterSize=minPrivateClusterSize[i],maxClusterDist=maxClusterDist[i]) ## PHYLOGENETIC NETWORK CONSTRUCTION AND TREE SEARCH parameter
+  result4[[i]] <- lichee2edge("LICHeE/release",vaf[[i]],licheeParamIO,licheeParamFilter,licheeParamPhy)
+}
+```
+
