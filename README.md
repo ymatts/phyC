@@ -1,11 +1,14 @@
 # PhyC
 The R package for clustering cancer evolutionary trees. 
 
+<strong>Version:</strong>
+0.1.0 (2016.1.15)
+
 <strong>Depends:</strong>
 
 R(>=3.2.2)
 
-ape, igraph
+ape, igraph, ggplot2, grDevices,png,RColorBrewer
 
 ## General overview
 
