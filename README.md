@@ -101,6 +101,11 @@ We also provide the function <em>phyMDS</em> for plotting configurations of tree
 As a utility, we implement the function <em>lichee2edge</em> with which we can obtain the evloutionary trees from variant allele frequencies by LICHeE (Popic,2015).
 
 ##Usuage
+######Installation
+
+```r:install_git.R
+devtools::install_git(url = "https://github.com/ymatts/PhyC")
+```
 
 ######Use of phyC
 The phyC needs the edgeList, edgeLenList and cluster(the number of the cluster) in minimal. 
