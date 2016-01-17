@@ -20,7 +20,7 @@ and the main outpus are
 * registered trees
 * accerelation of sub-clonal expansions
 
-In the input, the edge matrix represents cancer evolutionary topology and the edge length represents the number of additional Somatic Single Nucleotide Variants (SSNVs) from the parental suc-clone. Here is an illustration (Figure 1).
+In the input, the edge matrix represents cancer evolutionary topology and the edge length represents the number of additional Somatic Single Nucleotide Variants (SSNVs) from the parental sub-clone. Here is an illustration (Figure 1).
 
 <img align="center" src="https://github.com/ymatts/PhyC/blob/master/img/ssnv.png" width="600" height="400" />
 
