@@ -10,6 +10,15 @@ R(>=3.2.2)
 
 ape, igraph, ggplot2, grDevices,png,RColorBrewer
 
+<strong>Authour:</strong>
+
+Yusuke Matsui
+
+<strong>Contact:</strong>
+
+ymatsui[at]med.nagoya-u.ac.jp
+
+
 ## General overview
 
 Recently a lot of the reconstruction methods of cancer sub-clonal evolutionary trees based on the variant allele frequency are proposed. Those methods can automatically produce the evolutionary trees. However, interpretation of the large number of trees from those methods remain unresolved. We propose the classification method for the cancer sub-clonal evolutionary trees. In this method, we adopt the tree space theory to analyse the tree set. The proposed method can identify the cluster structure based on the tree topology and edge length attributes. For the interpretation of the clusters, we also provide the method for evaluating the diversity of trees in the clusters, which gives an insight for the acceleration of sub-clonal expansion.
