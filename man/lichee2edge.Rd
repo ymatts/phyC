@@ -4,11 +4,11 @@
 \alias{lichee2edge}
 \title{Constructing trees from variant allele frequency using LICHeE.}
 \usage{
-lichee2edge(licheeDir = NULL, vaf, licheeParamIO = NULL,
+lichee2edge(licheePath = NULL, vaf, licheeParamIO = NULL,
   licheeParamFilter = NULL, licheeParamPhy = NULL)
 }
 \arguments{
-\item{licheeDir}{Directory of lichee.jar file.}
+\item{licheePath}{Path to lichee.jar file.}
 
 \item{vaf}{Matrix of variant allele frequency. For more detail of data format, see http://viq854.github.io/lichee/}
 

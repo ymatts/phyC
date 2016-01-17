@@ -1,7 +1,7 @@
 #' Constructing trees from variant allele frequency using LICHeE.
 #' 
 #' @name lichee2edge
-#' @param licheeDir Directory of lichee.jar file.
+#' @param licheePath Path to lichee.jar file.
 #' @param vaf Matrix of variant allele frequency. For more detail of data format, see http://viq854.github.io/lichee/
 #' @param licheeparamIO List of input/output and display options.For detail see http://viq854.github.io/lichee/. You can set the parameters of (normal,save,showNetwork,showTree). 
 #' @param licheeparamFilter List of SSNV filtering and calling parameters. For detail see http://viq854.github.io/lichee/. You can set the parameters of (absent,present,maxVAFValid,minProfileSupport).
@@ -11,13 +11,13 @@
 #' @author Yusuke Matsui & Teppei Shimamura
 #' @export
 #' 
-lichee2edge <- function(licheeDir = NULL,vaf,licheeParamIO=NULL,licheeParamFilter=NULL,licheeParamPhy=NULL){
-  if(is.null(licheeDir)){cat("set licheeDir\n");stop()}
+lichee2edge <- function(licheePath = NULL,vaf,licheeParamIO=NULL,licheeParamFilter=NULL,licheeParamPhy=NULL){
+  if(is.null(licheePath)){cat("set licheePath\n");stop()}
   options(scipen = 9)
-  current <- getwd()
-  if(current!=licheeDir){
-    setwd(licheeDir)
-  }
+#  current <- getwd()
+#  if(current!=licheePath){
+#    setwd(licheePath)
+#  }
   if(is.null(unlist(licheeParamIO))){
     normal <- 0
     nsave <- 1
@@ -63,7 +63,7 @@ lichee2edge <- function(licheeDir = NULL,vaf,licheeParamIO=NULL,licheeParamFilte
   input <- "input.txt"
   write.table(vaf,file=input,sep = "\t",quote = F,row.names = F,col.names = T)
   
-  #outdir <- paste0(licheeDir,"/out")
+  #outdir <- paste0(licheePath,"/out")
   #if(!dir.exists("out")){dir.create("out");outdir <- "out"}
   
   #output <- paste0(outdir,"/o",idx,"_p",present,"_a",absent,"_mv",maxVAFValid,"_mps",minProfileSupport,"_mcs",minClusterSize,"_mpcs",minPrivateClusterSize,"_mrns",minRobustNodeSupport,"_mcd",maxClusterDist,"_e",e,"_m.txt")
@@ -71,8 +71,8 @@ lichee2edge <- function(licheeDir = NULL,vaf,licheeParamIO=NULL,licheeParamFilte
   output <- "./o.txt"
   
   tmp <- "tmp.txt"
-  
-  cmd <- paste("java -jar lichee.jar -build -i", input, "-o",tmp,"-minVAFPresent", present, "-maxVAFAbsent",absent,"-n 0", "-s",nsave,"-showTree",ntree,"-minClusterSize",minClusterSize,"-minPrivateClusterSize", minPrivateClusterSize,"-minRobustNodeSupport",minRobustNodeSupport,"-maxClusterDist",maxClusterDist,"-e",e,"-nTreeQPCheck",nTreeQPCheck)  
+  lichee <- paste0(licheePath,"/lichee.jar")
+  cmd <- paste("java -jar", lichee, "-build -i", input, "-o",tmp,"-minVAFPresent", present, "-maxVAFAbsent",absent,"-n 0", "-s",nsave,"-showTree",ntree,"-minClusterSize",minClusterSize,"-minPrivateClusterSize", minPrivateClusterSize,"-minRobustNodeSupport",minRobustNodeSupport,"-maxClusterDist",maxClusterDist,"-e",e,"-nTreeQPCheck",nTreeQPCheck)  
   
   if(net){paste(cmd,"-showNetwork")}
   if(completeNetwork){paste(cmd,"-c")}
@@ -96,7 +96,7 @@ lichee2edge <- function(licheeDir = NULL,vaf,licheeParamIO=NULL,licheeParamFilte
   #edge <- cbind(edgelist,len)
   #colnames(edge) <- c("v1","v2","length")
   #write.table(edge,file=output,row.names=F,col.names=T,quote=F,sep="\t")
-  setwd(current)
+  #setwd(current)
   try(invisible(file.remove(input)))
   try(invisible(file.remove(tmp)))
   return(list(edgeList=edgelist,edgeLenList=len))

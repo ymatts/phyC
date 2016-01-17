@@ -4,8 +4,8 @@
 \alias{phyCMD}
 \title{Constructing configuration of trees in clusters and plot}
 \usage{
-phyCMD(obj, color = NULL, label = NULL, img.width = 250,
-  img.height = 250, size = 0.2)
+phyCMD(obj, color = NULL, label = NULL, img.width = 200,
+  img.height = 200, size = 0.2)
 }
 \arguments{
 \item{obj}{Object resulted from phyC.}
@@ -16,7 +16,7 @@ phyCMD(obj, color = NULL, label = NULL, img.width = 250,
 
 \item{size}{Size parameter of trees to be plotted in the Euclidean space. Usually, 0 < size < 1. Default is 0.2.}
 
-\item{img.width(/img.height)}{Image width (/ height) of the trees to be overlayed on the Euclidean space. The unit is "px". Default is 250.}
+\item{img.width(/img.height)}{Image width (/ height) of the trees to be overlayed on the Euclidean space. The unit is "px". Default is 200.}
 }
 \value{
 dist Distance used for configuration
@@ -31,12 +31,8 @@ This function performs classical multidimensional scaling with tree distance. Th
 }
 \examples{
 library(phyC)
-##generate edgeList and edgeLenList##
-trees <- c(rmtree(5,3),rmtree(5,4))
-edgeList <- lapply(trees,function(x)x$edge)
-edgeLenList <- lapply(trees,function(x)x$edge.length)
-##adopting phyC##
-res <- phyC(edgeList,edgeLenList,cluster=2,type='nh')
+data(evol)
+res <- phyC(evol$edgeList,evol$edgeLenList,cluster=4,type='nh')
 phyCMD(res)
 }
 \author{

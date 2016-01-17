@@ -1,11 +1,10 @@
 #' Clustering cancer evolutionary trees
 #' 
 #' @name phyC
+#' @param edgeList List of edge matrix of input. 
 #' @param edgeLenList List of edge length vector. Index of vector should be corresponding to row index of edge matrix.
 #' @param cluster The number of clusters.
 #' @param type Clustering type. Selecht 'nh' (non hierarchical) or 'h'(hierarchical with ward's method). 
-#' @param edgeList List of edge matrix of input. 
-#' @param edgeLenList List of edge length vector of input. 
 #' @return trees Input trees.
 #' @return regis.tree Registered trees.
 #' @return cluster Index of the clusters.
@@ -13,16 +12,13 @@
 #' @details This function perform the registration and the clustering. In the registration, we resolve the mono- and multi-furcation trees and we complete the number of leaves among the trees. In the resigration, identical tree toplogies are regarded identical even if the label are different. In the clustering, we classify the trees into predifined number of subsets. When choose type='nh', we perform the Ward's clustering.
 #' @examples
 #' library(phyC)
-#' ##generate edgeList and edgeLenList##
-#' trees <- c(rmtree(5,3),rmtree(5,4))
-#' edgeList <- lapply(trees,function(x)x$edge)
-#' edgeLenList <- lapply(trees,function(x)x$edge.length)
-#' ##adopting phyC##
-#' res <- phyC(edgeList,edgeLenList,cluster=2,type='nh')
+#' data(evol)
+#' res <- phyC(evol$edgeList,evol$edgeLenList,cluster=4,type='nh')
+#' res$cluster
 #' @author Yusuke Matsui & Teppei Shimamura
 #' @export
 #' 
-phyC <- function(edgeList,edgeLenlist,cluster,type='nh',method=NULL){
+phyC <- function(edgeList,edgeLenList,cluster,type='nh',method=NULL){
   library(igraph)
   library(ape)
   cat("staring to resolve mono and multifurcations \n")

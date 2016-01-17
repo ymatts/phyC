@@ -11,12 +11,8 @@
 #' @details This function performs classical multidimensional scaling with tree distance. The resulting plot includes the trees overlayed on the Euclidean coordinates.
 #' @examples
 #' library(phyC)
-#' ##generate edgeList and edgeLenList##
-#' trees <- c(rmtree(5,3),rmtree(5,4))
-#' edgeList <- lapply(trees,function(x)x$edge)
-#' edgeLenList <- lapply(trees,function(x)x$edge.length)
-#' ##adopting phyC##
-#' res <- phyC(edgeList,edgeLenList,cluster=2,type='nh')
+#' data(evol)
+#' res <- phyC(evol$edgeList,evol$edgeLenList,cluster=4,type='nh')
 #' phyCMD(res)
 #' @author Yusuke Matsui & Teppei Shimamura
 #' @export

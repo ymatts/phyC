@@ -1,0 +1,16 @@
+* installing *source* package 'phyC' ...
+** R
+** preparing package for lazy loading
+ åxçê:  package 'ape' was built under R version 3.2.3
+ åxçê:  package 'ggplot2' was built under R version 3.2.3
+** help
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded
+*** arch - i386
+ åxçê:  package 'ape' was built under R version 3.2.3
+ åxçê:  package 'ggplot2' was built under R version 3.2.3
+*** arch - x64
+ åxçê:  package 'ape' was built under R version 3.2.3
+ åxçê:  package 'ggplot2' was built under R version 3.2.3
+* DONE (phyC)

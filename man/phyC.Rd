@@ -4,18 +4,16 @@
 \alias{phyC}
 \title{Clustering cancer evolutionary trees}
 \usage{
-phyC(edgeList, edgeLenlist, cluster, type = "nh", method = NULL)
+phyC(edgeList, edgeLenList, cluster, type = "nh", method = NULL)
 }
 \arguments{
 \item{edgeList}{List of edge matrix of input.}
 
+\item{edgeLenList}{List of edge length vector. Index of vector should be corresponding to row index of edge matrix.}
+
 \item{cluster}{The number of clusters.}
 
 \item{type}{Clustering type. Selecht 'nh' (non hierarchical) or 'h'(hierarchical with ward's method).}
-
-\item{edgeLenList}{List of edge length vector. Index of vector should be corresponding to row index of edge matrix.}
-
-\item{edgeLenList}{List of edge length vector of input.}
 }
 \value{
 trees Input trees.
@@ -34,12 +32,9 @@ This function perform the registration and the clustering. In the registration, 
 }
 \examples{
 library(phyC)
-##generate edgeList and edgeLenList##
-trees <- c(rmtree(5,3),rmtree(5,4))
-edgeList <- lapply(trees,function(x)x$edge)
-edgeLenList <- lapply(trees,function(x)x$edge.length)
-##adopting phyC##
-res <- phyC(edgeList,edgeLenList,cluster=2,type='nh')
+data(evol)
+res <- phyC(evol$edgeList,evol$edgeLenList,cluster=4,type='nh')
+res$cluster
 }
 \author{
 Yusuke Matsui & Teppei Shimamura

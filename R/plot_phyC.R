@@ -1,31 +1,27 @@
 #' Plot trees in clusters
 #' 
-#' @name plot.phyC
+#' @name phyC.plot
 #' @param obj Object resulted from phyC. 
 #' @param color Vector of color parameter of each cluster in the plot.
 #' @param label Vector of labels of trees. Default is "Tree i"(i=1,2,...).
 #' @examples
 #' library(phyC)
-#' ##generate edgeList and edgeLenList##
-#' trees <- c(rmtree(5,3),rmtree(5,4))
-#' edgeList <- lapply(trees,function(x)x$edge)
-#' edgeLenList <- lapply(trees,function(x)x$edge.length)
-#' ##adopting phyC##
-#' res <- phyC(edgeList,edgeLenList,cluster=2,type='nh')
-#' plot.phyC(res)
+#' data(evol)
+#' res <- phyC(evol$edgeList,evol$edgeLenList,cluster=4,type='nh')
+#' phyC.plot(res)
 #' @author Yusuke Matsui & Teppei Shimamura
 #' @export
 #'
-plot.phyC <- function(obj,color=NULL,label=NULL){
-  
+phyC.plot <- function(obj,color=NULL,label=NULL){
+  resolve_tree <- obj$trees
+  cluster <- obj$cluster
+
   if(length(resolve_tree)>=25){
     n <- length(resolve_tree)%%25
     cat("there are too many trees to plot them in one panel, then plots are divided into ",n," plots")
   }
   para <- par(list(mfrow=c(5,5),mar=c(1,1,3,1),bg="#f0f0f0"))
   
-  resolve_tree <- obj$trees
-  cluster <- obj$cluster
 
   if(is.null(color)){
     cn <- length(unique(cluster))

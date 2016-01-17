@@ -1,0 +1,14 @@
+create.meta             Internal function
+depth.max               Internal function
+diversity               Evaluating diversity and plot
+get.index               Internal function
+get.maxdepth            Internal function
+lichee2edge             Constructing trees from variant allele
+                        frequency using LICHeE.
+meta.regis.tree         Internal function
+phyC                    Clustering cancer evolutionary trees
+phyCMD                  Constructing configuration of trees in clusters
+                        and plot
+plot.phyC               Plot trees in clusters
+regis                   Internal function
+resolve.monomulti       Internal function

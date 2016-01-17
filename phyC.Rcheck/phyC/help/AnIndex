@@ -1,0 +1,14 @@
+create.meta	create.meta
+create.metaTree	create.meta
+depth.max	depth.max
+diversity	diversity
+get.index	get.index
+get.maxdepth	get.maxdepth
+lichee2edge	lichee2edge
+meta.regis.tree	meta.regis.tree
+phyC	phyC
+phyCMD	phyCMD
+plot.phyC	plot.phyC
+regis	regis
+resolve.monomulti	resolve.monomulti
+rootFind	resolve.monomulti

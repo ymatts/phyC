@@ -1,0 +1,105 @@
+
+R version 3.2.2 (2015-08-14) -- "Fire Safety"
+Copyright (C) 2015 The R Foundation for Statistical Computing
+Platform: x86_64-w64-mingw32/x64 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> pkgname <- "phyC"
+> source(file.path(R.home("share"), "R", "examples-header.R"))
+> options(warn = 1)
+> options(pager = "console")
+> base::assign(".ExTimings", "phyC-Ex.timings", pos = 'CheckExEnv')
+> base::cat("name\tuser\tsystem\telapsed\n", file=base::get(".ExTimings", pos = 'CheckExEnv'))
+> base::assign(".format_ptime",
++ function(x) {
++   if(!is.na(x[4L])) x[1L] <- x[1L] + x[4L]
++   if(!is.na(x[5L])) x[2L] <- x[2L] + x[5L]
++   options(OutDec = '.')
++   format(x[1L:3L], digits = 7L)
++ },
++ pos = 'CheckExEnv')
+> 
+> ### * </HEADER>
+> library('phyC')
+Loading required package: igraph
+
+Attaching package: 'igraph'
+
+The following objects are masked from 'package:stats':
+
+    decompose, spectrum
+
+The following object is masked from 'package:base':
+
+    union
+
+Loading required package: ape
+Warning: package 'ape' was built under R version 3.2.3
+
+Attaching package: 'ape'
+
+The following objects are masked from 'package:igraph':
+
+    edges, mst, ring
+
+Loading required package: ggplot2
+Warning: package 'ggplot2' was built under R version 3.2.3
+
+Attaching package: 'phyC'
+
+The following object is masked from 'package:igraph':
+
+    diversity
+
+> 
+> base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
+> cleanEx()
+> nameEx("diversity")
+> ### * diversity
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: diversity
+> ### Title: Evaluating diversity and plot
+> ### Aliases: diversity
+> 
+> ### ** Examples
+> 
+> library(phyC)
+> ##generate edgeList and edgeLenList##
+> trees <- c(rmtree(5,3),rmtree(5,4))
+> edgeList <- lapply(trees,function(x)x$edge)
+> edgeLenList <- lapply(trees,function(x)x$edge.length)
+> ##adopting phyC##
+> res <- phyC(edgeList,edgeLenList,cluster=2,type='nh')
+staring to resolve mono and multifurcations 
+creating maximum tree
+depth=4 and #leaves=16
+starting encoding trees to maximum tree
+1 th registration finished
+2 th registration finished
+3 th registration finished
+4 th registration finished
+5 th registration finished
+6 th registration finished
+7 th registration finished
+8 th registration finished
+9 th registration finished
+10 th registration finished
+non-hierarchical clustering> div <- diversity(res)
+Error: object 'g.spath' not found
+Execution halted
