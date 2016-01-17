@@ -8,7 +8,7 @@ The R package for clustering cancer evolutionary trees.
 
 R(>=3.2.2)
 
-ape, igraph, ggplot2, grDevices,png,RColorBrewer
+ape, igraph, ggplot2, grDevices, png, RColorBrewer
 
 <strong>Authour:</strong>
 
