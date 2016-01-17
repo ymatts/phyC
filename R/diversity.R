@@ -8,11 +8,7 @@
 #' @return div Diversity of each cluster.
 #' @examples
 #' library(phyC)
-#' ##generate edgeList and edgeLenList##
-#' trees <- c(rmtree(5,3),rmtree(5,4))
-#' edgeList <- lapply(trees,function(x)x$edge)
-#' edgeLenList <- lapply(trees,function(x)x$edge.length)
-#' ##adopting phyC##
+#' data(evol)
 #' res <- phyC(edgeList,edgeLenList,cluster=2,type='nh')
 #' div <- diversity(res)
 #' @author Yusuke Matsui & Teppei Shimamura
