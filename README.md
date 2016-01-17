@@ -193,3 +193,8 @@ for(i in seq_along(vaf)){
 }
 ```
 
+## References
+1. Matsui Y, Niida A, Uchi R. Mimori K, Miyano S, and Shimamura T.(2016) Clustering cancer evolutionary trees. (submitted). 
+2. Popic V, Salari R, Hajirasouliha I, Kashef-Haghighi D, West RB, Batzoglou S.(2015) Fast and scalable inference of multi-sample cancer lineages. Genome Biol. 16:91.
+3. Beerenwinkel N, Schwarz RF, Gerstung M, Markowetz F. (2014)  Cancer  evolution:   mathematical  models  and computational inference. Syst Biol. 6(1):e-2
+4. Billera LJ, Holmes SP, Vogtmann K. (2001) Geometry of the Space of Phylogenetic Trees. Adv. Appl.Math. 27(4),733-767.
