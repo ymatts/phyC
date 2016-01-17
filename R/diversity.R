@@ -1,8 +1,6 @@
 #' Evaluating diversity and plot
 #' 
 #' @name diversity
-#' @docType package
-#' @import igraph,ape
 #' @param obj Object resulted from phyC. 
 #' @param color If plotit=TRUE, color parameter of each cluster in the plot.
 #' @param plotit Whether plot the diversity or not (logical).
@@ -21,8 +19,6 @@
 #' @export
 #' 
 diversity <- function(obj,color=NULL,plotit = T){
-  library(igraph)
-  library(ape)
   edgeList <- obj$edgeList
   edgeLenList <- obj$edgeLenList
   cluster <- obj$cluster

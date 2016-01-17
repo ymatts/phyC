@@ -1,8 +1,6 @@
 #' Internal function
 #' 
 #' @name get.maxdepth
-#' @docType package
-#' @import igraph,ape
 #' @author Yusuke Matsui & Teppei Shimamura
 #' @export
 #' 
