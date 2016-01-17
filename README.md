@@ -40,19 +40,21 @@ PhyC classifies those evolutinary trees based on the tree toplogies and edge len
 <strong>Figure 2.</strong> Example of the clustering
 
 ## Package overview
-Main function of this package is <em>phyC</em>. This function have mainly the two functionalities. 
 
-1. <strong>Registration</strong>
-    * This includes; 
-        + resolving mono- and multi-furcation tree into bifurcation tree
-        + completing the number of leaves among the trees, which do not almost affects the calculation of distances
-        + relabeling to remove the label differences so that the same trees with the same toplogies are regarded as the same labelled trees.
-        + normalizing edge lengths
+####phyC
+Main function of this package is <em>phyC</em>. This function have mainly the two functionalities; registration and clustering. 
 
-    * The reason why we need the registration above are listed point by point;
-        + The <em>tree space</em> assumes the <em>n-tree</em> (strictly bifurcation) but actual data do not take such forms
-        + The number of leaves must be the same in the <em>tree space</em>, but actually not.
-        + The labels of leaves are distinguishied in the <em>tree space</em>, but the patterns of the accumulated SSNVs are rarely identical among the patients since there are too many patterns of SSNVs accumulations in the actual cases (we cannot divide the patients into several sub groups with the labels). Thus we focus on the patters of the number of accumulated SSNVs, that is, we regard the trees with the same toplogies as the same labelled trees. 
+######Registration
+* This includes; 
+ + resolving mono- and multi-furcation tree into bifurcation tree
+ + completing the number of leaves among the trees, which do not almost affects the calculation of distances
+ + relabeling to remove the label differences so that the same trees with the same toplogies are regarded as the same labelled trees.
+ + normalizing edge lengths
+
+* The reason why we need the registration above are listed point by point;
+ + The <em>tree space</em> assumes the <em>n-tree</em> (strictly bifurcation) but actual data do not take such forms
+ + The number of leaves must be the same in the <em>tree space</em>, but actually not.
+ + The labels of leaves are distinguishied in the <em>tree space</em>, but the patterns of the accumulated SSNVs are rarely identical among the patients since there are too many patterns of SSNVs accumulations in the actual cases (we cannot divide the patients into several sub groups with the labels). Thus we focus on the patters of the number of accumulated SSNVs, that is, we regard the trees with the same toplogies as the same labelled trees. 
         + The number of accumulated SSNVs are also different from patients to patients, or studies to studies because of sequencing depth, errors and so on. 
 
 The The overall scheme of the registration is illustrated here (Figure 3). We at first prepare the maximal trees and then we encode the observed tree toplogies(from root to leaf, left to right). The collapsed edges are regarded as zero length edges. The solid lines and dotted lines indicate the encoded toplogies and the collapsed edges, respectively.
@@ -69,7 +71,7 @@ Here are some example of registrations (Figure 4). The example shows the mono-fu
 
 The second functionality of <em>phyC</em> is the clustering.
 
-2. <strong>Clustering trees</strong>
+######Clustering trees
    + Hierarchical(Ward's method)
    + Non-hierarchical(k-means)
 
@@ -79,13 +81,16 @@ Those clustering algorithms are naturally extended from Euclidean space to tree 
 
 <strong>Figure 5.</strong> Example of non-hierarchical clustering
 
+####diversity
 The secondary function <em>diversity</em> is for interpretating clusters. We need some quantifications of trees in the clusters to evaluate them efficiently. We define the diversity as the number of sub-clones at a levels of SSNVs accumulations. This gives us the insights for accerelation of sub-clonal expansions. 
 <img align="center" src="https://github.com/ymatts/PhyC/blob/master/img/diversity.png" width="600" height="400" />
 
 <strong>Figure 6.</strong> Exampmle of diversities for clusters
 
+####phyMDS
 We also provide the function <em>phyMDS</em> for plotting configurations of trees as shown in Figure 2. This simply performed with classical multidimensional scaling.
 
+####lichee2edge
 As a utility, we implement the function <em>lichee2edge</em> with which we can obtain the evloutionary trees from variant allele frequencies by LICHeE (Popic,2015).
 
 ##Usuage
