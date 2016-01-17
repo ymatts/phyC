@@ -2,7 +2,7 @@
 The R package for clustering cancer evolutionary trees. 
 
 <strong>Version:</strong>
-0.1.0 (2016.1.15)
+0.1.1 (2016.1.17)
 
 <strong>Depends:</strong>
 
