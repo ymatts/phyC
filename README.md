@@ -31,7 +31,7 @@ Our model assumes cancer clonal theory (Nowell,1976; Nik-Zainal et al., 2012) th
 1. no mutation occurs twice in the course of cancer evolution
 2. no mutation is ever lost.
 
-Our classification method takes the inputs from those reconstruction methods below that outputs the various cancer evolutionary trees from the multiregional cancer sequencing per patiant and the excellent overview of those methods are described in (Beerenwinkel {\it et al.,} 2014); PhyloSub (Jiao {\it et al.,} 2013), PyClone (Roth {\it et al.,} 2014), SciClone (Miller {\it et al.,} 2014), Clomial (Zare {\it et al.,} 2014), Trap (Strino {\it et al.,} 2013), SubcloneSeeker (Qiao {\it et al.,} 2014), and LICHeE (Popic {\it et al.,} 2015) etc.
+Our classification method takes the inputs from those reconstruction methods below that outputs the various cancer evolutionary trees from the multiregional cancer sequencing per patiant and the excellent overview of those methods are described in (Beerenwinkel et al., 2014); <em>PhyloSub</em> (Jiao et al., 2013), <em>PyClone</em> (Roth et al., 2014), <em>SciClone</em> (Miller et al., 2014), <em>Clomial</em> (Zare et al., 2014), <em>Trap</em> (Strino et al., 2013), <em>SubcloneSeeker</em> (Qiao et al., 2014), and <em>LICHeE</em> (Popic et al., 2015) etc.
 
 PhyC classifies those evolutinary trees based on the tree toplogies and edge length attributes under the framework of <em>tree space</em> (Birella,et al. 2001). Here is an example of a result (Figure 2).
 
