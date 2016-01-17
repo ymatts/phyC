@@ -1,7 +1,7 @@
 # PhyC
 The R package for clustering cancer evolutionary trees. 
 
-Depends:ape, igraph
+<strong>Depends:</strong> ape, igraph
 
 ## General overview
 
