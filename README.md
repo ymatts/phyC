@@ -26,7 +26,7 @@ In the input, the edge matrix represents cancer evolutionary topology and the ed
 
 <strong>Figure 1.</strong> The model of cancer evolutionary trees
 
-Our model assumes cancer clonal theory (Nowell,1976; Nik-Zainal {\it et al.,} 2012) that
+Our model assumes cancer clonal theory (Nowell,1976; Nik-Zainal et al., 2012) that
  
 1. no mutation occurs twice in the course of cancer evolution
 2. no mutation is ever lost.
