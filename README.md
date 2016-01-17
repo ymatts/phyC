@@ -83,7 +83,7 @@ Here are some example of registrations (Figure 4). The example shows the mono-fu
 
 <img src="https://github.com/ymatts/PhyC/blob/master/img/regis_example.jpeg" align="center" alt="an example of the registration"  width="600" height="400">
 
-<strong>Figure 4.</strong> Example of the registration"
+<strong>Figure 4.</strong> Example of the registration
 
 The second functionality of <em>phyC</em> is the clustering.
 
@@ -177,7 +177,7 @@ result4 <- lichee2edge('Path to lichee.jar',vaf)
 library(phyC)
 data(vaf) #The list of VAF matrices of ccRCC and HGSC studies
 
-#### We set the parameter of <em>absent</em>, <em>present</em>, <em>minPrivateClsuterSize</em>, <em>maxClusterDist</em> for each patient.
+#### We set the parameter of absent, present, minPrivateClsuterSize, maxClusterDist for each patient.
 
 absent <- c(rep(0.005,6),0.01,0.005,rep(0.005,4),0.01,0.005)
 present <- c(rep(0.005,6),0.01,0.005,rep(0.01,4),0.04,0.01)
