@@ -9,7 +9,3 @@ Description: This package includes the tree registration, clustering,
     visualizing trees' configurations, and calculating diversity.
 License: GPL (>= 2)
 RoxygenNote: 5.0.1
-Depends: igraph,
-    ape,
-    ggplot2,
-    grDevices

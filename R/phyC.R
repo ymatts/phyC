@@ -1,6 +1,7 @@
 #' Clustering cancer evolutionary trees
 #' 
 #' @name phyC
+#' @docType package
 #' @import igraph,ape
 #' @param edgeList List of edge matrix that include the root.
 #' @param edgeLenList List of edge length vector. Index of vector should be corresponding to row index of edge matrix.

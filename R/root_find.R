@@ -1,6 +1,8 @@
 #' Internal function
 #' 
 #' @name resolve.monomulti
+#' @docType package
+#' @import igraph,ape
 #' @author Yusuke Matsui & Teppei Shimamura
 #' @export
 

@@ -1,6 +1,8 @@
 #' Internal function
 #' 
 #' @name regis
+#' @docType package
+#' @import igraph,ape
 #' @author Yusuke Matsui & Teppei Shimamura
 #' @export
 

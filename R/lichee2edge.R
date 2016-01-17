@@ -1,23 +1,13 @@
-#' Constructing trees from variant allele frequency using LICHeE.
+#' Internal function
 #' 
 #' @name lichee2edge
-#' @param licheeDir Directory of lichee.jar file.
-#' @param vaf Matrix of variant allele frequency. For more detail of data format, see http://viq854.github.io/lichee/
-#' @param licheeparamIO List of input/output and display options.For detail see http://viq854.github.io/lichee/. You can set the parameters of (normal,save,showNetwork,showTree). 
-#' @param licheeparamFilter List of SSNV filtering and calling parameters. For detail see http://viq854.github.io/lichee/. You can set the parameters of (absent,present,maxVAFValid,minProfileSupport).
-#' @param  licheeparamParamPhy List of phylogenetic network construction and tree search paramters. For detail see http://viq854.github.io/lichee/. You can set the parameters of (minClusterSize,minPrivateClusterSize,minRobustNodeSupport,maxClusterDist,completeNetwork,e,nTreeQPCheck).
-#' @return edgeList Rooted-constraint network of cancer lineage.
-#' @return edgeLenList Edge length vector corresponding to the edgeList. The edge legnth means #addition SSNVs from parental clone.
+#' @docType package
+#' @import igraph,ape
 #' @author Yusuke Matsui & Teppei Shimamura
 #' @export
 #' 
-lichee2edge <- function(licheeDir = NULL,vaf,licheeParamIO=NULL,licheeParamFilter=NULL,licheeParamPhy=NULL){
-  if(is.null(licheeDir)){cat("set licheeDir\n");stop()}
+lichee2edge <- function(input=NULL,licheeParamIO=NULL,licheeParamFilter=NULL,licheeParamPhy=NULL,outdir=NULL,idx=1){
   options(scipen = 9)
-  current <- getwd()
-  if(current!=licheeDir){
-    setwd(licheeDir)
-  }
   if(is.null(unlist(licheeParamIO))){
     normal <- 0
     nsave <- 1
@@ -60,19 +50,15 @@ lichee2edge <- function(licheeDir = NULL,vaf,licheeParamIO=NULL,licheeParamFilte
     nTreeQPCheck <- licheeParamPhy$nTreeQPCheck;if(is.null(nTreeQPCheck)){nTreeQPCheck <- 0}
   }
   
-  input <- "input.txt"
-  write.table(vaf,file=input,sep = "\t",quote = F,row.names = F,col.names = T)
-  
-  #outdir <- paste0(licheeDir,"/out")
-  #if(!dir.exists("out")){dir.create("out");outdir <- "out"}
-  
+  if(is.null(outdir)){
+    if(!dir.exists("out")){dir.create("out");outdir <- "out"}
+  }else{
+    if(!dir.exists(outdir)){dir.create(outdir)}
+  }
   #output <- paste0(outdir,"/o",idx,"_p",present,"_a",absent,"_mv",maxVAFValid,"_mps",minProfileSupport,"_mcs",minClusterSize,"_mpcs",minPrivateClusterSize,"_mrns",minRobustNodeSupport,"_mcd",maxClusterDist,"_e",e,"_m.txt")
-  #output <- paste0(outdir,"/o","_p",present,"_a",absent,"-minClusterSize",minClusterSize,".txt")
-  output <- "./o.txt"
+  output <- paste0(outdir,"/o",idx,"_p",present,"_a",absent,"-minClusterSize",minClusterSize,".txt")
   
-  tmp <- "tmp.txt"
-  
-  cmd <- paste("java -jar lichee.jar -build -i", input, "-o",tmp,"-minVAFPresent", present, "-maxVAFAbsent",absent,"-n 0", "-s",nsave,"-showTree",ntree,"-minClusterSize",minClusterSize,"-minPrivateClusterSize", minPrivateClusterSize,"-minRobustNodeSupport",minRobustNodeSupport,"-maxClusterDist",maxClusterDist,"-e",e,"-nTreeQPCheck",nTreeQPCheck)  
+  cmd <- paste("java -jar lichee.jar -build -i", input, "-o","tmp.txt","-minVAFPresent", present, "-maxVAFAbsent",absent,"-n 0", "-s",nsave,"-showTree",ntree,"-minClusterSize",minClusterSize,"-minPrivateClusterSize", minPrivateClusterSize,"-minRobustNodeSupport",minRobustNodeSupport,"-maxClusterDist",maxClusterDist,"-e",e,"-nTreeQPCheck",nTreeQPCheck)  
   
   if(net){paste(cmd,"-showNetwork")}
   if(completeNetwork){paste(cmd,"-c")}
@@ -80,24 +66,20 @@ lichee2edge <- function(licheeDir = NULL,vaf,licheeParamIO=NULL,licheeParamFilte
   system(cmd,intern = F)
   
   #cmd <- paste("grep","\'>\'","tmp.txt")
-  cmd <- paste("grep","\\->",tmp)
+  cmd <- paste("grep","\\->","tmp.txt")
   temp <- system(cmd,intern=T)
   temp <- sapply(temp,function(x)gsub(" -> ","\t",x))
   temp <- sapply(temp,function(x)strsplit(x,"\t"))
   edgelist <- t(sapply(temp,function(x)as.numeric(x))) + 1
-  rownames(edgelist) <- NULL
   
   maxind <- max(edgelist)
-  cmd <- paste("head","-n",maxind,tmp)
+  cmd <- paste("head","-n",maxind,"tmp.txt")
   temp <- system(cmd,intern=T)[-1]
   temp <- sapply(temp,function(x)unlist(strsplit(x,"]"))[2])
   temp <- sapply(temp,function(x)unlist(strsplit(x,"\t"))[-1])
-  len <- sapply(temp,length);names(len) <- NULL
-  #edge <- cbind(edgelist,len)
-  #colnames(edge) <- c("v1","v2","length")
-  #write.table(edge,file=output,row.names=F,col.names=T,quote=F,sep="\t")
-  setwd(current)
-  try(invisible(file.remove(input)))
-  try(invisible(file.remove(tmp)))
-  return(list(edgeList=edgelist,edgeLenList=len))
+  len <- sapply(temp,length)
+  edge <- cbind(edgelist,len)
+  colnames(edge) <- c("v1","v2","length")
+  write.table(edge,file=output,row.names=F,col.names=T,quote=F,sep="\t")
+  
 }
