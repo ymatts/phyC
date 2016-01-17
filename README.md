@@ -76,8 +76,8 @@ Here are some example of registrations (Figure 4). The example shows the mono-fu
 The second functionality of <em>phyC</em> is the clustering.
 
 ######Clustering trees
-   + Hierarchical(Ward's method)
-   + Non-hierarchical(k-means)
+   + Hierarchical (Ward's method)
+   + Non-hierarchical (k-means)
 
 Those clustering algorithms are naturally extended from Euclidean space to tree space using the tree distances. Here is an example of non-hierarchical clustering with 4 clusters (Figure 5).
 
@@ -92,7 +92,7 @@ The secondary function <em>diversity</em> is for interpretating clusters. We nee
 <strong>Figure 6.</strong> Exampmle of diversities for clusters
 
 ####phyMDS (in preparation)
-We also provide the function <em>phyMDS</em> for plotting configurations of trees as shown in Figure 2. This simply performed with classical multidimensional scaling.
+We also provide the function <em>phyMDS</em> for plotting configurations of trees as shown in Figure 2.
 
 ####lichee2edge (in preparation)
 As a utility, we implement the function <em>lichee2edge</em> with which we can obtain the evloutionary trees from variant allele frequencies by LICHeE (Popic,2015).
