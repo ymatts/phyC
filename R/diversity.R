@@ -9,7 +9,7 @@
 #' @examples
 #' library(PhyC)
 #' data(evol)
-#' res <- phyC(edgeList,edgeLenList,cluster=2,type='nh')
+#' res <- phyC(evol$edgeList,evol$edgeLenList,cluster=4,type='nh')
 #' div <- diversity(res)
 #' @author Yusuke Matsui & Teppei Shimamura
 #' @export
@@ -68,22 +68,27 @@ if(is.null(color)){
   }
   
   if(plotit){
-    para <- par(bg="#f0f0f0")
 
     if(is.null(color)){color <- (min(cluster)):(max(cluster))}
     par(mar=c(4,4,1,1))
     maxnum <- max(unlist(nlist))+1
-    plot(ax,nlist[[1]],type="n",xlim=c(0,1),ylim=c(1,maxnum),ann=F)
-    grid()
+    plot(ax,nlist[[1]],type="n",xlim=c(0,1),ylim=c(0,maxnum),ann=F,axes=F)
+
+    u <- par("usr") # The coordinates of the plot area
+    rect(u[1], u[3], u[2], u[4], col="#f0f0f0", border=NA)
+    
+    grid(col = "white",lwd = 2,lty="solid")
     for(i in seq_along(nlist)){
       lines(ax,nlist[[i]],col=color[cluster[i]],lwd=1)
     }
     for(i in seq_along(div.mean)){
       lines(ax,div.mean[[i]],col=color[i],lwd=5,lty=2)
     }
-    mtext("h",side=1,line = 3)
-    mtext("g(h)",side=2,line = 3)
-    par(para)
+    mtext("The cumulative rate of Accumulated SSNVs",side=1,line = 3,col="#969696",cex = 1.2)
+    mtext("The number of sub-clones",side=2,line = 3,col = "#969696",cex = 1.2)
+    axis(side = 1,col = "grey",font=5,col.ticks = "#969696")
+    axis(side = 2,col = "grey",font=5,col.ticks = "#969696")
+    
   }
   return(list(ind.div=nlist,div=div.mean))
 }

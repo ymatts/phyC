@@ -4,6 +4,7 @@
 #' @param obj Object resulted from phyC. 
 #' @param color Vector of color parameter of each cluster in the plot.
 #' @param label Vector of labels of trees. Default is "Tree i"(i=1,2,...).
+#' @param type Type of tree to be plotted.  It must be one of "unrooted"(the default), "phylogram", "cladogram", "fan", "radial".
 #' @examples
 #' library(PhyC)
 #' data(evol)
@@ -12,7 +13,7 @@
 #' @author Yusuke Matsui & Teppei Shimamura
 #' @export
 #'
-phyC.plot <- function(obj,color=NULL,label=NULL){
+phyC.plot <- function(obj,color=NULL,label=NULL,type="unrooted"){
   resolve_tree <- obj$trees
   cluster <- obj$cluster
 
@@ -20,7 +21,7 @@ phyC.plot <- function(obj,color=NULL,label=NULL){
     n <- length(resolve_tree)%%25
     cat("there are too many trees to plot them in one panel, then plots are divided into ",n," plots")
   }
-  para <- par(list(mfrow=c(5,5),mar=c(1,1,3,1),bg="#f0f0f0"))
+  para <- par(list(mfrow=c(5,5),mar=c(0,0,3,0),bg="#f0f0f0"))
   
 
   if(is.null(color)){
@@ -31,7 +32,7 @@ phyC.plot <- function(obj,color=NULL,label=NULL){
   if(is.null(label)){label <- paste0("Tree ",seq_along(resolve_tree))}
 
   for(i in seq_along(resolve_tree)){  
-    plot.phylo(resolve_tree[[i]],type = "unrooted",edge.width = 6,edge.color = color[cluster[i]],show.tip.label = F)
+    plot.phylo(resolve_tree[[i]],type = type,edge.width = 6,edge.color = color[cluster[i]],show.tip.label = F,adj = 0.5)
     mtext(label[i],side = 3,line = 1,cex=1)
     idx <- get.index(resolve_tree[[i]]$edge)    
     zerolen <- resolve_tree[[i]]$edge.length==0

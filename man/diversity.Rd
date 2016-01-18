@@ -24,7 +24,7 @@ Evaluating diversity and plot
 \examples{
 library(PhyC)
 data(evol)
-res <- phyC(edgeList,edgeLenList,cluster=2,type='nh')
+res <- phyC(evol$edgeList,evol$edgeLenList,cluster=4,type='nh')
 div <- diversity(res)
 }
 \author{

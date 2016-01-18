@@ -3,6 +3,7 @@
 export(create.metaTree)
 export(depth.max)
 export(diversity)
+export(get.edgeIndex)
 export(get.index)
 export(get.maxdepth)
 export(lichee2edge)

@@ -5,7 +5,8 @@
 #' @param color Vector of color parameter of each cluster in the plot.
 #' @param label Vector of labels of trees. Default is "Tree i"(i=1,2,...).
 #' @param img.width(/img.height) Image width (/ height) of the trees to be overlayed on the Euclidean space. The unit is "px". Default is 200.
-#' @param size Size parameter of trees to be plotted in the Euclidean space. Usually, 0 < size < 1. Default is 0.2.
+#' @param size Size parameter of trees to be plotted in the Euclidean space. Usually, 0 < size < 1. Default is 0.15.
+#' @param type Type of tree to be plotted.  It must be one of "unrooted"(the default), "phylogram", "cladogram", "fan", "radial".
 #' @return dist Distance used for configuration
 #' @return coord Coordinate of trees in the Euclidean space.
 #' @details This function performs classical multidimensional scaling with tree distance. The resulting plot includes the trees overlayed on the Euclidean coordinates.
@@ -18,7 +19,7 @@
 #' @export
 #'
 
-phyCMD <- function(obj,color=NULL,label=NULL,img.width=200,img.height=200,size=0.2){
+phyCMD <- function(obj,color=NULL,label=NULL,img.width=200,img.height=200,size=0.15,type="unrooted"){
     
     resolve_tree <- obj$trees
     cluster <- obj$cluster
@@ -37,8 +38,8 @@ phyCMD <- function(obj,color=NULL,label=NULL,img.width=200,img.height=200,size=0
     output <- paste0(outdir,"phylo",seq_along(resolve_tree),".png")
     for(i in seq_along(resolve_tree)){
         png(filename = output[i],width = img.width,height = img.height,bg="transparent")
-        para <- par(mar=c(1,1,1,1))
-        plot.phylo(resolve_tree[[i]],type = "unrooted",edge.width = 6,edge.color = color[cluster[i]],show.tip.label = F)
+        para <- par(mar=c(0,0,0,0))
+        plot.phylo(resolve_tree[[i]],type = type,edge.width = 6,edge.color = color[cluster[i]],show.tip.label = F,adj = 0.5)
         #mtext(label[i],side = 1,line = -3,cex=1)
         idx <- get.index(resolve_tree[[i]]$edge)
         zerolen <- resolve_tree[[i]]$edge.length==0

@@ -5,7 +5,7 @@
 \title{Constructing configuration of trees in clusters and plot}
 \usage{
 phyCMD(obj, color = NULL, label = NULL, img.width = 200,
-  img.height = 200, size = 0.2)
+  img.height = 200, size = 0.15, type = "unrooted")
 }
 \arguments{
 \item{obj}{Object resulted from phyC.}
@@ -14,7 +14,9 @@ phyCMD(obj, color = NULL, label = NULL, img.width = 200,
 
 \item{label}{Vector of labels of trees. Default is "Tree i"(i=1,2,...).}
 
-\item{size}{Size parameter of trees to be plotted in the Euclidean space. Usually, 0 < size < 1. Default is 0.2.}
+\item{size}{Size parameter of trees to be plotted in the Euclidean space. Usually, 0 < size < 1. Default is 0.15.}
+
+\item{type}{Type of tree to be plotted.  It must be one of "unrooted"(the default), "phylogram", "cladogram", "fan", "radial".}
 
 \item{img.width(/img.height)}{Image width (/ height) of the trees to be overlayed on the Euclidean space. The unit is "px". Default is 200.}
 }

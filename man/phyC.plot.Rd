@@ -4,7 +4,7 @@
 \alias{phyC.plot}
 \title{Plot trees in clusters}
 \usage{
-phyC.plot(obj, color = NULL, label = NULL)
+phyC.plot(obj, color = NULL, label = NULL, type = "unrooted")
 }
 \arguments{
 \item{obj}{Object resulted from phyC.}
@@ -12,6 +12,8 @@ phyC.plot(obj, color = NULL, label = NULL)
 \item{color}{Vector of color parameter of each cluster in the plot.}
 
 \item{label}{Vector of labels of trees. Default is "Tree i"(i=1,2,...).}
+
+\item{type}{Type of tree to be plotted.  It must be one of "unrooted"(the default), "phylogram", "cladogram", "fan", "radial".}
 }
 \description{
 Plot trees in clusters
