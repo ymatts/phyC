@@ -51,7 +51,7 @@ Our classification method takes the inputs from those reconstruction methods bel
 
 PhyC classifies those evolutinary trees based on the tree toplogies and edge length attributes under the framework of <em>tree space</em> (Birella,et al. 2001). Here is an example of a result (Figure 2).
 
-<img align="center" src="https://github.com/ymatts/PhyC/blob/master/img/mds.png" width="600" height="400" />
+<img align="center" src="https://github.com/ymatts/PhyC/blob/master/img/phyCMD.png" width="600" height="400" />
 
 <strong>Figure 2.</strong> Example of the clustering
 
@@ -93,7 +93,7 @@ The second functionality of <em>phyC</em> is the clustering.
 
 Those clustering algorithms are naturally extended from Euclidean space to tree space using the tree distances. Here is an example of non-hierarchical clustering with 4 clusters (Figure 5).
 
-<img align="center" src="https://github.com/ymatts/PhyC/blob/master/img/clust.png" width="600" height="400" />
+<img align="center" src="https://github.com/ymatts/PhyC/blob/master/img/phyC.plot.png" width="600" height="400" />
 
 <strong>Figure 5.</strong> Example of non-hierarchical clustering
 
