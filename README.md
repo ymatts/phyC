@@ -125,7 +125,7 @@ result <- phyC(edgeList,edgeLenList,cluster=3)
 
 Here is an example.
 ```r:phyC.R
-library(phyC)
+library(PhyC)
 data(evol)
 result <- phyC(evol$edgeList,evol$edgeLenList,cluster=4,type='nh')
 result$cluster # Assignment of clusters
@@ -143,7 +143,7 @@ result2 <- diversity(phyC.obj)
 Here is an example.
 
 ```r:diversity.R
-library(phyC)
+library(PhyC)
 data(evol)
 result <- phyC(evol$edgeList,evol$edgeLenList,cluster=4,type='nh')
 result2 <- diversity(result) # Output the plot as Figure 6.
@@ -158,7 +158,7 @@ result3 <- phyCMD(phyC.obj)
 
 
 ```r:phyCMD.R
-library(phyC)
+library(PhyC)
 data(evol)
 result <- phyC(evol$edgeList,evol$edgeLenList,cluster=4,type='nh')
 result3 <- phyCMD(result) # Output the plot as Figure 6.
@@ -174,7 +174,7 @@ result4 <- lichee2edge('Path to lichee.jar',vaf)
 ```
 
 ```r:phyCMD.R
-library(phyC)
+library(PhyC)
 data(vaf) #The list of VAF matrices of ccRCC and HGSC studies
 
 #### We set the parameter of absent, present, minPrivateClsuterSize, maxClusterDist for each patient.
