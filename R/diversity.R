@@ -84,7 +84,7 @@ if(is.null(color)){
     for(i in seq_along(div.mean)){
       lines(ax,div.mean[[i]],col=color[i],lwd=5,lty=2)
     }
-    mtext("The cumulative rate of Accumulated SSNVs",side=1,line = 3,col="#969696",cex = 1.2)
+    mtext("The cumulative rate of accumulated SSNVs",side=1,line = 3,col="#969696",cex = 1.2)
     mtext("The number of sub-clones",side=2,line = 3,col = "#969696",cex = 1.2)
     axis(side = 1,col = "grey",font=5,col.ticks = "#969696")
     axis(side = 2,col = "grey",font=5,col.ticks = "#969696")
