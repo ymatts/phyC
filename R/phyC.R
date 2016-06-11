@@ -225,14 +225,14 @@ phyC <- function(edgeList,edgeLenList,cluster,type='nh',method=NULL){
         cat(i,"th registration finished\n")
     }  
     coord <- t(sapply(regis,function(x)x$edge.length))
-    d <- dist.multiPhylo(regis)
     if(type=="nh"){
         set.seed(100)
         cat("non-hierarchical clustering")  
         km <- kmeans(coord,cluster)
         cls <- km$cluster
     }else if(type=="h"){
-        cat("hierarchical clustering")  
+        cat("hierarchical clustering") 
+      
         if(is.null(method)){method <- "ward.D2"}
         hc <- hclust(dist(coord),method=method)
         #if(dendro){plot(hc)}
