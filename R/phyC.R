@@ -218,6 +218,7 @@ phyC <- function(edgeList,edgeLenList,cluster,type='nh',method=NULL){
     cat(paste0("depth=",maxdep," and #leaves=",2^(maxdep),"\n"))
     #meta <- create.metaTree(maxdep+1)
     meta <- stree(ntips <- 2^(maxdep-1+1),"balanced")
+    meta$edge.length <- rep(0,nrow(meta$edge))
     cat("starting encoding trees to maximum tree\n")
     regis <- vector("list",length(treelist))
     for(i in seq_along(treelist)){
@@ -225,19 +226,39 @@ phyC <- function(edgeList,edgeLenList,cluster,type='nh',method=NULL){
         cat(i,"th registration finished\n")
     }  
     coord <- t(sapply(regis,function(x)x$edge.length))
+    d <- dist(coord)
     if(type=="nh"){
-        set.seed(100)
+        #set.seed(100)
         cat("non-hierarchical clustering")  
         km <- kmeans(coord,cluster)
         cls <- km$cluster
+        unique_cls <- unique(cls)
+        ave_tree <- vector("list",length(unique_cls))
+        for(i in seq_along(unique_cls)){
+          ref_tree <- meta
+          ind <- which(cls==unique_cls[i])
+          ave_coord <- apply(coord[ind,,drop=F],2,function(x)mean(x,na.rm = T))
+          ref_tree$edge.length <- ave_coord
+          ave_tree[[i]] <- ref_tree
+        }
     }else if(type=="h"){
         cat("hierarchical clustering") 
       
         if(is.null(method)){method <- "ward.D2"}
-        hc <- hclust(dist(coord),method=method)
+        hc <- hclust(d,method=method)
         #if(dendro){plot(hc)}
         cls <- cutree(hc,cluster)
+        unique_cls <- unique(cls)
+        ave_tree <- vector("list",length(unique_cls))
+        for(i in seq_along(unique_cls)){
+          ref_tree <- meta
+          ind <- which(cls==unique_cls[i])
+          ave_coord <- apply(coord[ind,,drop=F],2,function(x)mean(x,na.rm = T))
+          ref_tree$edge.length <- ave_coord
+          ave_tree[[i]] <- ref_tree
+        }
     }
-    return (list(trees=treelist,regis.trees=regis,cluster=cls,dist=d,edgeList=edgeList, edgeLenList=edgeLenList))
+    
+    return (list(trees=treelist,regis.trees=regis,cluster=cls,dist=d,edgeList=edgeList, edgeLenList=edgeLenList,coord=coord,ave_tree = ave_tree))
 }
 
