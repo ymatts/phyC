@@ -18,9 +18,7 @@
 #' @author Yusuke Matsui & Teppei Shimamura
 #' @export
 #'
-phyC <- function(edgeList,edgeLenList,cluster,type='nh',method=NULL){
-    library(igraph)
-    library(ape)
+phyC <- function(edgeList,edgeLenList,tip.names=NULL,cluster,type='nh',normalize="total",mode = "all",method=NULL){
     cat("staring to resolve mono and multifurcations \n")
     new.edgeList <- vector("list",length(edgeList))
     for(i in 1:length(edgeList)){
@@ -208,57 +206,56 @@ phyC <- function(edgeList,edgeLenList,cluster,type='nh',method=NULL){
         class(temp.tree) <- "phylo"
         treelist[[i]] <- temp.tree
     }
-    
-    for(i in seq_along(treelist)){
+      
+    if(mode=="all"){
+      if(normalize=="total"){
+        for(i in seq_along(treelist)){
+          treelist[[i]]$edge.length <- treelist[[i]]$edge.length / sum(treelist[[i]]$edge.length)
+        }
+      }else if(normalize=="subclone"){
+        for(i in seq_along(treelist)){
+          treelist[[i]]$edge.length <- treelist[[i]]$edge.length / sum(treelist[[i]]$edge.length[-1])
+        }
+      }else if(normalize=="trunc"){
+        for(i in seq_along(treelist)){
+          treelist[[i]]$edge.length <- treelist[[i]]$edge.length / sum(treelist[[i]]$edge.length[-1])
+        }
+      }else{
+        print("invalid normalize option")
+      }
+    }else if(mode=="topology"){
+      for(i in seq_along(treelist)){
+        #nozero <- which(treelist[[i]]$edge.length!=0) 
+        #treelist[[i]]$edge.length[nozero] <- rep(1,length(treelist[[i]]$edge.length[nozero]))
+        treelist[[i]]$edge.length <- rep(1,length(treelist[[i]]$edge.length))
         treelist[[i]]$edge.length <- treelist[[i]]$edge.length / sum(treelist[[i]]$edge.length)
+      }
     }
     
     maxdep <- depth.max(treelist)
     cat("creating maximum tree\n")
     cat(paste0("depth=",maxdep," and #leaves=",2^(maxdep),"\n"))
-    #meta <- create.metaTree(maxdep+1)
-    meta <- stree(ntips <- 2^(maxdep-1+1),"balanced")
-    meta$edge.length <- rep(0,nrow(meta$edge))
+    meta <- create.metaTree(maxdep+1)
     cat("starting encoding trees to maximum tree\n")
     regis <- vector("list",length(treelist))
     for(i in seq_along(treelist)){
         regis[[i]] <- meta.regis.tree(meta,treelist[[i]])
         cat(i,"th registration finished\n")
-    }  
+    }
     coord <- t(sapply(regis,function(x)x$edge.length))
-    d <- dist(coord)
+    d <- dist.multiPhylo(regis)
     if(type=="nh"){
-        #set.seed(100)
+        set.seed(100)
         cat("non-hierarchical clustering")  
         km <- kmeans(coord,cluster)
         cls <- km$cluster
-        unique_cls <- unique(cls)
-        ave_tree <- vector("list",length(unique_cls))
-        for(i in seq_along(unique_cls)){
-          ref_tree <- meta
-          ind <- which(cls==unique_cls[i])
-          ave_coord <- apply(coord[ind,,drop=F],2,function(x)mean(x,na.rm = T))
-          ref_tree$edge.length <- ave_coord
-          ave_tree[[i]] <- ref_tree
-        }
     }else if(type=="h"){
-        cat("hierarchical clustering") 
-      
+        cat("hierarchical clustering")  
         if(is.null(method)){method <- "ward.D2"}
-        hc <- hclust(d,method=method)
+        hc <- hclust(dist(coord),method=method)
         #if(dendro){plot(hc)}
         cls <- cutree(hc,cluster)
-        unique_cls <- unique(cls)
-        ave_tree <- vector("list",length(unique_cls))
-        for(i in seq_along(unique_cls)){
-          ref_tree <- meta
-          ind <- which(cls==unique_cls[i])
-          ave_coord <- apply(coord[ind,,drop=F],2,function(x)mean(x,na.rm = T))
-          ref_tree$edge.length <- ave_coord
-          ave_tree[[i]] <- ref_tree
-        }
     }
-    
-    return (list(trees=treelist,regis.trees=regis,cluster=cls,dist=d,edgeList=edgeList, edgeLenList=edgeLenList,coord=coord,ave_tree = ave_tree))
+    return (list(trees=treelist,regis.trees=regis,cluster=cls,dist=d,edgeList=edgeList, edgeLenList=edgeLenList,normalize=normalize))
 }
 
