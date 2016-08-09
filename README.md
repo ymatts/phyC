@@ -10,7 +10,7 @@ R(>=3.2.2)
 
 ape, igraph, ggplot2, grDevices, png, RColorBrewer
 
-<strong>Authour:</strong>
+<strong>Author:</strong>
 
 Yusuke Matsui
 
@@ -22,7 +22,7 @@ ymatsui[at]med.nagoya-u.ac.jp
 ## General overview
 Multi-regional sequencing provide new opportunities to investigate genetic heterogeneity within- or between- common tumours from a view of evolutionary perspective. The state-of-the-art methods have been proposed for reconstructing cancer sub-clonal evolutionary trees based on multi-regional sequencing data to develop models of cancer evolution. However, the methods developed thus far are not sufficient to characterize and interpret the diversity of cancer sub-clonal evolutionary trees. We propose a clustering method (phyC) for cancer sub-clonal evolutionary trees, in which sub-groups of the trees are identified based on topology and edge length attributes. For interpretation, we also propose a method for evaluating the diversity of trees in the clusters, which provides insight into the acceleration of sub-clonal expansion. 
 
-## Introduction
+## Main functionality of phyC
 
 phyC (Phylogenetic tree Clustering) is designed for classifying cancer evolutionary trees. 
 
@@ -32,8 +32,6 @@ The main inputs of phyC is
 or alternatively
 
 * Edge matrix and edge length vector from reconstructed sub-clonal evolutionary trees
-
-
 
 <strong>Table 1.</strong> Example of VAF
 <table>
@@ -71,8 +69,12 @@ phyC peform clustering for a set of the reconstructed evolutionary trees after t
 
 Main outpus are
 * Cluster assignments
-* Multidimensional scaling configuration of trees in clusters
+* Multidimensional scaling (MDS) configuration of trees in clusters
 * Sub-clonal diversity of trees in clusters
+
+Clustering is based on standard hierarchical clustering algorithm and default algorithm of phyC is Ward's method. 
+For visualization of clustering results for interpretation, we develop the two tools; MDS and sub-clonal diversity plot. In MDS, we approximately embed the registered trees into lower-dimensional Euclidean space. We overlay tree shapes over embedded Euclidean space in the plot. In sub-clonal diversity plot, we apply the concept of a lineage-through-time (LTT) plot to visualize how sub-clones evolve along SSNV accumulation. The LTT plot generally describes the time vs. number of lineages; and in the present case, this is expressed as the number of sub-clones (y-axis) vs. the fraction of accumulated SSNVs (x-axis).
+
 
 ##Usage
 ######Installation
