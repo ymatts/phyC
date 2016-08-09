@@ -1,4 +1,22 @@
-
+#' Constructing phylogenetic trees.
+#'
+#' @name phyC
+#' @param vaf Matrix of vaf profie. Each row and column must represent VAFs of genes and sampled region, respectively, and first column must normal cell.
+#' @param thr Threshold of VAF, which is used for binarizing the VAF profile. If VAF>=thr then it is set to 1; otherwise 0.
+#' @return tree Constructed phylogenetic trees.
+#' @return edge Edge matrix of the constructed tree.
+#' @return edge.length Edge length of the constructed tree.
+#' @return node.label Labels of each noder representing sub-clones.
+#' @return profile Mutation status of each sub-clone.
+#' @details This function constructsparsimony trees such that nodes and edge length correspond to sub-clones and the number of SSNVs in the sub-clones. acctran in phangorn package is used to construct the parsimony trees.
+#' @examples
+#' library(phyC)
+#' data(evol)
+#' res <- phyC(evol$edgeList,evol$edgeLenList,cluster=4,type='h',method="ward")
+#' res$cluster
+#' @author Yusuke Matsui & Teppei Shimamura
+#' @export
+#'
 par_tree <- function(vaf,thr = 0.05){
   if("normal"%in%colnames(vaf)){
     ind <- which(colnames(vaf)=="normal")

@@ -6,7 +6,7 @@
 #' @param label Vector of labels of trees. Default is "Tree i"(i=1,2,...).
 #' @param type Type of tree to be plotted.  It must be one of "unrooted"(the default), "phylogram", "cladogram", "fan", "radial".
 #' @examples
-#' library(PhyC)
+#' library(phyC)
 #' data(evol)
 #' res <- phyC(evol$edgeList,evol$edgeLenList,cluster=4,type='nh')
 #' phyC.plot(res)

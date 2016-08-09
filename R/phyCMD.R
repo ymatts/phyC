@@ -11,7 +11,7 @@
 #' @return coord Coordinate of trees in the Euclidean space.
 #' @details This function performs classical multidimensional scaling with tree distance. The resulting plot includes the trees overlayed on the Euclidean coordinates.
 #' @examples
-#' library(PhyC)
+#' library(phyC)
 #' data(evol)
 #' res <- phyC(evol$edgeList,evol$edgeLenList,cluster=4,type='nh')
 #' phyCMD(res)

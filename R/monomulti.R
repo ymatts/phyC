@@ -4,8 +4,6 @@
 #' @author Yusuke Matsui & Teppei Shimamura
 #' @export
 resolve.monomulti <- function(edgelist,edgeLenList){
-  library(igraph)
-  library(ape)
   new.edgelist <- vector("list",length(edgelist))
   for(i in 1:length(edgelist)){
     edge <- cbind(edgelist[[i]],edgeLenList[[i]])

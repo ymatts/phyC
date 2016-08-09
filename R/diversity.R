@@ -7,7 +7,7 @@
 #' @return ind.div Diversity of each tree.
 #' @return div Diversity of each cluster.
 #' @examples
-#' library(PhyC)
+#' library(phyC)
 #' data(evol)
 #' res <- phyC(evol$edgeList,evol$edgeLenList,cluster=4,type='nh')
 #' div <- diversity(res)

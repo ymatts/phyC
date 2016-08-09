@@ -11,14 +11,15 @@
 #' @return dist Distance betwee trees.
 #' @details This function perform the registration and the clustering. In the registration, we resolve the mono- and multi-furcation trees and we complete the number of leaves among the trees. In the resigration, identical tree toplogies are regarded identical even if the label are different. In the clustering, we classify the trees into predifined number of subsets. When choose type='nh', we perform the Ward's clustering.
 #' @examples
-#' library(PhyC)
+#' library(phyC)
 #' data(evol)
 #' res <- phyC(evol$edgeList,evol$edgeLenList,cluster=4,type='nh')
 #' res$cluster
 #' @author Yusuke Matsui & Teppei Shimamura
 #' @export
 #'
-phyC <- function(edgeList,edgeLenList,r=1,cluster,type='h',method=NULL){
+#phyC <- function(edgeList,edgeLenList,r=1,cluster,type='h',method=NULL){
+phyC <- function(edgeList,edgeLenList,cluster,type='h',method="ward"){
     library(igraph)
     library(ape)
     cat("staring to resolve mono and multifurcations \n")
@@ -230,20 +231,20 @@ phyC <- function(edgeList,edgeLenList,r=1,cluster,type='h',method=NULL){
     #  coord <- replace(coord,coord!=0,1)
     #}
     
-    d <- matrix(0,nrow(coord),nrow(coord))
-    for(i in 1:(nrow(coord)-1)){
-      for(j in (i + 1):nrow(coord)){
-        t1 <- coord[i,]
-        t2 <- coord[j,]
-        diff_topo <- (t1==0 & t2!=0)|(t1!=0 & t2==0)
-        diff_len <- (t1-t2)^2
-        mult <- rep(1,length(t1))
-        mult[diff_topo] <- 1 / r
-        d[i,j] <- d[j,i] <- sqrt(sum(diff_len * mult))
-      }
-    }
-   d <- as.dist(d)
-#    d <- dist(coord)
+#     d <- matrix(0,nrow(coord),nrow(coord))
+#     for(i in 1:(nrow(coord)-1)){
+#       for(j in (i + 1):nrow(coord)){
+#         t1 <- coord[i,]
+#         t2 <- coord[j,]
+#         diff_topo <- (t1==0 & t2!=0)|(t1!=0 & t2==0)
+#         diff_len <- (t1-t2)^2
+#         mult <- rep(1,length(t1))
+#         mult[diff_topo] <- 1 / r
+#         d[i,j] <- d[j,i] <- sqrt(sum(diff_len * mult))
+#       }
+#     }
+#   d <- as.dist(d)
+    d <- dist(coord)
     #plot(cmdscale(d,k=2),col=c(rep(1,30),rep(2,30)))
     
     if(type=="nh"){
