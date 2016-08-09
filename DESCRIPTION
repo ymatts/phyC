@@ -15,4 +15,5 @@ Depends: igraph,
     ggplot2,
     grDevices,
     RColorBrewer,
-    png
+    png,
+    phangorn
