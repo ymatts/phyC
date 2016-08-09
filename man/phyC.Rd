@@ -53,7 +53,8 @@ This function perform the registration and the clustering. In the registration, 
 }
 \examples{
 library(phyC)
-data(evol)
+data(ccRCC)
+trees <- par.tree(ccRCC)
 res <- phyC(evol$edgeList,evol$edgeLenList,cluster=4,type='h',method="ward")
 res$cluster
 library(phyC)
