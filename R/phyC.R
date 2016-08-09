@@ -18,7 +18,9 @@
 #' @author Yusuke Matsui & Teppei Shimamura
 #' @export
 #'
-phyC <- function(edgeList,edgeLenList,tip.names=NULL,cluster,type='nh',normalize="total",mode = "all",method=NULL){
+phyC <- function(edgeList,edgeLenList,r=1,cluster,type='h',method=NULL){
+    library(igraph)
+    library(ape)
     cat("staring to resolve mono and multifurcations \n")
     new.edgeList <- vector("list",length(edgeList))
     for(i in 1:length(edgeList)){
@@ -206,36 +208,17 @@ phyC <- function(edgeList,edgeLenList,tip.names=NULL,cluster,type='nh',normalize
         class(temp.tree) <- "phylo"
         treelist[[i]] <- temp.tree
     }
-      
-    if(mode=="all"){
-      if(normalize=="total"){
-        for(i in seq_along(treelist)){
-          treelist[[i]]$edge.length <- treelist[[i]]$edge.length / sum(treelist[[i]]$edge.length)
-        }
-      }else if(normalize=="subclone"){
-        for(i in seq_along(treelist)){
-          treelist[[i]]$edge.length <- treelist[[i]]$edge.length / sum(treelist[[i]]$edge.length[-1])
-        }
-      }else if(normalize=="trunc"){
-        for(i in seq_along(treelist)){
-          treelist[[i]]$edge.length <- treelist[[i]]$edge.length / sum(treelist[[i]]$edge.length[-1])
-        }
-      }else{
-        print("invalid normalize option")
-      }
-    }else if(mode=="topology"){
-      for(i in seq_along(treelist)){
-        #nozero <- which(treelist[[i]]$edge.length!=0) 
-        #treelist[[i]]$edge.length[nozero] <- rep(1,length(treelist[[i]]$edge.length[nozero]))
-        treelist[[i]]$edge.length <- rep(1,length(treelist[[i]]$edge.length))
+    
+    for(i in seq_along(treelist)){
         treelist[[i]]$edge.length <- treelist[[i]]$edge.length / sum(treelist[[i]]$edge.length)
-      }
     }
     
     maxdep <- depth.max(treelist)
     cat("creating maximum tree\n")
     cat(paste0("depth=",maxdep," and #leaves=",2^(maxdep),"\n"))
-    meta <- create.metaTree(maxdep+1)
+    #meta <- create.metaTree(maxdep+1)
+    meta <- stree(ntips <- 2^(maxdep-1+1),"balanced")
+    meta$edge.length <- rep(0,nrow(meta$edge))
     cat("starting encoding trees to maximum tree\n")
     regis <- vector("list",length(treelist))
     for(i in seq_along(treelist)){
@@ -243,19 +226,58 @@ phyC <- function(edgeList,edgeLenList,tip.names=NULL,cluster,type='nh',normalize
         cat(i,"th registration finished\n")
     }
     coord <- t(sapply(regis,function(x)x$edge.length))
-    d <- dist.multiPhylo(regis)
+    #if(topo){
+    #  coord <- replace(coord,coord!=0,1)
+    #}
+    
+    d <- matrix(0,nrow(coord),nrow(coord))
+    for(i in 1:(nrow(coord)-1)){
+      for(j in (i + 1):nrow(coord)){
+        t1 <- coord[i,]
+        t2 <- coord[j,]
+        diff_topo <- (t1==0 & t2!=0)|(t1!=0 & t2==0)
+        diff_len <- (t1-t2)^2
+        mult <- rep(1,length(t1))
+        mult[diff_topo] <- 1 / r
+        d[i,j] <- d[j,i] <- sqrt(sum(diff_len * mult))
+      }
+    }
+   d <- as.dist(d)
+#    d <- dist(coord)
+    #plot(cmdscale(d,k=2),col=c(rep(1,30),rep(2,30)))
+    
     if(type=="nh"){
-        set.seed(100)
+        #set.seed(100)
         cat("non-hierarchical clustering")  
         km <- kmeans(coord,cluster)
         cls <- km$cluster
+        unique_cls <- unique(cls)
+        ave_tree <- vector("list",length(unique_cls))
+        for(i in seq_along(unique_cls)){
+          ref_tree <- meta
+          ind <- which(cls==unique_cls[i])
+          ave_coord <- apply(coord[ind,,drop=F],2,function(x)mean(x,na.rm = T))
+          ref_tree$edge.length <- ave_coord
+          ave_tree[[i]] <- ref_tree
+        }
     }else if(type=="h"){
-        cat("hierarchical clustering")  
+        cat("hierarchical clustering") 
+      
         if(is.null(method)){method <- "ward.D2"}
-        hc <- hclust(dist(coord),method=method)
+        hc <- hclust(d,method=method)
         #if(dendro){plot(hc)}
         cls <- cutree(hc,cluster)
+        unique_cls <- unique(cls)
+        ave_tree <- vector("list",length(unique_cls))
+        for(i in seq_along(unique_cls)){
+          ref_tree <- meta
+          ind <- which(cls==unique_cls[i])
+          ave_coord <- apply(coord[ind,,drop=F],2,function(x)mean(x,na.rm = T))
+          ref_tree$edge.length <- ave_coord
+          ave_tree[[i]] <- ref_tree
+        }
     }
-    return (list(trees=treelist,regis.trees=regis,cluster=cls,dist=d,edgeList=edgeList, edgeLenList=edgeLenList,normalize=normalize))
+    
+    return (list(trees=treelist,regis.trees=regis,cluster=cls,dist=d,edgeList=edgeList, edgeLenList=edgeLenList,coord=coord,ave_tree = ave_tree))
 }
 

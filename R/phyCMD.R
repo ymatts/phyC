@@ -20,18 +20,33 @@
 #'
 
 phyCMD <- function(obj,color=NULL,label=NULL,img.width=200,img.height=200,size=0.15,type="unrooted"){
-    
-    resolve_tree <- obj$trees
-    cluster <- obj$cluster
-    d <- obj$dist
-    
-    if(is.null(color)){
-        cn <- length(unique(cluster))
-        if(cn<3){cn <- 3}
-        color <- brewer.pal(cn,name = "Set2")
-    }
-    bgcol <- "#f0f0f0"
-    
+      
+      resolve_tree <- obj$trees
+#       normalize <- obj$normalize
+#       if(normalize=="total"){
+#         for(i in seq_along(resolve_tree)){
+#           resolve_tree[[i]]$edge.length <- resolve_tree[[i]]$edge.length / sum(resolve_tree[[i]]$edge.length)
+#         }
+#       }else if(normalize=="subclone"){
+#         for(i in seq_along(resolve_tree)){
+#           resolve_tree[[i]]$edge.length <- resolve_tree[[i]]$edge.length / resolve_tree[[i]]$edge.length[1]
+#         }
+#       }else if(normalize=="trunc"){
+#         for(i in seq_along(resolve_tree)){
+#           resolve_tree[[i]]$edge.length <- resolve_tree[[i]]$edge.length / sum(resolve_tree[[i]]$edge.length[-1])
+#         }
+#       }
+      
+      cluster <- obj$cluster
+      d <- obj$dist
+      
+      if(is.null(color)){
+          cn <- length(unique(cluster))
+          if(cn<3){cn <- 3}
+          color <- brewer.pal(cn,name = "Set2")
+      }
+      bgcol <- "#f0f0f0"
+      
     if(is.null(label)){label <- paste0("Tree ",seq_along(resolve_tree))}
     
     outdir <- tempdir()

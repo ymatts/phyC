@@ -15,14 +15,29 @@
 #'
 phyC.plot <- function(obj,color=NULL,label=NULL,type="unrooted"){
   resolve_tree <- obj$trees
+#   normalize <- obj$normalize
+#   if(normalize=="total"){
+#     for(i in seq_along(resolve_tree)){
+#       resolve_tree[[i]]$edge.length <- resolve_tree[[i]]$edge.length / sum(resolve_tree[[i]]$edge.length)
+#     }
+#   }else if(normalize=="subclone"){
+#     for(i in seq_along(resolve_tree)){
+#       resolve_tree[[i]]$edge.length <- resolve_tree[[i]]$edge.length / resolve_tree[[i]]$edge.length[1]
+#     }
+#   }else if(normalize=="trunc"){
+#     for(i in seq_along(resolve_tree)){
+#       resolve_tree[[i]]$edge.length <- resolve_tree[[i]]$edge.length / sum(resolve_tree[[i]]$edge.length[-1])
+#     }
+#   }
+  
   cluster <- obj$cluster
 
   if(length(resolve_tree)>=25){
     n <- length(resolve_tree)%%25
     cat("there are too many trees to plot them in one panel, then plots are divided into ",n," plots")
   }
+  #para <- par(list(mfrow=c(5,5),mar=c(0,0,3,0),bg="#f0f0f0"))
   para <- par(list(mfrow=c(5,5),mar=c(0,0,3,0),bg="#f0f0f0"))
-  
 
   if(is.null(color)){
     cn <- length(unique(cluster))
