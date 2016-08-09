@@ -11,13 +11,14 @@
 #' @details This function constructsparsimony trees such that nodes and edge length correspond to sub-clones and the number of SSNVs in the sub-clones. acctran in phangorn package is used to construct the parsimony trees.
 #' @examples
 #' library(phyC)
-#' data(evol)
+#' data(ccRCC)
+#' trees <- par.tree(ccRCC)
 #' res <- phyC(evol$edgeList,evol$edgeLenList,cluster=4,type='h',method="ward")
 #' res$cluster
 #' @author Yusuke Matsui & Teppei Shimamura
 #' @export
 #'
-par_tree <- function(vaf,thr = 0.05){
+par.tree <- function(vaf,thr = 0.05){
   if("normal"%in%colnames(vaf)){
     ind <- which(colnames(vaf)=="normal")
     colnames(vaf)[ind] <- "Normal"

@@ -19,7 +19,7 @@ phyC.plot(obj, color = NULL, label = NULL, type = "unrooted")
 Plot trees in clusters
 }
 \examples{
-library(PhyC)
+library(phyC)
 data(evol)
 res <- phyC(evol$edgeList,evol$edgeLenList,cluster=4,type='nh')
 phyC.plot(res)
