@@ -20,40 +20,58 @@ ymatsui[at]med.nagoya-u.ac.jp
 
 
 ## General overview
-
-Recently a lot of the reconstruction methods of cancer sub-clonal evolutionary trees based on the variant allele frequency are proposed. Those methods can automatically produce the evolutionary trees. However, interpretation of the large number of trees from those methods remain unresolved. We propose the classification method for the cancer sub-clonal evolutionary trees. In this method, we adopt the tree space theory to analyse the tree set. The proposed method can identify the cluster structure based on the tree topology and edge length attributes. For the interpretation of the clusters, we also provide the method for evaluating the diversity of trees in the clusters, which gives an insight for the acceleration of sub-clonal expansion.
+Multi-regional sequencing provide new opportunities to investigate genetic heterogeneity within- or between- common tumours from a view of evolutionary perspective. The state-of-the-art methods have been proposed for reconstructing cancer sub-clonal evolutionary trees based on multi-regional sequencing data to develop models of cancer evolution. However, the methods developed thus far are not sufficient to characterize and interpret the diversity of cancer sub-clonal evolutionary trees. We propose a clustering method (phyC) for cancer sub-clonal evolutionary trees, in which sub-groups of the trees are identified based on topology and edge length attributes. For interpretation, we also propose a method for evaluating the diversity of trees in the clusters, which provides insight into the acceleration of sub-clonal expansion. 
 
 ## Introduction
 
 phyC (Phylogenetic tree Clustering) is designed for classifying cancer evolutionary trees. 
 
-The main inputs are
-* list of edge matrix that must include the root
-* list of edge length vector
+The main inputs of phyC is
+* Variant allele frequency (VAF)
 
-and the main outpus are
+or alternatively
+
+* Edge matrix and edge length vector from reconstructed sub-clonal evolutionary trees
+
+
+
+<strong>Table 1.</strong> Example of VAF
+<table>
+<tr> <th>  </th> <th> Normal </th> <th> Region 1 </th> <th> Region 2 </th> <th> Region 3 </th> <th> Region 4 </th> <th> Region 5 </th>  </tr>
+  <tr> <td align="right">gene 1 </td> <td align="right"> 0.00 </td> <td align="right"> 0.24 </td> <td align="right"> 0.18 </td> <td align="right"> 0.24 </td> <td align="right"> 0.24 </td> <td align="right"> 0.22 </td> </tr>
+  <tr> <td align="right">gene 2 </td> <td align="right"> 0.00 </td> <td align="right"> 0.15 </td> <td align="right"> 0.08 </td> <td align="right"> 0.12 </td> <td align="right"> 0.25 </td> <td align="right"> 0.24 </td> </tr>
+  <tr> <td align="right">gene 3 </td> <td align="right"> 0.00 </td> <td align="right"> 0.19 </td> <td align="right"> 0.18 </td> <td align="right"> 0.22 </td> <td align="right"> 0.26 </td> <td align="right"> 0.26 </td> </tr>
+   </table>
+   
+   
+<strong>Table 2.</strong> Example of edge matrix and corresponding edge length vector
+<table>
+<tr> <th>  </th> <th>Node 1 </th> <th>Node 2 </th>  </tr>
+  <tr> <td align="right">Edge 1 </td> <td align="right"> 9 </td> <td align="right"> 8 </td> </tr>
+  <tr> <td align="right">Edge 2 </td> <td align="right"> 8 </td> <td align="right"> 6 </td> </tr>
+  <tr> <td align="right">Edge 3 </td> <td align="right"> 6 </td> <td align="right"> 7 </td> </tr>
+  <tr> <td align="right">Edge 4 </td> <td align="right"> 6 </td> <td align="right"> 4 </td> </tr>
+  <tr> <td align="right">Edge 5 </td> <td align="right"> 4 </td> <td align="right"> 1 </td> </tr>
+  <tr> <td align="right">Edge 6 </td> <td align="right"> 1 </td> <td align="right"> 3 </td> </tr>
+  <tr> <td align="right">Edge 7 </td> <td align="right"> 8 </td> <td align="right"> 10 </td> </tr>
+  <tr> <td align="right">Edge 8 </td> <td align="right"> 4 </td> <td align="right"> 5 </td> </tr>
+  <tr> <td align="right">Edge 9 </td> <td align="right"> 1 </td> <td align="right"> 2 </td> </tr>
+   </table>
+
+<table>
+<tr> <th>Edge 1 </th> <th>Edge 2 </th> <th>Edge 3 </th> <th>Edge 4 </th> <th>Edge 5 </th> <th>Edge 6 </th> <th>Edge 7 </th> <th>Edge 8 </th> <th>Edge 9 </th>  </tr>
+  <tr> <td align="right"> 209.00 </td> <td align="right"> 0.00 </td> <td align="right"> 17.00 </td> <td align="right"> 0.00 </td> <td align="right"> 8.00 </td> <td align="right"> 2.00 </td> <td align="right"> 44.00 </td> <td align="right"> 44.00 </td> <td align="right"> 19.00 </td> </tr>
+   </table>
+
+Main outpus are
 * cluster assignments
-* registered trees
-* accerelation of sub-clonal expansions
+* Multidimensional scaling configuration of trees in clusters
+* sub-clonal diversity of trees in clusters
 
-In the input, the edge matrix represents cancer evolutionary topology and the edge length represents the number of additional Somatic Single Nucleotide Variants (SSNVs) from the parental sub-clone. Here is an illustration (Figure 1).
+In case of VAF input, we need reconstruct cancer sub-clonal evolutionary trees using existing methods. We implement two method; maximum parsimony approch and clustering-based rooted-constraint network approach. The former is based on acctran in phangorn package (Klein, et al. 2010) and the latter is based LICHeE (Popic, et al. 2015). 
 
-<img align="center" src="https://github.com/ymatts/PhyC/blob/master/img/ssnv.png" width="600" height="400" />
+The meaning of each element of reconstructed trees is as follows: the root and its subsequent node represent a normal cell and founder cell, respectively. Sub-clones are described as nodes below the founder cell, and edge lengths indicate the number of SSNVs that are newly accumulated in descendant nodes.
 
-<strong>Figure 1.</strong> The model of cancer evolutionary trees
-
-Our model assumes cancer clonal theory (Nowell,1976; Nik-Zainal et al., 2012) that
- 
-1. no mutation occurs twice in the course of cancer evolution
-2. no mutation is ever lost.
-
-Our classification method takes the inputs from those reconstruction methods below that outputs the various cancer evolutionary trees from the multiregional cancer sequencing per patiant and the excellent overview of those methods are described in (Beerenwinkel et al., 2014); <em>PhyloSub</em> (Jiao et al., 2013), <em>PyClone</em> (Roth et al., 2014), <em>SciClone</em> (Miller et al., 2014), <em>Clomial</em> (Zare et al., 2014), <em>Trap</em> (Strino et al., 2013), <em>SubcloneSeeker</em> (Qiao et al., 2014), and <em>LICHeE</em> (Popic et al., 2015) etc.
-
-PhyC classifies those evolutinary trees based on the tree toplogies and edge length attributes under the framework of <em>tree space</em> (Birella,et al. 2001). Here is an example of a result (Figure 2).
-
-<img align="center" src="https://github.com/ymatts/PhyC/blob/master/img/phyCMD.png" width="600" height="400" />
-
-<strong>Figure 2.</strong> Example of the clustering
 
 ## Package overview
 
