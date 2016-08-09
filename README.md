@@ -22,7 +22,7 @@ ymatsui[at]med.nagoya-u.ac.jp
 ## General overview
 Multi-regional sequencing provide new opportunities to investigate genetic heterogeneity within- or between- common tumours from a view of evolutionary perspective. The state-of-the-art methods have been proposed for reconstructing cancer sub-clonal evolutionary trees based on multi-regional sequencing data to develop models of cancer evolution. However, the methods developed thus far are not sufficient to characterize and interpret the diversity of cancer sub-clonal evolutionary trees. We propose a clustering method (phyC) for cancer sub-clonal evolutionary trees, in which sub-groups of the trees are identified based on topology and edge length attributes. For interpretation, we also propose a method for evaluating the diversity of trees in the clusters, which provides insight into the acceleration of sub-clonal expansion. 
 
-## Main functionality of phyC
+## Input/Output and breif description of phyC
 
 phyC (Phylogenetic tree Clustering) is designed for classifying cancer evolutionary trees. 
 
