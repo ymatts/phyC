@@ -63,70 +63,16 @@ or alternatively
   <tr> <td align="right"> 209.00 </td> <td align="right"> 0.00 </td> <td align="right"> 17.00 </td> <td align="right"> 0.00 </td> <td align="right"> 8.00 </td> <td align="right"> 2.00 </td> <td align="right"> 44.00 </td> <td align="right"> 44.00 </td> <td align="right"> 19.00 </td> </tr>
    </table>
 
-Main outpus are
-* cluster assignments
-* Multidimensional scaling configuration of trees in clusters
-* sub-clonal diversity of trees in clusters
-
 In case of VAF input, we need reconstruct cancer sub-clonal evolutionary trees using existing methods. We implement two method; maximum parsimony approch and clustering-based rooted-constraint network approach. The former is based on acctran in phangorn package (Klein, et al. 2010) and the latter is based LICHeE (Popic, et al. 2015). 
 
 The meaning of each element of reconstructed trees is as follows: the root and its subsequent node represent a normal cell and founder cell, respectively. Sub-clones are described as nodes below the founder cell, and edge lengths indicate the number of SSNVs that are newly accumulated in descendant nodes.
 
+phyC peform clustering for a set of the reconstructed evolutionary trees after transforming tree objects via transformation of the tree topologies and edge attributes to allow for effective comparison among trees, a procedure we refer to as tree registration.
 
-## Package overview
-
-####phyC
-Main function of this package is <em>phyC</em>. This function has mainly the two functionalities; registration and clustering. 
-
-######Registration
-* This includes; 
- + resolving mono- and multi-furcation tree into bifurcation tree
- + completing the number of leaves among the trees, which do not almost affects the calculation of distances
- + relabeling to remove the label differences so that the same trees with the same toplogies are regarded as the same labelled trees.
- + normalizing edge lengths
-
-* The reason why we need the registration above are listed point by point;
- + The <em>tree space</em> assumes the <em>n-tree</em> (strictly bifurcation) but actual data do not take such forms
- + The number of leaves must be the same in the <em>tree space</em>, but actually not.
- + The labels of leaves are distinguishied in the <em>tree space</em>, but the patterns of the accumulated SSNVs are rarely identical among the patients since there are too many patterns of SSNVs accumulations in the actual cases (we cannot divide the patients into several sub groups with the labels). Thus we focus on the patters of the number of accumulated SSNVs, that is, we regard the trees with the same toplogies as the same labelled trees. 
- + The number of accumulated SSNVs are also different from patients to patients, or studies to studies because of sequencing depth, errors and so on. 
-
-The overall scheme of the registration is illustrated here (Figure 3). We at first prepare the maximal trees and then we encode the observed tree toplogies(from root to leaf, left to right). The collapsed edges are regarded as zero length edges. The solid lines and dotted lines indicate the encoded toplogies and the collapsed edges, respectively.
-    
-<center> <img src="https://github.com/ymatts/PhyC/blob/master/img/regist.png" alt="overall scheme of the registration" width="600" height="400"><center>
-
-<strong>Figure 3.</strong> Overall scheme of the registration
-
-Here are some example of registrations (Figure 4). The example shows the mono-furcation and multi-furcation trees (upper and lower left panels). The resoved toplogies are shown in the next two sides (2nd and 3rd panels from the left). The upper and lower right most panels show the illustration of completing the number of leaves (in this case, 64 leaves). PhyC automatically performs these procedures.
-
-<img src="https://github.com/ymatts/PhyC/blob/master/img/regis_example.jpeg" align="center" alt="an example of the registration"  width="600" height="400">
-
-<strong>Figure 4.</strong> Example of the registration
-
-The second functionality of <em>phyC</em> is the clustering.
-
-######Clustering trees
-   + Hierarchical (Ward's method)
-   + Non-hierarchical (k-means)
-
-Those clustering algorithms are naturally extended from Euclidean space to tree space using the tree distances. Here is an example of non-hierarchical clustering with 4 clusters (Figure 5).
-
-<img src="https://github.com/ymatts/PhyC/blob/master/img/phyC.plot.png" align="center" width="600" height="400" />
-
-<strong>Figure 5.</strong> Example of non-hierarchical clustering
-
-####diversity
-The next function <em>diversity</em> is for interpretating clusters. We need some quantifications of trees in the clusters to evaluate them efficiently. We define the diversity as the number of sub-clones at a levels of SSNVs accumulations. In Figure 6, <em>h</em> indicates the normalized number of additional SSNVs (ranged [0,1]) and <em>g(h)</em> indicates the the number of subclones. This gives us the insights for accerelation of sub-clonal expansions. 
-
-<img src="https://github.com/ymatts/PhyC/blob/master/img/diversity.plot2.png" align="center" width="600" height="400" />
-
-<strong>Figure 6.</strong> Example of diversities for clusters
-
-####phyCMD
-We also provide the function <em>phyCMD</em> for plotting configurations of trees as shown in Figure 2.
-
-####lichee2edge
-As a utility, we implement the function <em>lichee2edge</em> with which we can obtain the evloutionary trees from variant allele frequencies by LICHeE (Popic,et al. 2015).
+Main outpus are
+* Cluster assignments
+* Multidimensional scaling configuration of trees in clusters
+* Sub-clonal diversity of trees in clusters
 
 ##Usage
 ######Installation
