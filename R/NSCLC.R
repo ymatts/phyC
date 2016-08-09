@@ -1,9 +1,9 @@
-#' cell renal cell carcinomas (ccRCC) dataset
+#' Non-small cell lung cancer (NSCLC) dataset
 #' 
 #' Dataset of non-small cell lung cancer (NSCLC) (Zhang et al., 2014) from the multiregional sequencing variant allele frequency. The dataset contain 10 patients.
 #' 
 #'
-#' @name ccRCC
+#' @name NSCLC
 #' @docType data
 #' @format A list of 10 VAF matrices
 #' @section Variables:

@@ -3,7 +3,7 @@
 #' Dataset of clear cell renal cell carcinomas (ccRCC) (Gerlinger, et al. 2014) and non-small cell lung cancer (NSCLC) (Zhang et al., 2014), combined from the multiregional sequencing variant allele frequency. The dataset contain 18 patients.
 #' 
 #'
-#' @name ccRCC
+#' @name ccRCC_NSCLC
 #' @docType data
 #' @format A list of 18 VAF matrices
 #' @section Variables:
