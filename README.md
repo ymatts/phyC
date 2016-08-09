@@ -8,7 +8,7 @@ The R package for clustering cancer evolutionary trees.
 
 R(>=3.2.2)
 
-ape, igraph, ggplot2, grDevices, png, RColorBrewer, distory
+ape, igraph, ggplot2, grDevices, png, RColorBrewer
 
 <strong>Authour:</strong>
 
@@ -25,7 +25,7 @@ Recently a lot of the reconstruction methods of cancer sub-clonal evolutionary t
 
 ## Introduction
 
-PhyC (Phylogenetic tree Clustering) is designed for classifying cancer evolutionary trees. 
+phyC (Phylogenetic tree Clustering) is designed for classifying cancer evolutionary trees. 
 
 The main inputs are
 * list of edge matrix that must include the root
