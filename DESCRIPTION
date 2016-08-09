@@ -6,7 +6,7 @@ Date: 2016-08-01
 Author: Yusuke Matsui & Teppei Shimamura
 Maintainer: Yusuke Matsui <ymatsui@nagoya-u.ac.jp>
 Description: This package includes the tree registration, clustering,
-    visualizing trees' configurations, and calculating diversity.
+    visualizing tree configurations, and calculating diversity.
 License: GPL (>= 2)
 LazyData: true
 RoxygenNote: 5.0.1

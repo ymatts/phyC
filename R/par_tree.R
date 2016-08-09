@@ -12,9 +12,8 @@
 #' @examples
 #' library(phyC)
 #' data(ccRCC)
-#' trees <- par.tree(ccRCC)
-#' res <- phyC(evol$edgeList,evol$edgeLenList,cluster=4,type='h',method="ward")
-#' res$cluster
+#' vaf <- lapply(vaf,function(x)x[,-(1:3)])
+#' trees <- par.tree(vaf)
 #' @author Yusuke Matsui & Teppei Shimamura
 #' @export
 #'

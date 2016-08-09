@@ -54,9 +54,8 @@ This function perform the registration and the clustering. In the registration, 
 \examples{
 library(phyC)
 data(ccRCC)
-trees <- par.tree(ccRCC)
-res <- phyC(evol$edgeList,evol$edgeLenList,cluster=4,type='h',method="ward")
-res$cluster
+vaf <- lapply(vaf,function(x)x[,-(1:3)])
+trees <- par.tree(vaf)
 library(phyC)
 data(evol)
 res <- phyC(evol$edgeList,evol$edgeLenList,cluster=4,type='nh')

@@ -33,8 +33,12 @@ This function performs classical multidimensional scaling with tree distance. Th
 }
 \examples{
 library(phyC)
-data(evol)
-res <- phyC(evol$edgeList,evol$edgeLenList,cluster=4,type='nh')
+data(ccRCC)
+vaf <- lapply(vaf,function(x)x[,-(1:3)])
+trees <- par.tree(vaf)
+edgeList <- lapply(trees,function(x)x$edge)
+edgeLenList <- lapply(trees,function(x)x$edge.length)
+res <- phyC(edgeList,edgeLenList,cluster = 3,type = "h",method = "ward")
 phyCMD(res)
 }
 \author{
