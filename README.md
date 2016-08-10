@@ -10,7 +10,7 @@ R(>=3.2.2)
 
 ape, igraph, ggplot2, grDevices, png, RColorBrewer
 
-<strong>Authour:</strong>
+<strong>Author:</strong>
 
 Yusuke Matsui
 
@@ -20,95 +20,61 @@ ymatsui[at]med.nagoya-u.ac.jp
 
 
 ## General overview
+Multi-regional sequencing provide new opportunities to investigate genetic heterogeneity within- or between- common tumours from a view of evolutionary perspective. The state-of-the-art methods have been proposed for reconstructing cancer sub-clonal evolutionary trees based on multi-regional sequencing data to develop models of cancer evolution. However, the methods developed thus far are not sufficient to characterize and interpret the diversity of cancer sub-clonal evolutionary trees. We propose a clustering method (phyC) for cancer sub-clonal evolutionary trees, in which sub-groups of the trees are identified based on topology and edge length attributes. For interpretation, we also propose a method for evaluating the diversity of trees in the clusters, which provides insight into the acceleration of sub-clonal expansion. 
 
-Recently a lot of the reconstruction methods of cancer sub-clonal evolutionary trees based on the variant allele frequency are proposed. Those methods can automatically produce the evolutionary trees. However, interpretation of the large number of trees from those methods remain unresolved. We propose the classification method for the cancer sub-clonal evolutionary trees. In this method, we adopt the tree space theory to analyse the tree set. The proposed method can identify the cluster structure based on the tree topology and edge length attributes. For the interpretation of the clusters, we also provide the method for evaluating the diversity of trees in the clusters, which gives an insight for the acceleration of sub-clonal expansion.
-
-## Introduction
+## Input/Output and breif description of phyC
 
 phyC (Phylogenetic tree Clustering) is designed for classifying cancer evolutionary trees. 
 
-The main inputs are
-* list of edge matrix that must include the root
-* list of edge length vector
+The main inputs of phyC is
+* Variant allele frequency (VAF)
 
-and the main outpus are
-* cluster assignments
-* registered trees
-* accerelation of sub-clonal expansions
+or alternatively
 
-In the input, the edge matrix represents cancer evolutionary topology and the edge length represents the number of additional Somatic Single Nucleotide Variants (SSNVs) from the parental sub-clone. Here is an illustration (Figure 1).
+* Edge matrix and edge length vector from reconstructed sub-clonal evolutionary trees
 
-<img align="center" src="https://github.com/ymatts/PhyC/blob/master/img/ssnv.png" width="600" height="400" />
+<strong>Table 1.</strong> Example of VAF
+<table>
+<tr> <th>  </th> <th> Normal </th> <th> Region 1 </th> <th> Region 2 </th> <th> Region 3 </th> <th> Region 4 </th> <th> Region 5 </th>  </tr>
+  <tr> <td align="right">gene 1 </td> <td align="right"> 0.00 </td> <td align="right"> 0.24 </td> <td align="right"> 0.18 </td> <td align="right"> 0.24 </td> <td align="right"> 0.24 </td> <td align="right"> 0.22 </td> </tr>
+  <tr> <td align="right">gene 2 </td> <td align="right"> 0.00 </td> <td align="right"> 0.15 </td> <td align="right"> 0.08 </td> <td align="right"> 0.12 </td> <td align="right"> 0.25 </td> <td align="right"> 0.24 </td> </tr>
+  <tr> <td align="right">gene 3 </td> <td align="right"> 0.00 </td> <td align="right"> 0.19 </td> <td align="right"> 0.18 </td> <td align="right"> 0.22 </td> <td align="right"> 0.26 </td> <td align="right"> 0.26 </td> </tr>
+   </table>
+   
+   
+<strong>Table 2.</strong> Example of edge matrix and corresponding edge length vector
+<table>
+<tr> <th>  </th> <th>Node 1 </th> <th>Node 2 </th>  </tr>
+  <tr> <td align="right">Edge 1 </td> <td align="right"> 9 </td> <td align="right"> 8 </td> </tr>
+  <tr> <td align="right">Edge 2 </td> <td align="right"> 8 </td> <td align="right"> 6 </td> </tr>
+  <tr> <td align="right">Edge 3 </td> <td align="right"> 6 </td> <td align="right"> 7 </td> </tr>
+  <tr> <td align="right">Edge 4 </td> <td align="right"> 6 </td> <td align="right"> 4 </td> </tr>
+  <tr> <td align="right">Edge 5 </td> <td align="right"> 4 </td> <td align="right"> 1 </td> </tr>
+  <tr> <td align="right">Edge 6 </td> <td align="right"> 1 </td> <td align="right"> 3 </td> </tr>
+  <tr> <td align="right">Edge 7 </td> <td align="right"> 8 </td> <td align="right"> 10 </td> </tr>
+  <tr> <td align="right">Edge 8 </td> <td align="right"> 4 </td> <td align="right"> 5 </td> </tr>
+  <tr> <td align="right">Edge 9 </td> <td align="right"> 1 </td> <td align="right"> 2 </td> </tr>
+   </table>
 
-<strong>Figure 1.</strong> The model of cancer evolutionary trees
+<table>
+<tr> <th>Edge 1 </th> <th>Edge 2 </th> <th>Edge 3 </th> <th>Edge 4 </th> <th>Edge 5 </th> <th>Edge 6 </th> <th>Edge 7 </th> <th>Edge 8 </th> <th>Edge 9 </th>  </tr>
+  <tr> <td align="right"> 209.00 </td> <td align="right"> 0.00 </td> <td align="right"> 17.00 </td> <td align="right"> 0.00 </td> <td align="right"> 8.00 </td> <td align="right"> 2.00 </td> <td align="right"> 44.00 </td> <td align="right"> 44.00 </td> <td align="right"> 19.00 </td> </tr>
+   </table>
 
-Our model assumes cancer clonal theory (Nowell,1976; Nik-Zainal et al., 2012) that
- 
-1. no mutation occurs twice in the course of cancer evolution
-2. no mutation is ever lost.
+In case of VAF input, we need reconstruct cancer sub-clonal evolutionary trees using existing methods. We implement two method; maximum parsimony approch and clustering-based rooted-constraint network approach. The former is based on acctran in phangorn package (Klein, et al. 2010) and the latter is based LICHeE (Popic, et al. 2015). 
 
-Our classification method takes the inputs from those reconstruction methods below that outputs the various cancer evolutionary trees from the multiregional cancer sequencing per patiant and the excellent overview of those methods are described in (Beerenwinkel et al., 2014); <em>PhyloSub</em> (Jiao et al., 2013), <em>PyClone</em> (Roth et al., 2014), <em>SciClone</em> (Miller et al., 2014), <em>Clomial</em> (Zare et al., 2014), <em>Trap</em> (Strino et al., 2013), <em>SubcloneSeeker</em> (Qiao et al., 2014), and <em>LICHeE</em> (Popic et al., 2015) etc.
+The meaning of each element of reconstructed trees is as follows: the root and its subsequent node represent a normal cell and founder cell, respectively. Sub-clones are described as nodes below the founder cell, and edge lengths indicate the number of SSNVs that are newly accumulated in descendant nodes.
 
-PhyC classifies those evolutinary trees based on the tree toplogies and edge length attributes under the framework of <em>tree space</em> (Birella,et al. 2001). Here is an example of a result (Figure 2).
+phyC peform clustering for a set of the reconstructed evolutionary trees after transforming tree objects via transformation of the tree topologies and edge attributes to allow for effective comparison among trees, a procedure we refer to as tree registration.
 
-<img align="center" src="https://github.com/ymatts/PhyC/blob/master/img/phyCMD.png" width="600" height="400" />
+Main outpus are
+* Cluster assignments
+* Multidimensional scaling (MDS) configuration of trees in clusters
+* Sub-clonal diversity of trees in clusters
 
-<strong>Figure 2.</strong> Example of the clustering
+Clustering is based on standard hierarchical clustering algorithm and default algorithm of phyC is Ward's method. 
+For visualization of clustering results for interpretation, we develop the two tools; MDS and sub-clonal diversity plot. In MDS, we approximately embed the registered trees into lower-dimensional Euclidean space. We overlay tree shapes over embedded Euclidean space in the plot. In sub-clonal diversity plot, we apply the concept of a lineage-through-time (LTT) plot to visualize how sub-clones evolve along SSNV accumulation. The LTT plot generally describes the time vs. number of lineages; and in the present case, this is expressed as the number of sub-clones (y-axis) vs. the fraction of accumulated SSNVs (x-axis).
 
-## Package overview
-
-####phyC
-Main function of this package is <em>phyC</em>. This function has mainly the two functionalities; registration and clustering. 
-
-######Registration
-* This includes; 
- + resolving mono- and multi-furcation tree into bifurcation tree
- + completing the number of leaves among the trees, which do not almost affects the calculation of distances
- + relabeling to remove the label differences so that the same trees with the same toplogies are regarded as the same labelled trees.
- + normalizing edge lengths
-
-* The reason why we need the registration above are listed point by point;
- + The <em>tree space</em> assumes the <em>n-tree</em> (strictly bifurcation) but actual data do not take such forms
- + The number of leaves must be the same in the <em>tree space</em>, but actually not.
- + The labels of leaves are distinguishied in the <em>tree space</em>, but the patterns of the accumulated SSNVs are rarely identical among the patients since there are too many patterns of SSNVs accumulations in the actual cases (we cannot divide the patients into several sub groups with the labels). Thus we focus on the patters of the number of accumulated SSNVs, that is, we regard the trees with the same toplogies as the same labelled trees. 
- + The number of accumulated SSNVs are also different from patients to patients, or studies to studies because of sequencing depth, errors and so on. 
-
-The overall scheme of the registration is illustrated here (Figure 3). We at first prepare the maximal trees and then we encode the observed tree toplogies(from root to leaf, left to right). The collapsed edges are regarded as zero length edges. The solid lines and dotted lines indicate the encoded toplogies and the collapsed edges, respectively.
-    
-<center> <img src="https://github.com/ymatts/PhyC/blob/master/img/regist.png" alt="overall scheme of the registration" width="600" height="400"><center>
-
-<strong>Figure 3.</strong> Overall scheme of the registration
-
-Here are some example of registrations (Figure 4). The example shows the mono-furcation and multi-furcation trees (upper and lower left panels). The resoved toplogies are shown in the next two sides (2nd and 3rd panels from the left). The upper and lower right most panels show the illustration of completing the number of leaves (in this case, 64 leaves). PhyC automatically performs these procedures.
-
-<img src="https://github.com/ymatts/PhyC/blob/master/img/regis_example.jpeg" align="center" alt="an example of the registration"  width="600" height="400">
-
-<strong>Figure 4.</strong> Example of the registration
-
-The second functionality of <em>phyC</em> is the clustering.
-
-######Clustering trees
-   + Hierarchical (Ward's method)
-   + Non-hierarchical (k-means)
-
-Those clustering algorithms are naturally extended from Euclidean space to tree space using the tree distances. Here is an example of non-hierarchical clustering with 4 clusters (Figure 5).
-
-<img src="https://github.com/ymatts/PhyC/blob/master/img/phyC.plot.png" align="center" width="600" height="400" />
-
-<strong>Figure 5.</strong> Example of non-hierarchical clustering
-
-####diversity
-The next function <em>diversity</em> is for interpretating clusters. We need some quantifications of trees in the clusters to evaluate them efficiently. We define the diversity as the number of sub-clones at a levels of SSNVs accumulations. In Figure 6, <em>h</em> indicates the normalized number of additional SSNVs (ranged [0,1]) and <em>g(h)</em> indicates the the number of subclones. This gives us the insights for accerelation of sub-clonal expansions. 
-
-<img src="https://github.com/ymatts/PhyC/blob/master/img/diversity.plot2.png" align="center" width="600" height="400" />
-
-<strong>Figure 6.</strong> Example of diversities for clusters
-
-####phyCMD
-We also provide the function <em>phyCMD</em> for plotting configurations of trees as shown in Figure 2.
-
-####lichee2edge
-As a utility, we implement the function <em>lichee2edge</em> with which we can obtain the evloutionary trees from variant allele frequencies by LICHeE (Popic,et al. 2015).
 
 ##Usage
 ######Installation
