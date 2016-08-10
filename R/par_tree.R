@@ -34,7 +34,7 @@ par.tree <- function(vaf,thr = 0.05){
   partree <- pratchet(phydat,trace = F)
   partree <- acctran(partree,phydat)
   tree <- as.phylo(partree)
-  plot.phylo(tree,main=parname[i],type = "unrooted",direction = "rightwards",edge.width = 3,cex = 1.2)
+  #plot.phylo(tree,main=parname[i],type = "unrooted",direction = "rightwards",edge.width = 3,cex = 1.2)
   #tiplabels()
   
   
