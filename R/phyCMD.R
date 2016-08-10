@@ -78,10 +78,10 @@ phyCMD <- function(obj,color=NULL,label=NULL,label.size=4,img.width=200,img.heig
     ranx <- range(as.vector(cmd[,1]))
     rany <- range(as.vector(cmd[,2]))
     
-    p <- ggplot(df,aes(x1,x2,label=labels),cmd) + geom_blank() +
-    theme(legend.position="right",panel.background = element_rect(fill = bgcol, color = bgcol, size = 2))+
-    xlim(c(ranx[1]*1.5,ranx[2]*1.5)) +
-    ylim(c(rany[1]*1.5,rany[2]*1.5))
+    p <- ggplot(df,aes(x1,x2,label=label),cmd) + geom_blank() +
+    theme(panel.background = element_rect(fill = bgcol, color = bgcol, size = 2))+
+    xlim(c(ranx[1]*1.2,ranx[2]*1.2)) +
+    ylim(c(rany[1]*1.2,rany[2]*1.2))
     
     
     radi <- size*min(abs(max(ranx[2],ranx[1])-min(ranx[2],ranx[1])),abs(max(rany[2],rany[1])-min(rany[2],rany[1])))
