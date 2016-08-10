@@ -23,7 +23,7 @@
 #' @export
 #'
 
-phyCMD <- function(obj,color=NULL,label=NULL,img.width=200,img.height=200,size=0.15,type="unrooted"){
+phyCMD <- function(obj,color=NULL,label=NULL,label.size=4,img.width=200,img.height=200,size=0.15,type="unrooted"){
       
       resolve_tree <- obj$trees
 #       normalize <- obj$normalize
@@ -72,16 +72,16 @@ phyCMD <- function(obj,color=NULL,label=NULL,img.width=200,img.height=200,size=0
     }
     
     cmd <- cmdscale(d,k=2,eig=F)
-    df <- as.data.frame(cmd)
+    df <- data.frame(cmd)
     colnames(df) <- c("x1","x2")
     
     ranx <- range(as.vector(cmd[,1]))
     rany <- range(as.vector(cmd[,2]))
     
-    p <- ggplot(df,aes(x1,x2,label=label),cmd) + geom_blank() +
-    theme(panel.background = element_rect(fill = bgcol, color = bgcol, size = 2))+
-    xlim(c(ranx[1]*1.2,ranx[2]*1.2))+
-    ylim(c(rany[1]*1.2,rany[2]*1.2))
+    p <- ggplot(df,aes(x1,x2,label=label,group=cls,colour=cls)) + geom_blank() +
+    theme(legend.position="right",panel.background = element_rect(fill = bgcol, color = bgcol, size = 2))+
+    xlim(c(ranx[1]*1.5,ranx[2]*1.5)) +
+    ylim(c(rany[1]*1.5,rany[2]*1.5))
     
     
     radi <- size*min(abs(max(ranx[2],ranx[1])-min(ranx[2],ranx[1])),abs(max(rany[2],rany[1])-min(rany[2],rany[1])))
@@ -89,7 +89,7 @@ phyCMD <- function(obj,color=NULL,label=NULL,img.width=200,img.height=200,size=0
         img <- readPNG(output[i])
         p <- p + annotation_raster(img,xmin = cmd[i,1]-radi,xmax= cmd[i,1]+radi,ymin=cmd[i,2]-radi,ymax = cmd[i,2]+radi,interpolate = T)
     }
-    p <- p + geom_text()
+    p <- p + geom_label_repel(size=label.size,fill=color[cluster], fontface = 'bold', color = 'white',box.padding = unit(2, "lines"), point.padding = unit(2, "lines"),show.legend = T)
     plot(p)
     try(invisible(file.remove(output)))
     return(list(coord=cmd,dist=d))
