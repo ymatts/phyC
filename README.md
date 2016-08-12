@@ -151,7 +151,7 @@ result2 <- diversity(phyC.obj)
 Here is an example.
 
 ```r:diversity.R
-result2 <- diversity(result) # Output the plot as Figure 6.
+result2 <- diversity(result)
 ```
 
 ######phyCMD
