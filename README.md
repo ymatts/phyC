@@ -86,7 +86,7 @@ devtools::install_git(url = "https://github.com/ymatts/PhyC")
 #####Tree reconstruction from VAF profile
 The phyC implement two reconstruction methods from VAF profiles: Maximum parsimony method implemented as acctran in phangorn package by (Klaus, 2011) and LICHeE (Popic et al. 2015).
 
-#####Maximum parsimony method
+######par.tree
 ```r:par_tree.R
 tree <- par.tree(VAF, thr = 0.05) ## maximum parsimony method. 
 ```
@@ -106,7 +106,7 @@ edgeList <- lapply(trees,function(x)x$edge) ## obtain edge list
 edgeLenList <- lapply(trees,function(x)x$edge.length) ## obtain edge length list
 ```
 
-#####LICHeE
+######lichee2edge
 The other method is LICHeE (Popic et al. 2015). You need to get the LICHeE engine from <a href="url">http://viq854.github.io/lichee/</a>. Here we provide the utility function to utilize the LICHeE from R. The input is VAF matrix (the format is described in the above site). You can specify the parameters of LICHeE as you need. If you don't specify them, lichee2edge automatically set the default values that are suggested in (Popic et al. 2015). The output is edge matrix and edge length. 
 ```r:lichee2edge.R
 tree <- lichee2edge('Path to lichee.jar', VAF, parameters)
