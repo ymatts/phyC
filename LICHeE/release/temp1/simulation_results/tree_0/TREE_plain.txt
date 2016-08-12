@@ -1,0 +1,29 @@
+GL	M0
+GL	M1
+GL	M3
+GL	M6
+GL	M8
+GL	M12
+M0	CNV_M5
+M0	M7
+M1	M2
+M2	M4
+M3	M9
+M3	M13
+M7	M10
+M10	M11
+null
+M0: chr=13, pos=24094801, haplotype=0
+M1: chr=1, pos=167038149, haplotype=0
+M2: chr=4, pos=17961285, haplotype=1
+M3: chr=1, pos=183241243, haplotype=0
+M4: chr=23, pos=21788401, haplotype=0
+CNV_M5: chr=4, arm=0, haplotype=0
+M6: chr=16, pos=10950872, haplotype=1
+M7: chr=19, pos=21164299, haplotype=0
+M8: chr=10, pos=96043808, haplotype=1
+M9: chr=22, pos=14901891, haplotype=0
+M10: chr=19, pos=37412832, haplotype=1
+M11: chr=15, pos=11192037, haplotype=0
+M12: chr=5, pos=130953488, haplotype=1
+M13: chr=1, pos=192436816, haplotype=0

@@ -1,0 +1,72 @@
+digraph G { 
+rankdir=TB;
+1696 -> 1697;
+1696 -> 1698;
+1696 -> 1700;
+1696 -> 1705;
+1696 -> 1719;
+1713 -> 1717;
+1713 -> 1721;
+1698 -> 1699;
+1714 -> 1718;
+1700 -> 1701;
+1701 -> 1702;
+1701 -> 1703;
+1701 -> 1706;
+1701 -> 1713;
+1702 -> 1704;
+1702 -> 1708;
+1702 -> 1710;
+1702 -> 1712;
+1705 -> 1707;
+1708 -> 1709;
+1708 -> 1711;
+1708 -> 1715;
+1708 -> 1720;
+1711 -> 1714;
+1711 -> 1716;
+1706 [shape=circle style=filled fillcolor=grey fontname="helvetica-bold" fontsize=56 label="M1699" width=1.12 height=2 ];
+1720 [shape=circle style=wedged color="#9da299:#ed7bbc:#9ef094:#7ceb69:#c120ca" fontname="helvetica-bold" fontsize=56 label="M1713" width=0.26 height=2 ];
+1702 [shape=circle style=filled fillcolor=grey fontname="helvetica-bold" fontsize=56 label="M1695" width=0.22 height=2 ];
+1699 [shape=circle style=filled fillcolor=grey fontname="helvetica-bold" fontsize=56 label="M1692" width=1.02 height=2 ];
+1700 [shape=circle style=filled fillcolor=grey fontname="helvetica-bold" fontsize=56 label="M1693" width=1.32 height=2 ];
+1704 [shape=star style=filled fillcolor=grey fontname="helvetica-bold" fontsize=42 label="CNV_M1697"];
+1715 [shape=circle style=wedged color="#827cf8:#9266c9:#91f953:#c120ca" fontname="helvetica-bold" fontsize=56 label="M1708" width=1.82 height=2 ];
+1716 [shape=circle style=wedged color="#1ad376:#c120ca" fontname="helvetica-bold" fontsize=56 label="M1709" width=4.45 height=2 ];
+1712 [shape=circle style=filled fillcolor=grey fontname="helvetica-bold" fontsize=56 label="M1705" width=3.34 height=2 ];
+1707 [shape=circle style=filled fillcolor=grey fontname="helvetica-bold" fontsize=56 label="M1700" width=0.4 height=2 ];
+1711 [shape=circle style=wedged color="#9da299:#9266c9:#91f953" fontname="helvetica-bold" fontsize=56 label="M1704" width=2.39 height=2 ];
+1709 [shape=circle style=filled fillcolor=grey fontname="helvetica-bold" fontsize=56 label="M1702" width=3.61 height=2 ];
+1698 [shape=circle style=filled fillcolor=grey fontname="helvetica-bold" fontsize=56 label="M1691" width=4.77 height=2 ];
+1701 [shape=circle style=filled fillcolor=grey fontname="helvetica-bold" fontsize=56 label="M1694" width=1.56 height=2 ];
+1697 [shape=circle style=filled fillcolor=grey fontname="helvetica-bold" fontsize=56 label="M1690" width=1.25 height=2 ];
+1705 [shape=circle style=filled fillcolor=grey fontname="helvetica-bold" fontsize=56 label="M1698" width=3.67 height=2 ];
+1714 [shape=circle style=wedged color="#9266c9:#7ceb69" fontname="helvetica-bold" fontsize=56 label="M1707" width=3.17 height=2 ];
+1708 [shape=circle style=wedged color="#9ef094:#7ceb69" fontname="helvetica-bold" fontsize=56 label="M1701" width=2.86 height=2 ];
+1703 [shape=circle style=filled fillcolor=grey fontname="helvetica-bold" fontsize=56 label="M1696" width=4.35 height=2 ];
+1718 [shape=star style=filled fillcolor=grey fontname="helvetica-bold" fontsize=42 label="CNV_M1711"];
+1713 [shape=circle style=wedged color="#9ef094:#0efeaa:#48b81b" fontname="helvetica-bold" fontsize=56 label="M1706" width=1.66 height=2 ];
+1717 [shape=circle style=wedged color="#827cf8:#0efeaa:#b1f4c2:#7ceb69" fontname="helvetica-bold" fontsize=56 label="M1710" width=1.42 height=2 ];
+1719 [shape=star style=filled fillcolor="#9da299:#ed7bbc:#f50370" fontname="helvetica-bold" fontsize=42 label="CNV_M1712"];
+1721 [shape=circle style=wedged color="#0efeaa:#c77985" fontname="helvetica-bold" fontsize=56 label="M1714" width=4.2 height=2 ];
+1696 [label="GL" fontname="arial-bold" fontsize=56 width=5 height=5];
+1710 [shape=circle style=filled fillcolor=grey fontname="helvetica-bold" fontsize=56 label="M1703" width=1.52 height=2 ];
+{rank=sink;
+Legend[shape=none, margin=0, label=<<TABLE border="0" cellborder="0" cellspacing="0"> 
+<TR><TD width="200" height="200" colspan="1"><FONT POINT-SIZE="36.0"><B>Sample 1</B></FONT></TD><TD width="200" height="200" colspan="1" BGCOLOR="#9da299"></TD>
+<TD width="200" height="200" colspan="1"><FONT POINT-SIZE="36.0"><B>Sample 2</B></FONT></TD><TD width="200" height="200" colspan="1" BGCOLOR="#ed7bbc"></TD>
+<TD width="200" height="200" colspan="1"><FONT POINT-SIZE="36.0"><B>Sample 3</B></FONT></TD><TD width="200" height="200" colspan="1" BGCOLOR="#827cf8"></TD>
+<TD width="200" height="200" colspan="1"><FONT POINT-SIZE="36.0"><B>Sample 4</B></FONT></TD><TD width="200" height="200" colspan="1" BGCOLOR="#9266c9"></TD>
+<TD width="200" height="200" colspan="1"><FONT POINT-SIZE="36.0"><B>Sample 5</B></FONT></TD><TD width="200" height="200" colspan="1" BGCOLOR="#9ef094"></TD>
+<TD width="200" height="200" colspan="1"><FONT POINT-SIZE="36.0"><B>Sample 6</B></FONT></TD><TD width="200" height="200" colspan="1" BGCOLOR="#0efeaa"></TD>
+<TD width="200" height="200" colspan="1"><FONT POINT-SIZE="36.0"><B>Sample 7</B></FONT></TD><TD width="200" height="200" colspan="1" BGCOLOR="#b1f4c2"></TD>
+<TD width="200" height="200" colspan="1"><FONT POINT-SIZE="36.0"><B>Sample 8</B></FONT></TD><TD width="200" height="200" colspan="1" BGCOLOR="#91f953"></TD>
+<TD width="200" height="200" colspan="1"><FONT POINT-SIZE="36.0"><B>Sample 9</B></FONT></TD><TD width="200" height="200" colspan="1" BGCOLOR="#48b81b"></TD>
+<TD width="200" height="200" colspan="1"><FONT POINT-SIZE="36.0"><B>Sample 10</B></FONT></TD><TD width="200" height="200" colspan="1" BGCOLOR="#1ad376"></TD>
+<TD width="200" height="200" colspan="1"><FONT POINT-SIZE="36.0"><B>Sample 11</B></FONT></TD><TD width="200" height="200" colspan="1" BGCOLOR="#f50370"></TD>
+<TD width="200" height="200" colspan="1"><FONT POINT-SIZE="36.0"><B>Sample 12</B></FONT></TD><TD width="200" height="200" colspan="1" BGCOLOR="#7ceb69"></TD>
+<TD width="200" height="200" colspan="1"><FONT POINT-SIZE="36.0"><B>Sample 13</B></FONT></TD><TD width="200" height="200" colspan="1" BGCOLOR="#c77985"></TD>
+<TD width="200" height="200" colspan="1"><FONT POINT-SIZE="36.0"><B>Sample 14</B></FONT></TD><TD width="200" height="200" colspan="1" BGCOLOR="#c120ca"></TD>
+</TR></TABLE>>];
+} 
+}

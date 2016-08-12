@@ -1,0 +1,97 @@
+M5799	M5805
+M5799	M5811
+M5799	M5815
+M5799	CNV_M5824
+M5800	M5803
+M5802	CNV_M5806
+M5803	M5825
+M5805	M5820
+CNV_M5806	M5810
+M5807	M5816
+M5809	M5812
+M5809	CNV_M5817
+M5809	M5826
+M5811	M5818
+GL	M5781
+GL	M5785
+GL	M5791
+GL	M5807
+M5812	M5819
+M5812	M5821
+M5781	CNV_M5782
+M5781	M5783
+CNV_M5814	M5822
+M5783	M5784
+M5783	M5786
+M5786	M5787
+M5786	M5788
+M5786	M5789
+M5786	M5792
+M5787	M5790
+M5787	M5797
+M5787	M5804
+M5787	CNV_M5808
+M5787	M5813
+M5788	M5795
+M5788	CNV_M5814
+M5820	M5827
+M5789	CNV_M5793
+M5822	M5828
+M5791	M5801
+M5791	M5809
+M5792	M5794
+M5792	M5796
+M5792	M5823
+CNV_M5793	M5799
+CNV_M5793	M5802
+M5794	M5798
+M5794	M5800
+null
+M5781: chr=23, pos=17183035, haplotype=0
+CNV_M5782: chr=9, arm=0, haplotype=1
+M5783: chr=8, pos=78058497, haplotype=1
+M5784: chr=5, pos=165855578, haplotype=1
+M5785: chr=17, pos=20074042, haplotype=0
+M5786: chr=10, pos=95310737, haplotype=0
+M5787: chr=7, pos=14057106, haplotype=1
+M5788: chr=19, pos=19552194, haplotype=0
+M5789: chr=13, pos=88252674, haplotype=1
+M5790: chr=10, pos=30826522, haplotype=1
+M5791: chr=8, pos=97187458, haplotype=1
+M5792: chr=7, pos=33702922, haplotype=0
+CNV_M5793: chr=12, arm=0, haplotype=1
+M5794: chr=7, pos=102734561, haplotype=0
+M5795: chr=16, pos=14593067, haplotype=0
+M5796: chr=22, pos=26911676, haplotype=0
+M5797: chr=22, pos=57882188, haplotype=0
+M5798: chr=15, pos=45978046, haplotype=0
+M5799: chr=1, pos=32732167, haplotype=0
+M5800: chr=14, pos=38634832, haplotype=0
+M5801: chr=7, pos=153284872, haplotype=1
+M5802: chr=22, pos=16127381, haplotype=1
+M5803: chr=22, pos=44383439, haplotype=0
+M5804: chr=21, pos=11683126, haplotype=1
+M5805: chr=4, pos=65150366, haplotype=0
+CNV_M5806: chr=7, arm=1, haplotype=1
+M5807: chr=20, pos=55907474, haplotype=0
+CNV_M5808: chr=12, arm=1, haplotype=0
+M5809: chr=10, pos=108605111, haplotype=1
+M5810: chr=17, pos=67104563, haplotype=0
+M5811: chr=13, pos=65814640, haplotype=1
+M5812: chr=14, pos=102578714, haplotype=1
+M5813: chr=2, pos=141005958, haplotype=0
+CNV_M5814: chr=21, arm=1, haplotype=0
+M5815: chr=15, pos=100393891, haplotype=0
+M5816: chr=10, pos=14397412, haplotype=0
+CNV_M5817: chr=1, arm=0, haplotype=0
+M5818: chr=5, pos=109506377, haplotype=1
+M5819: chr=6, pos=22937059, haplotype=0
+M5820: chr=12, pos=45485466, haplotype=0
+M5821: chr=14, pos=115075072, haplotype=1
+M5822: chr=18, pos=14471165, haplotype=0
+M5823: chr=4, pos=96742555, haplotype=0
+CNV_M5824: chr=21, arm=0, haplotype=1
+M5825: chr=11, pos=40744857, haplotype=1
+M5826: chr=18, pos=79019459, haplotype=1
+M5827: chr=9, pos=50420316, haplotype=1
+M5828: chr=4, pos=5744427, haplotype=1

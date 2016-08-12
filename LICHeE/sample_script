@@ -1,0 +1,17 @@
+
+./lichee -build -n 0 -i ./../data/ccRCC/RK26.txt -tree 0 -maxVAFAbsent 0.005 -minVAFPresent 0.005 -o ./../data/ccRCC/res1.txt
+./lichee -build -n 0 -i ./../data/ccRCC/EV003.txt -tree 0 -maxVAFAbsent 0.005 -minVAFPresent 0.005 -o ./../data/ccRCC/res2.txt
+./lichee -build -n 0 -i ./../data/ccRCC/EV005.txt -tree 0 -maxVAFAbsent 0.005 -minVAFPresent 0.005 -o ./../data/ccRCC/res3.txt
+./lichee -build -n 0 -i ./../data/ccRCC/EV006.txt -tree 0 -maxVAFAbsent 0.005 -minVAFPresent 0.005 -o ./../data/ccRCC/res4.txt
+./lichee -build -n 0 -i ./../data/ccRCC/EV007.txt -tree 0 -maxVAFAbsent 0.005 -minVAFPresent 0.005 -o ./../data/ccRCC/res5.txt
+./lichee -build -n 0 -i ./../data/ccRCC/RMH002.txt -tree 0 -maxVAFAbsent 0.005 -minVAFPresent 0.005 -o ./../data/ccRCC/res6.txt
+./lichee -build -n 0 -i ./../data/ccRCC/RMH004.txt -tree 0 -maxVAFAbsent 0.01 -minVAFPresent 0.01 -o ./../data/ccRCC/res7.txt
+./lichee -build -n 0 -i ./../data/ccRCC/RMH008.txt -tree 0 -maxVAFAbsent 0.005 -minVAFPresent 0.005 -minPrivateClusterSize 2 -o ./../data/ccRCC/res8.txt
+
+
+./lichee -build -n 0 -i ./../data/hgsc/case1.txt -tree 0 -maxVAFAbsent 0.005 -minVAFPresent 0.01 -o ./../data/hgsc/res1.txt
+./lichee -build -n 0 -i ./../data/hgsc/case2.txt -tree 0 -maxVAFAbsent 0.005 -minVAFPresent 0.01 -o ./../data/hgsc/res2.txt
+./lichee -build -n 0 -i ./../data/hgsc/case3.txt -tree 0 -maxVAFAbsent 0.005 -minVAFPresent 0.01 -o ./../data/hgsc/res3.txt
+./lichee -build -n 0 -i ./../data/hgsc/case4.txt -tree 0 -maxVAFAbsent 0.005 -minVAFPresent 0.01 -minClusterSize 3 -o ./../data/hgsc/res4.txt
+./lichee -build -n 0 -i ./../data/hgsc/case5.txt -tree 0 -maxVAFAbsent 0.01 -minVAFPresent 0.04 -minClusterSize 3 -maxClusterDist 0.1 -o ./../data/hgsc/res5.txt
+./lichee -build -n 0 -i ./../data/hgsc/case6.txt -tree 0 -maxVAFAbsent 0.005 -minVAFPresent 0.01 -maxClusterDist 0.1 -o ./../data/hgsc/res6.txt

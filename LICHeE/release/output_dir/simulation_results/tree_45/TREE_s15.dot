@@ -1,0 +1,138 @@
+digraph G { 
+rankdir=TB;
+10241 -> 10262;
+10242 -> 10256;
+10244 -> 10257;
+10244 -> 10265;
+10245 -> 10252;
+10245 -> 10258;
+10251 -> 10266;
+10255 -> 10263;
+10258 -> 10270;
+10259 -> 10271;
+10263 -> 10272;
+10264 -> 10273;
+10215 -> 10216;
+10215 -> 10218;
+10215 -> 10219;
+10215 -> 10220;
+10215 -> 10248;
+10215 -> 10259;
+10216 -> 10217;
+10218 -> 10224;
+10218 -> 10225;
+10218 -> 10229;
+10218 -> 10232;
+10218 -> 10233;
+10219 -> 10221;
+10220 -> 10222;
+10222 -> 10223;
+10224 -> 10227;
+10224 -> 10245;
+10224 -> 10260;
+10225 -> 10226;
+10225 -> 10234;
+10226 -> 10228;
+10227 -> 10236;
+10227 -> 10241;
+10227 -> 10253;
+10228 -> 10230;
+10228 -> 10267;
+10229 -> 10231;
+10229 -> 10237;
+10229 -> 10238;
+10230 -> 10235;
+10230 -> 10242;
+10230 -> 10246;
+10230 -> 10249;
+10231 -> 10254;
+10232 -> 10268;
+10233 -> 10239;
+10233 -> 10250;
+10233 -> 10269;
+10235 -> 10240;
+10235 -> 10247;
+10237 -> 10243;
+10237 -> 10251;
+10237 -> 10255;
+10237 -> 10264;
+10238 -> 10244;
+10238 -> 10261;
+10230 [shape=circle style=wedged color="#f5590e:#f221ae:#4643d4" fontname="helvetica-bold" fontsize=56 label="M10184" width=3.24 height=2 ];
+10219 [shape=circle style=filled fillcolor=grey fontname="helvetica-bold" fontsize=56 label="M10173" width=3.16 height=2 ];
+10216 [shape=circle style=filled fillcolor=grey fontname="helvetica-bold" fontsize=56 label="M10170" width=4.05 height=2 ];
+10249 [shape=circle style=filled fillcolor=white fontname="helvetica-bold" fontsize=56 label="M10203" width=0.5 height=2 ];
+10256 [shape=circle style=filled fillcolor=white fontname="helvetica-bold" fontsize=56 label="M10210" width=2.2 height=2 ];
+10273 [shape=circle style=filled fillcolor="#f221ae" fontname="helvetica-bold" fontsize=56 label="M10227" width=0.67 height=2 ];
+10234 [shape=circle style=filled fillcolor=grey fontname="helvetica-bold" fontsize=56 label="M10188" width=0.7 height=2 ];
+10228 [shape=circle style=filled fillcolor=white fontname="helvetica-bold" fontsize=56 label="M10182" width=1.98 height=2 ];
+10215 [label="GL" fontname="arial-bold" fontsize=56 width=5 height=5];
+10218 [shape=circle style=filled fillcolor=grey fontname="helvetica-bold" fontsize=56 label="M10172" width=3.83 height=2 ];
+10226 [shape=circle style=filled fillcolor=grey fontname="helvetica-bold" fontsize=56 label="M10180" width=0.22 height=2 ];
+10263 [shape=circle style=filled fillcolor=white fontname="helvetica-bold" fontsize=56 label="M10217" width=4.03 height=2 ];
+10225 [shape=circle style=filled fillcolor=grey fontname="helvetica-bold" fontsize=56 label="M10179" width=2.95 height=2 ];
+10253 [shape=circle style=filled fillcolor="#8ff152" fontname="helvetica-bold" fontsize=56 label="M10207" width=2.12 height=2 ];
+10242 [shape=circle style=filled fillcolor=white fontname="helvetica-bold" fontsize=56 label="M10196" width=2.14 height=2 ];
+10248 [shape=circle style=filled fillcolor=grey fontname="helvetica-bold" fontsize=56 label="M10202" width=4.68 height=2 ];
+10224 [shape=circle style=filled fillcolor=grey fontname="helvetica-bold" fontsize=56 label="M10178" width=2.9 height=2 ];
+10220 [shape=star style=filled fillcolor=grey fontname="helvetica-bold" fontsize=42 label="CNV_M10174"];
+10244 [shape=circle style=filled fillcolor=grey fontname="helvetica-bold" fontsize=56 label="M10198" width=3.89 height=2 ];
+10251 [shape=circle style=wedged color="#613f7a:#53533e:#5834bf" fontname="helvetica-bold" fontsize=56 label="M10205" width=1.62 height=2 ];
+10258 [shape=circle style=filled fillcolor=white fontname="helvetica-bold" fontsize=56 label="M10212" width=2.33 height=2 ];
+10239 [shape=circle style=filled fillcolor=grey fontname="helvetica-bold" fontsize=56 label="M10193" width=3.33 height=2 ];
+10236 [shape=star style=filled fillcolor=grey fontname="helvetica-bold" fontsize=42 label="CNV_M10190"];
+10231 [shape=circle style=filled fillcolor="#e841b3" fontname="helvetica-bold" fontsize=56 label="M10185" width=3.68 height=2 ];
+10260 [shape=circle style=wedged color="#8ff152:#32884b" fontname="helvetica-bold" fontsize=56 label="M10214" width=2.43 height=2 ];
+10261 [shape=circle style=filled fillcolor=white fontname="helvetica-bold" fontsize=56 label="M10215" width=4.35 height=2 ];
+10250 [shape=circle style=filled fillcolor=white fontname="helvetica-bold" fontsize=56 label="M10204" width=4.66 height=2 ];
+10262 [shape=circle style=filled fillcolor=white fontname="helvetica-bold" fontsize=56 label="M10216" width=3.77 height=2 ];
+10268 [shape=circle style=filled fillcolor=white fontname="helvetica-bold" fontsize=56 label="M10222" width=4.17 height=2 ];
+10232 [shape=circle style=filled fillcolor="#53533e" fontname="helvetica-bold" fontsize=56 label="M10186" width=4.97 height=2 ];
+10247 [shape=circle style=filled fillcolor=white fontname="helvetica-bold" fontsize=56 label="M10201" width=0.19 height=2 ];
+10238 [shape=star style=filled fillcolor="#b07bd8" fontname="helvetica-bold" fontsize=42 label="CNV_M10192"];
+10246 [shape=circle style=filled fillcolor=white fontname="helvetica-bold" fontsize=56 label="M10200" width=0.71 height=2 ];
+10257 [shape=circle style=filled fillcolor=white fontname="helvetica-bold" fontsize=56 label="M10211" width=3.52 height=2 ];
+10240 [shape=circle style=filled fillcolor=grey fontname="helvetica-bold" fontsize=56 label="M10194" width=2.02 height=2 ];
+10269 [shape=circle style=filled fillcolor="#f221ae" fontname="helvetica-bold" fontsize=56 label="M10223" width=1.27 height=2 ];
+10221 [shape=circle style=filled fillcolor=grey fontname="helvetica-bold" fontsize=56 label="M10175" width=0.53 height=2 ];
+10217 [shape=circle style=filled fillcolor=grey fontname="helvetica-bold" fontsize=56 label="M10171" width=2.77 height=2 ];
+10223 [shape=star style=filled fillcolor=grey fontname="helvetica-bold" fontsize=42 label="CNV_M10177"];
+10252 [shape=circle style=filled fillcolor="#613f7a" fontname="helvetica-bold" fontsize=56 label="M10206" width=1.24 height=2 ];
+10270 [shape=circle style=filled fillcolor=white fontname="helvetica-bold" fontsize=56 label="M10224" width=1.15 height=2 ];
+10243 [shape=circle style=wedged color="#35c601:#32884b" fontname="helvetica-bold" fontsize=56 label="M10197" width=1.23 height=2 ];
+10229 [shape=circle style=filled fillcolor=grey fontname="helvetica-bold" fontsize=56 label="M10183" width=3.93 height=2 ];
+10241 [shape=circle style=filled fillcolor="#35c601" fontname="helvetica-bold" fontsize=56 label="M10195" width=0.41 height=2 ];
+10233 [shape=circle style=filled fillcolor="#35c601" fontname="helvetica-bold" fontsize=56 label="M10187" width=1.74 height=2 ];
+10235 [shape=circle style=wedged color="#e841b3:#32884b" fontname="helvetica-bold" fontsize=56 label="M10189" width=0.1 height=2 ];
+10264 [shape=circle style=filled fillcolor="#e841b3" fontname="helvetica-bold" fontsize=56 label="M10218" width=0.36 height=2 ];
+10222 [shape=circle style=filled fillcolor=grey fontname="helvetica-bold" fontsize=56 label="M10176" width=0.86 height=2 ];
+10227 [shape=circle style=filled fillcolor="#53533e" fontname="helvetica-bold" fontsize=56 label="M10181" width=2.96 height=2 ];
+10266 [shape=circle style=filled fillcolor=grey fontname="helvetica-bold" fontsize=56 label="M10220" width=4.49 height=2 ];
+10237 [shape=circle style=filled fillcolor="#e841b3" fontname="helvetica-bold" fontsize=56 label="M10191" width=2.92 height=2 ];
+10267 [shape=circle style=filled fillcolor="#f5590e" fontname="helvetica-bold" fontsize=56 label="M10221" width=4.63 height=2 ];
+10272 [shape=star style=filled fillcolor=white fontname="helvetica-bold" fontsize=42 label="CNV_M10226"];
+10265 [shape=circle style=wedged color="#613f7a:#dad768:#f5590e" fontname="helvetica-bold" fontsize=56 label="M10219" width=1.02 height=2 ];
+10259 [shape=circle style=wedged color="#613f7a:#1e1337" fontname="helvetica-bold" fontsize=56 label="M10213" width=1.26 height=2 ];
+10245 [shape=circle style=filled fillcolor="#757909" fontname="helvetica-bold" fontsize=56 label="M10199" width=1.82 height=2 ];
+10254 [shape=circle style=filled fillcolor=grey fontname="helvetica-bold" fontsize=56 label="M10208" width=2.51 height=2 ];
+10271 [shape=circle style=wedged color="#757909:#8ff152" fontname="helvetica-bold" fontsize=56 label="M10225" width=2.21 height=2 ];
+10255 [shape=circle style=filled fillcolor=white fontname="helvetica-bold" fontsize=56 label="M10209" width=2.2 height=2 ];
+{rank=sink;
+Legend[shape=none, margin=0, label=<<TABLE border="0" cellborder="0" cellspacing="0"> 
+<TR><TD width="200" height="200" colspan="1"><FONT POINT-SIZE="36.0"><B>Sample 1</B></FONT></TD><TD width="200" height="200" colspan="1" BGCOLOR="#757909"></TD>
+<TD width="200" height="200" colspan="1"><FONT POINT-SIZE="36.0"><B>Sample 2</B></FONT></TD><TD width="200" height="200" colspan="1" BGCOLOR="#613f7a"></TD>
+<TD width="200" height="200" colspan="1"><FONT POINT-SIZE="36.0"><B>Sample 3</B></FONT></TD><TD width="200" height="200" colspan="1" BGCOLOR="#e841b3"></TD>
+<TD width="200" height="200" colspan="1"><FONT POINT-SIZE="36.0"><B>Sample 4</B></FONT></TD><TD width="200" height="200" colspan="1" BGCOLOR="#53533e"></TD>
+<TD width="200" height="200" colspan="1"><FONT POINT-SIZE="36.0"><B>Sample 5</B></FONT></TD><TD width="200" height="200" colspan="1" BGCOLOR="#dad768"></TD>
+<TD width="200" height="200" colspan="1"><FONT POINT-SIZE="36.0"><B>Sample 6</B></FONT></TD><TD width="200" height="200" colspan="1" BGCOLOR="#35c601"></TD>
+<TD width="200" height="200" colspan="1"><FONT POINT-SIZE="36.0"><B>Sample 7</B></FONT></TD><TD width="200" height="200" colspan="1" BGCOLOR="#1e1337"></TD>
+<TD width="200" height="200" colspan="1"><FONT POINT-SIZE="36.0"><B>Sample 8</B></FONT></TD><TD width="200" height="200" colspan="1" BGCOLOR="#8ff152"></TD>
+<TD width="200" height="200" colspan="1"><FONT POINT-SIZE="36.0"><B>Sample 9</B></FONT></TD><TD width="200" height="200" colspan="1" BGCOLOR="#f5590e"></TD>
+<TD width="200" height="200" colspan="1"><FONT POINT-SIZE="36.0"><B>Sample 10</B></FONT></TD><TD width="200" height="200" colspan="1" BGCOLOR="#32884b"></TD>
+<TD width="200" height="200" colspan="1"><FONT POINT-SIZE="36.0"><B>Sample 11</B></FONT></TD><TD width="200" height="200" colspan="1" BGCOLOR="#b07bd8"></TD>
+<TD width="200" height="200" colspan="1"><FONT POINT-SIZE="36.0"><B>Sample 12</B></FONT></TD><TD width="200" height="200" colspan="1" BGCOLOR="#f221ae"></TD>
+<TD width="200" height="200" colspan="1"><FONT POINT-SIZE="36.0"><B>Sample 13</B></FONT></TD><TD width="200" height="200" colspan="1" BGCOLOR="#5834bf"></TD>
+<TD width="200" height="200" colspan="1"><FONT POINT-SIZE="36.0"><B>Sample 14</B></FONT></TD><TD width="200" height="200" colspan="1" BGCOLOR="#4643d4"></TD>
+</TR></TABLE>>];
+} 
+}

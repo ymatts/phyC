@@ -1,0 +1,141 @@
+digraph G { 
+rankdir=TB;
+1728 -> 1732;
+1728 -> 1747;
+1729 -> 1737;
+1729 -> 1752;
+1729 -> 1768;
+1730 -> 1734;
+1731 -> 1733;
+1731 -> 1739;
+1731 -> 1746;
+1731 -> 1759;
+1731 -> 1763;
+1732 -> 1760;
+1732 -> 1775;
+1735 -> 1748;
+1735 -> 1753;
+1735 -> 1770;
+1736 -> 1738;
+1736 -> 1755;
+1736 -> 1764;
+1736 -> 1771;
+1738 -> 1740;
+1739 -> 1741;
+1739 -> 1742;
+1740 -> 1750;
+1740 -> 1754;
+1740 -> 1756;
+1742 -> 1743;
+1746 -> 1749;
+1746 -> 1765;
+1746 -> 1776;
+1747 -> 1777;
+1749 -> 1751;
+1749 -> 1769;
+1750 -> 1757;
+1750 -> 1772;
+1750 -> 1778;
+1753 -> 1758;
+1756 -> 1773;
+1756 -> 1779;
+1757 -> 1780;
+1758 -> 1761;
+1759 -> 1766;
+1761 -> 1767;
+1763 -> 1774;
+1765 -> 1781;
+1765 -> 1782;
+1773 -> 1783;
+1779 -> 1784;
+1722 -> 1723;
+1722 -> 1724;
+1722 -> 1725;
+1722 -> 1726;
+1722 -> 1729;
+1722 -> 1735;
+1722 -> 1736;
+1722 -> 1744;
+1722 -> 1745;
+1722 -> 1762;
+1724 -> 1727;
+1725 -> 1728;
+1725 -> 1731;
+1726 -> 1730;
+1761 [shape=circle style=filled fillcolor="#bc5ae8" fontname="helvetica-bold" fontsize=56 label="M1753" width=2.73 height=2 ];
+1744 [shape=circle style=filled fillcolor=grey fontname="helvetica-bold" fontsize=56 label="M1736" width=0.37 height=2 ];
+1727 [shape=circle style=filled fillcolor=grey fontname="helvetica-bold" fontsize=56 label="M1719" width=3.31 height=2 ];
+1737 [shape=circle style=filled fillcolor=grey fontname="helvetica-bold" fontsize=56 label="M1729" width=1.66 height=2 ];
+1782 [shape=circle style=filled fillcolor="#bc5ae8" fontname="helvetica-bold" fontsize=56 label="M1774" width=0.62 height=2 ];
+1769 [shape=circle style=filled fillcolor=white fontname="helvetica-bold" fontsize=56 label="M1761" width=1.25 height=2 ];
+1745 [shape=circle style=filled fillcolor=grey fontname="helvetica-bold" fontsize=56 label="M1737" width=1.65 height=2 ];
+1752 [shape=circle style=filled fillcolor=white fontname="helvetica-bold" fontsize=56 label="M1744" width=0.82 height=2 ];
+1739 [shape=circle style=filled fillcolor=grey fontname="helvetica-bold" fontsize=56 label="M1731" width=3.15 height=2 ];
+1747 [shape=star style=filled fillcolor="#9b2a28:#526dd0:#53d522" fontname="helvetica-bold" fontsize=42 label="CNV_M1739"];
+1762 [shape=circle style=filled fillcolor="#32f8ec" fontname="helvetica-bold" fontsize=56 label="M1754" width=2.83 height=2 ];
+1723 [shape=circle style=filled fillcolor=grey fontname="helvetica-bold" fontsize=56 label="M1715" width=4.12 height=2 ];
+1768 [shape=star style=filled fillcolor=grey fontname="helvetica-bold" fontsize=42 label="CNV_M1760"];
+1742 [shape=circle style=filled fillcolor=grey fontname="helvetica-bold" fontsize=56 label="M1734" width=1.24 height=2 ];
+1738 [shape=circle style=filled fillcolor=grey fontname="helvetica-bold" fontsize=56 label="M1730" width=2.18 height=2 ];
+1778 [shape=circle style=filled fillcolor=white fontname="helvetica-bold" fontsize=56 label="M1770" width=1.34 height=2 ];
+1758 [shape=circle style=filled fillcolor=grey fontname="helvetica-bold" fontsize=56 label="M1750" width=2.32 height=2 ];
+1751 [shape=circle style=filled fillcolor=white fontname="helvetica-bold" fontsize=56 label="M1743" width=0.67 height=2 ];
+1772 [shape=circle style=filled fillcolor=white fontname="helvetica-bold" fontsize=56 label="M1764" width=3.79 height=2 ];
+1770 [shape=circle style=filled fillcolor="#32f8ec" fontname="helvetica-bold" fontsize=56 label="M1762" width=0.68 height=2 ];
+1732 [shape=circle style=filled fillcolor=white fontname="helvetica-bold" fontsize=56 label="M1724" width=0.5 height=2 ];
+1776 [shape=circle style=filled fillcolor=white fontname="helvetica-bold" fontsize=56 label="M1768" width=0.66 height=2 ];
+1746 [shape=star style=filled fillcolor=white fontname="helvetica-bold" fontsize=42 label="CNV_M1738"];
+1749 [shape=circle style=filled fillcolor=grey fontname="helvetica-bold" fontsize=56 label="M1741" width=3.5 height=2 ];
+1777 [shape=circle style=filled fillcolor=white fontname="helvetica-bold" fontsize=56 label="M1769" width=1.7 height=2 ];
+1756 [shape=circle style=filled fillcolor=white fontname="helvetica-bold" fontsize=56 label="M1748" width=0.82 height=2 ];
+1763 [shape=star style=filled fillcolor=white fontname="helvetica-bold" fontsize=42 label="CNV_M1755"];
+1775 [shape=circle style=filled fillcolor=white fontname="helvetica-bold" fontsize=56 label="M1767" width=0.54 height=2 ];
+1757 [shape=circle style=filled fillcolor=white fontname="helvetica-bold" fontsize=56 label="M1749" width=3.83 height=2 ];
+1724 [shape=circle style=filled fillcolor=grey fontname="helvetica-bold" fontsize=56 label="M1716" width=2.84 height=2 ];
+1743 [shape=circle style=filled fillcolor=grey fontname="helvetica-bold" fontsize=56 label="M1735" width=0.41 height=2 ];
+1784 [shape=circle style=filled fillcolor=white fontname="helvetica-bold" fontsize=56 label="M1776" width=1.53 height=2 ];
+1759 [shape=circle style=filled fillcolor=grey fontname="helvetica-bold" fontsize=56 label="M1751" width=0.88 height=2 ];
+1748 [shape=star style=filled fillcolor="#9b2a28" fontname="helvetica-bold" fontsize=42 label="CNV_M1740"];
+1764 [shape=circle style=filled fillcolor=white fontname="helvetica-bold" fontsize=56 label="M1756" width=0.89 height=2 ];
+1755 [shape=circle style=filled fillcolor=grey fontname="helvetica-bold" fontsize=56 label="M1747" width=4.42 height=2 ];
+1773 [shape=circle style=filled fillcolor=white fontname="helvetica-bold" fontsize=56 label="M1765" width=3.71 height=2 ];
+1767 [shape=circle style=filled fillcolor="#526dd0" fontname="helvetica-bold" fontsize=56 label="M1759" width=0.07 height=2 ];
+1734 [shape=circle style=filled fillcolor=grey fontname="helvetica-bold" fontsize=56 label="M1726" width=4.44 height=2 ];
+1736 [shape=circle style=filled fillcolor="#9b2a28" fontname="helvetica-bold" fontsize=56 label="M1728" width=2.48 height=2 ];
+1730 [shape=circle style=filled fillcolor=grey fontname="helvetica-bold" fontsize=56 label="M1722" width=1.94 height=2 ];
+1753 [shape=star style=filled fillcolor="#32f8ec" fontname="helvetica-bold" fontsize=42 label="CNV_M1745"];
+1750 [shape=circle style=filled fillcolor=grey fontname="helvetica-bold" fontsize=56 label="M1742" width=1.98 height=2 ];
+1765 [shape=circle style=wedged color="#a3787f:#f270b7:#90c7b4" fontname="helvetica-bold" fontsize=56 label="M1757" width=3.17 height=2 ];
+1728 [shape=star style=filled fillcolor=white fontname="helvetica-bold" fontsize=42 label="CNV_M1720"];
+1774 [shape=circle style=filled fillcolor="#a3787f" fontname="helvetica-bold" fontsize=56 label="M1766" width=4.4 height=2 ];
+1780 [shape=circle style=filled fillcolor=white fontname="helvetica-bold" fontsize=56 label="M1772" width=4.81 height=2 ];
+1729 [shape=circle style=filled fillcolor=grey fontname="helvetica-bold" fontsize=56 label="M1721" width=1.02 height=2 ];
+1781 [shape=circle style=filled fillcolor=white fontname="helvetica-bold" fontsize=56 label="M1773" width=4.92 height=2 ];
+1760 [shape=circle style=filled fillcolor=grey fontname="helvetica-bold" fontsize=56 label="M1752" width=2.76 height=2 ];
+1783 [shape=circle style=filled fillcolor="#90c7b4" fontname="helvetica-bold" fontsize=56 label="M1775" width=3 height=2 ];
+1731 [shape=circle style=filled fillcolor=white fontname="helvetica-bold" fontsize=56 label="M1723" width=1.57 height=2 ];
+1733 [shape=circle style=filled fillcolor=grey fontname="helvetica-bold" fontsize=56 label="M1725" width=1.06 height=2 ];
+1735 [shape=star style=filled fillcolor="#a3787f" fontname="helvetica-bold" fontsize=42 label="CNV_M1727"];
+1741 [shape=circle style=filled fillcolor=grey fontname="helvetica-bold" fontsize=56 label="M1733" width=4.04 height=2 ];
+1779 [shape=circle style=filled fillcolor=white fontname="helvetica-bold" fontsize=56 label="M1771" width=0.56 height=2 ];
+1740 [shape=star style=filled fillcolor=grey fontname="helvetica-bold" fontsize=42 label="CNV_M1732"];
+1726 [shape=circle style=filled fillcolor=grey fontname="helvetica-bold" fontsize=56 label="M1718" width=3.34 height=2 ];
+1722 [label="GL" fontname="arial-bold" fontsize=56 width=5 height=5];
+1766 [shape=circle style=wedged color="#526dd0:#32f8ec" fontname="helvetica-bold" fontsize=56 label="M1758" width=3.52 height=2 ];
+1771 [shape=circle style=filled fillcolor=white fontname="helvetica-bold" fontsize=56 label="M1763" width=1.83 height=2 ];
+1754 [shape=circle style=wedged color="#526dd0:#69a4ab" fontname="helvetica-bold" fontsize=56 label="M1746" width=4.28 height=2 ];
+1725 [shape=circle style=filled fillcolor=grey fontname="helvetica-bold" fontsize=56 label="M1717" width=4.83 height=2 ];
+{rank=sink;
+Legend[shape=none, margin=0, label=<<TABLE border="0" cellborder="0" cellspacing="0"> 
+<TR><TD width="200" height="200" colspan="1"><FONT POINT-SIZE="36.0"><B>Sample 1</B></FONT></TD><TD width="200" height="200" colspan="1" BGCOLOR="#a3787f"></TD>
+<TD width="200" height="200" colspan="1"><FONT POINT-SIZE="36.0"><B>Sample 2</B></FONT></TD><TD width="200" height="200" colspan="1" BGCOLOR="#f270b7"></TD>
+<TD width="200" height="200" colspan="1"><FONT POINT-SIZE="36.0"><B>Sample 3</B></FONT></TD><TD width="200" height="200" colspan="1" BGCOLOR="#9b2a28"></TD>
+<TD width="200" height="200" colspan="1"><FONT POINT-SIZE="36.0"><B>Sample 4</B></FONT></TD><TD width="200" height="200" colspan="1" BGCOLOR="#526dd0"></TD>
+<TD width="200" height="200" colspan="1"><FONT POINT-SIZE="36.0"><B>Sample 5</B></FONT></TD><TD width="200" height="200" colspan="1" BGCOLOR="#69a4ab"></TD>
+<TD width="200" height="200" colspan="1"><FONT POINT-SIZE="36.0"><B>Sample 6</B></FONT></TD><TD width="200" height="200" colspan="1" BGCOLOR="#90c7b4"></TD>
+<TD width="200" height="200" colspan="1"><FONT POINT-SIZE="36.0"><B>Sample 7</B></FONT></TD><TD width="200" height="200" colspan="1" BGCOLOR="#32f8ec"></TD>
+<TD width="200" height="200" colspan="1"><FONT POINT-SIZE="36.0"><B>Sample 8</B></FONT></TD><TD width="200" height="200" colspan="1" BGCOLOR="#53d522"></TD>
+<TD width="200" height="200" colspan="1"><FONT POINT-SIZE="36.0"><B>Sample 9</B></FONT></TD><TD width="200" height="200" colspan="1" BGCOLOR="#bc5ae8"></TD>
+</TR></TABLE>>];
+} 
+}

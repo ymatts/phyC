@@ -1,0 +1,145 @@
+CNV_M4203	M4210
+CNV_M4205	M4226
+M4212	CNV_M4221
+M4213	M4222
+GL	M4155
+GL	M4157
+GL	M4158
+GL	M4160
+GL	M4204
+M4155	M4156
+M4156	CNV_M4159
+M4157	M4162
+M4157	M4166
+M4157	M4175
+M4158	M4161
+M4158	M4164
+CNV_M4159	M4168
+M4161	M4163
+M4161	M4171
+M4161	M4176
+M4163	M4165
+M4163	M4167
+M4163	M4172
+M4163	CNV_M4179
+M4163	M4196
+M4165	M4169
+M4165	M4186
+M4165	M4191
+M4165	M4197
+M4166	M4173
+M4166	M4183
+M4166	CNV_M4187
+M4166	M4198
+M4166	M4223
+M4167	M4184
+M4167	M4199
+M4167	CNV_M4205
+M4167	M4215
+M4168	M4170
+M4169	CNV_M4192
+M4169	M4211
+M4169	M4216
+M4170	CNV_M4174
+M4170	M4188
+M4171	M4180
+M4171	M4200
+M4171	M4206
+M4172	M4177
+M4172	M4217
+CNV_M4174	M4189
+M4175	M4178
+M4175	M4181
+M4175	M4193
+M4177	M4182
+M4180	M4185
+M4180	M4190
+M4180	M4201
+M4183	M4194
+M4184	M4224
+CNV_M4187	M4195
+CNV_M4187	M4207
+CNV_M4187	M4218
+M4188	CNV_M4208
+M4188	M4219
+M4191	M4202
+M4191	M4212
+CNV_M4192	M4213
+M4195	CNV_M4203
+M4196	M4225
+M4201	M4209
+M4201	M4220
+M4202	M4214
+null
+M4155: chr=20, pos=39532542, haplotype=0
+M4156: chr=13, pos=79171421, haplotype=1
+M4157: chr=23, pos=10977525, haplotype=0
+M4158: chr=17, pos=3439837, haplotype=0
+CNV_M4159: chr=4, arm=0, haplotype=1
+M4160: chr=20, pos=4467842, haplotype=0
+M4161: chr=13, pos=21975128, haplotype=0
+M4162: chr=3, pos=118049815, haplotype=1
+M4163: chr=7, pos=54100913, haplotype=0
+M4164: chr=22, pos=959539, haplotype=1
+M4165: chr=19, pos=45820077, haplotype=0
+M4166: chr=16, pos=49895285, haplotype=0
+M4167: chr=5, pos=65652767, haplotype=1
+M4168: chr=22, pos=19101391, haplotype=0
+M4169: chr=15, pos=65643703, haplotype=0
+M4170: chr=23, pos=23187336, haplotype=1
+M4171: chr=15, pos=86781404, haplotype=0
+M4172: chr=5, pos=179113993, haplotype=0
+M4173: chr=15, pos=102260485, haplotype=0
+CNV_M4174: chr=7, arm=0, haplotype=1
+M4175: chr=23, pos=39035102, haplotype=0
+M4176: chr=3, pos=43226695, haplotype=1
+M4177: chr=10, pos=112324475, haplotype=1
+M4178: chr=7, pos=105839365, haplotype=1
+CNV_M4179: chr=9, arm=0, haplotype=1
+M4180: chr=19, pos=35604988, haplotype=0
+M4181: chr=23, pos=8506849, haplotype=1
+M4182: chr=20, pos=1668934, haplotype=1
+M4183: chr=11, pos=55441803, haplotype=0
+M4184: chr=8, pos=102077891, haplotype=0
+M4185: chr=9, pos=56505114, haplotype=1
+M4186: chr=5, pos=143619717, haplotype=1
+CNV_M4187: chr=19, arm=1, haplotype=1
+M4188: chr=2, pos=117942165, haplotype=0
+M4189: chr=17, pos=60683737, haplotype=1
+M4190: chr=6, pos=142536297, haplotype=1
+M4191: chr=4, pos=159181252, haplotype=0
+CNV_M4192: chr=21, arm=1, haplotype=0
+M4193: chr=4, pos=27166606, haplotype=1
+M4194: chr=15, pos=102949769, haplotype=1
+M4195: chr=9, pos=121655857, haplotype=0
+M4196: chr=10, pos=117700048, haplotype=1
+M4197: chr=10, pos=61175496, haplotype=0
+M4198: chr=15, pos=90544260, haplotype=0
+M4199: chr=19, pos=55315617, haplotype=1
+M4200: chr=4, pos=153824248, haplotype=1
+M4201: chr=19, pos=1312043, haplotype=0
+M4202: chr=20, pos=51253821, haplotype=0
+CNV_M4203: chr=3, arm=1, haplotype=1
+M4204: chr=11, pos=42909653, haplotype=0
+CNV_M4205: chr=23, arm=1, haplotype=0
+M4206: chr=14, pos=3524771, haplotype=0
+M4207: chr=8, pos=78554570, haplotype=0
+CNV_M4208: chr=20, arm=0, haplotype=1
+M4209: chr=7, pos=108978913, haplotype=0
+M4210: chr=20, pos=57203683, haplotype=1
+M4211: chr=13, pos=83410951, haplotype=1
+M4212: chr=2, pos=210846274, haplotype=1
+M4213: chr=21, pos=36178832, haplotype=1
+M4214: chr=9, pos=75901097, haplotype=1
+M4215: chr=16, pos=86415103, haplotype=1
+M4216: chr=9, pos=113120809, haplotype=1
+M4217: chr=10, pos=26248995, haplotype=0
+M4218: chr=10, pos=49417322, haplotype=0
+M4219: chr=17, pos=33202269, haplotype=0
+M4220: chr=13, pos=69925675, haplotype=1
+CNV_M4221: chr=8, arm=1, haplotype=0
+M4222: chr=20, pos=12622295, haplotype=1
+M4223: chr=5, pos=64509549, haplotype=0
+M4224: chr=2, pos=126782164, haplotype=1
+M4225: chr=10, pos=110556932, haplotype=1
+M4226: chr=2, pos=180754862, haplotype=1

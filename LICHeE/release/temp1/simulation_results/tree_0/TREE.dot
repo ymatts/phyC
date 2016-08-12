@@ -1,0 +1,31 @@
+digraph G { 
+0 -> 1;
+0 -> 2;
+0 -> 4;
+0 -> 7;
+0 -> 9;
+0 -> 13;
+1 -> 6;
+1 -> 8;
+2 -> 3;
+3 -> 5;
+4 -> 10;
+4 -> 14;
+8 -> 11;
+11 -> 12;
+0 [label="GL" fontname="arial-bold" fontsize=56 width=5 height=5];
+1 [shape=circle style=filled fillcolor=white fontname="helvetica-bold" fontsize=56 label="M0" width=2.55 height=2 ];
+2 [shape=circle style=filled fillcolor=white fontname="helvetica-bold" fontsize=56 label="M1" width=2.93 height=2 ];
+3 [shape=circle style=filled fillcolor=grey fontname="helvetica-bold" fontsize=56 label="M2" width=0.47 height=2 ];
+4 [shape=circle style=filled fillcolor=white fontname="helvetica-bold" fontsize=56 label="M3" width=3.71 height=2 ];
+5 [shape=circle style=filled fillcolor=grey fontname="helvetica-bold" fontsize=56 label="M4" width=0.24 height=2 ];
+6 [shape=star style=filled fillcolor=grey fontname="helvetica-bold" fontsize=42 label="CNV_M5"];
+7 [shape=circle style=filled fillcolor=white fontname="helvetica-bold" fontsize=56 label="M6" width=1.67 height=2 ];
+8 [shape=circle style=filled fillcolor=white fontname="helvetica-bold" fontsize=56 label="M7" width=0.15 height=2 ];
+9 [shape=circle style=filled fillcolor=white fontname="helvetica-bold" fontsize=56 label="M8" width=0.75 height=2 ];
+10 [shape=circle style=filled fillcolor=white fontname="helvetica-bold" fontsize=56 label="M9" width=2.11 height=2 ];
+11 [shape=circle style=filled fillcolor=white fontname="helvetica-bold" fontsize=56 label="M10" width=0.94 height=2 ];
+12 [shape=circle style=filled fillcolor=white fontname="helvetica-bold" fontsize=56 label="M11" width=1.06 height=2 ];
+13 [shape=circle style=filled fillcolor=white fontname="helvetica-bold" fontsize=56 label="M12" width=3.36 height=2 ];
+14 [shape=circle style=filled fillcolor=white fontname="helvetica-bold" fontsize=56 label="M13" width=0.61 height=2 ];
+}

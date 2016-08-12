@@ -1,0 +1,18 @@
+{
+    "contents" : "library(phyC)\nabsent <- c(rep(0.005,6),0.01,0.005)\npresent <- c(rep(0.005,6),0.01,0.005)\nminPrivateClusterSize  <- c(rep(1,7),2)\nmaxClusterDist <- c(rep(0.2,8))\ntrees <- vector(\"list\",length(vaf))\nfor(i in seq_along(ccRCC)){  \n  licheeParamIO <- list(normal=1) ## INPUT/OUTPUT AND DISPLAY OPTIONS\n  licheeParamFilter <- list(absent=absent[i],present=present[i]) ## SSNV FILTERING AND CALLING parameter\n  licheeParamPhy <- list(minPrivateClusterSize=minPrivateClusterSize[i],maxClusterDist=maxClusterDist[i]) ## PHYLOGENETIC NETWORK CONSTRUCTION AND TREE SEARCH parameter\n  trees[[i]] <- lichee2edge(\"PhyC/LICHeE/release\",ccRCC[[i]],licheeParamIO,licheeParamFilter,licheeParamPhy)\n}",
+    "created" : 1470995529118.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "2559439048",
+    "id" : "DCD3C6FE",
+    "lastKnownWriteTime" : 3918474918347814245,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

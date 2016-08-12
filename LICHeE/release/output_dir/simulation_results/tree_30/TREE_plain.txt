@@ -1,0 +1,43 @@
+M6945	M6947
+M6945	M6949
+M6947	M6953
+M6949	CNV_M6954
+GL	M6936
+GL	M6937
+GL	M6938
+GL	M6940
+GL	M6952
+GL	M6955
+M6938	M6939
+M6938	M6942
+M6939	CNV_M6941
+M6940	M6944
+M6940	M6945
+M6940	M6950
+M6942	CNV_M6943
+M6942	M6951
+M6942	M6956
+CNV_M6943	M6948
+M6944	M6946
+null
+M6936: chr=15, pos=82985685, haplotype=1
+M6937: chr=2, pos=102541597, haplotype=0
+M6938: chr=13, pos=90119550, haplotype=1
+M6939: chr=8, pos=98128206, haplotype=1
+M6940: chr=5, pos=3859130, haplotype=1
+CNV_M6941: chr=23, arm=0, haplotype=0
+M6942: chr=8, pos=91221218, haplotype=0
+CNV_M6943: chr=3, arm=0, haplotype=1
+M6944: chr=6, pos=23664441, haplotype=1
+M6945: chr=4, pos=126612071, haplotype=1
+M6946: chr=7, pos=116421174, haplotype=1
+M6947: chr=13, pos=117989242, haplotype=0
+M6948: chr=8, pos=88562737, haplotype=0
+M6949: chr=23, pos=15042447, haplotype=1
+M6950: chr=6, pos=13618566, haplotype=1
+M6951: chr=3, pos=105048080, haplotype=0
+M6952: chr=20, pos=13961563, haplotype=0
+M6953: chr=2, pos=202997621, haplotype=1
+CNV_M6954: chr=23, arm=1, haplotype=0
+M6955: chr=14, pos=19647433, haplotype=0
+M6956: chr=2, pos=72826922, haplotype=0

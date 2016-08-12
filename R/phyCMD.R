@@ -51,7 +51,8 @@ phyCMD <- function(obj,color=NULL,label=NULL,label.size=4,img.width=200,img.heig
       }
       bgcol <- "#f0f0f0"
       
-    if(is.null(label)){label <- paste0("Tree ",seq_along(resolve_tree))}
+    #if(is.null(label)){label <- paste0("Tree ",seq_along(resolve_tree))}
+      if(is.null(label)){label <- ""}
     
     outdir <- tempdir()
     output <- paste0(outdir,"phylo",seq_along(resolve_tree),".png")
@@ -89,7 +90,10 @@ phyCMD <- function(obj,color=NULL,label=NULL,label.size=4,img.width=200,img.heig
         img <- readPNG(output[i])
         p <- p + annotation_raster(img,xmin = cmd[i,1]-radi,xmax= cmd[i,1]+radi,ymin=cmd[i,2]-radi,ymax = cmd[i,2]+radi,interpolate = T)
     }
-    p <- p + geom_label_repel(size=label.size,fill=color[cluster], fontface = 'bold', color = 'white',box.padding = unit(2, "lines"), point.padding = unit(2, "lines"))
+    if(all(label!="")){
+      p <- p + geom_label_repel(size=label.size,fill=color[cluster], fontface = 1, color = 'white',box.padding = unit(5, "lines"), point.padding = unit(0.1, "lines"))
+    }
+    #p <- p + geom_text(size=label.size)
     plot(p)
     try(invisible(file.remove(output)))
     return(list(coord=cmd,dist=d))
