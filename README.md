@@ -145,7 +145,7 @@ result3 <- phyCMD(phyC.obj)
 Here is an example.
 
 ```r:phyCMD.R
-result3 <- phyCMD(result) # Output the plot as Figure 6.
+result3 <- phyCMD(result)
 ```
 
 ## References
