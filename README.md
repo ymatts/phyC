@@ -77,32 +77,71 @@ For visualization of clustering results for interpretation, we develop the two t
 
 
 ##Usage
-######Installation
+#####Installation
 
 ```r:install_git.R
 devtools::install_git(url = "https://github.com/ymatts/PhyC")
 ```
 
-######Use of phyC
-The phyC needs the edgeList, edgeLenList and cluster(the number of the cluster) in minimal. 
+#####Tree reconstruction from VAF profile
+The phyC implement two reconstruction methods from VAF profiles: Maximum parsimony method implemented as acctran in phangorn package by (Klaus, 2011) and LICHeE (Popic et al. 2015).
 
-```r:phyC.R
-result <- phyC(edgeList,edgeLenList,cluster=3)
+#####Maximum parsimony method
+```r:par_tree.R
+tree <- par.tree(VAF, thr = 0.05) ## maximum parsimony method. 
+```
+An example is here.
+```r:par_tree.R
+library(phyC)
+data(ccRCC)
+vaf <- lapply(ccRCC,function(x)x[,-(1:3)]) ## par.tree only needs a matrix of gene * (Normal / Region VAF).
+label <- names(vaf)
+trees <- vector("list",length(vaf))
+for(i in seq_along(vaf)){
+  trees[[i]] <- par.tree(vaf[[i]])
+}
+edgeList <- lapply(trees,function(x)x$edge) ## obtain edge list
+edgeLenList <- lapply(trees,function(x)x$edge.length) ## obtain edge length list
 ```
 
-Here is an example.
+#####LICHeE
+The other method is LICHeE (Popic et al. 2015). You need to get the LICHeE engine from <a href="url">http://viq854.github.io/lichee/</a>. Here we provide the utility function to utilize the LICHeE from R. The input is VAF matrix (the format is described in the above site). You can specify the parameters of LICHeE as you need. If you don't specify them, lichee2edge automatically set the default values that are suggested in (Popic et al. 2015). The output is edge matrix and edge length. 
+```r:lichee2edge.R
+tree <- lichee2edge('Path to lichee.jar', VAF, parameters)
+```
+```r:lichee2edge.R
+absent <- c(rep(0.005,6),0.01,0.005)
+present <- c(rep(0.005,6),0.01,0.005)
+minPrivateClusterSize  <- c(rep(1,7),2)
+maxClusterDist <- c(rep(0.2,8))
+
+trees <- vector("list",length(vaf))
+for(i in seq_along(vaf)){  
+  licheeParamIO <- list(normal=1) ## INPUT/OUTPUT AND DISPLAY OPTIONS
+  licheeParamFilter <- list(absent=absent[i],present=present[i]) ## SSNV FILTERING AND CALLING parameter
+  licheeParamPhy <- list(minPrivateClusterSize=minPrivateClusterSize[i],maxClusterDist=maxClusterDist[i]) ## PHYLOGENETIC NETWORK CONSTRUCTION AND TREE SEARCH parameter
+  trees[[i]] <- lichee2edge("LICHeE/release",ccRCC[[i]],licheeParamIO,licheeParamFilter,licheeParamPhy)
+  edgeList <- lapply(trees,function(x)x$edge) ## obtain edge list
+  edgeLenList <- lapply(trees,function(x)x$edge.length) ## obtain edge length list
+}
+```
+#####Registrating trees and Clustering
+######phyC
+The main function phyC needs the edgeList, edgeLenList and cluster(the number of the cluster) in minimal. 
+
 ```r:phyC.R
-library(PhyC)
-data(evol)
-result <- phyC(evol$edgeList,evol$edgeLenList,cluster=4,type='nh')
+result <- phyC(edgeList,edgeLenList,cluster)
+```
+
+Here is an example. We use the edgeList and edgeLenList from maximum parsimony method here.
+```r:phyC.R
+result <- phyC(edgeList,edgeLenList,cluster=3,type='h')
 result$cluster # Assignment of clusters
-phyC.plot(result) # Output the plot as Figure 5.
 ```
 
 
-######Use of diversity
+######sub-clonal diversity plot
 To calculate the diversity of each cluster, we use the diversity function. This function requires only the phyC object.
-
 ```r:diversity.R
 result2 <- diversity(phyC.obj)
 ```
@@ -110,14 +149,11 @@ result2 <- diversity(phyC.obj)
 Here is an example.
 
 ```r:diversity.R
-library(PhyC)
-data(evol)
-result <- phyC(evol$edgeList,evol$edgeLenList,cluster=4,type='nh')
 result2 <- diversity(result) # Output the plot as Figure 6.
 ```
 
-######Use of phyCMD
-To obtain the configuration of trees in Euclidean space as Figure 2, we use phyCMD function. The input is phyC object.
+######phyCMD
+To obtain the configuration of trees in Euclidean space, we use phyCMD function. The input is phyC object.
 
 ```r:phyCMD.R
 result3 <- phyCMD(phyC.obj)
@@ -125,40 +161,12 @@ result3 <- phyCMD(phyC.obj)
 
 
 ```r:phyCMD.R
-library(PhyC)
-data(evol)
-result <- phyC(evol$edgeList,evol$edgeLenList,cluster=4,type='nh')
 result3 <- phyCMD(result) # Output the plot as Figure 6.
 ```
 
 
 ######Use of lichee2edge
-To reconstruct the cacer evolutionary trees, we adopt LICHeE (Popic, et al. 2015). You need to get the LICHeE engine from <a href="url">http://viq854.github.io/lichee/</a>. Here we provide the utility function to utilize the LICHeE from R. The input is VAF matrix (the format is described in the above site). You can specify the parameters of LICHeE as you need. If you don't specify them, lichee2edge automatically set the default values that are suggested in (Popic et al. 2015). The output is edge matrix and edge length. 
-
-
-```r:lichee2edge.R
-result4 <- lichee2edge('Path to lichee.jar',vaf)
-```
-
-```r:phyCMD.R
-library(PhyC)
-data(vaf) #The list of VAF matrices of ccRCC and HGSC studies
-
-#### We set the parameter of absent, present, minPrivateClsuterSize, maxClusterDist for each patient.
-
-absent <- c(rep(0.005,6),0.01,0.005,rep(0.005,4),0.01,0.005)
-present <- c(rep(0.005,6),0.01,0.005,rep(0.01,4),0.04,0.01)
-minPrivateClusterSize  <- c(rep(1,7),2,rep(1,3),3,3,1,2)
-maxClusterDist <- c(rep(0.2,9),rep(0.2,5),0.1)
-
-result4 <- vector("list",length(vaf))
-for(i in seq_along(vaf)){  
-  licheeParamIO <- list(normal=1) ## INPUT/OUTPUT AND DISPLAY OPTIONS
-  licheeParamFilter <- list(absent=absent[i],present=present[i]) ## SSNV FILTERING AND CALLING parameter
-  licheeParamPhy <- list(minPrivateClusterSize=minPrivateClusterSize[i],maxClusterDist=maxClusterDist[i]) ## PHYLOGENETIC NETWORK CONSTRUCTION AND TREE SEARCH parameter
-  result4[[i]] <- lichee2edge("LICHeE/release",vaf[[i]],licheeParamIO,licheeParamFilter,licheeParamPhy)
-}
-```
+To reconstruct the cacer evolutionary trees, we adopt LICHeE (Popic, et al. 2015). 
 
 ## References
 1. Matsui Y, Niida A, Uchi R. Mimori K, Miyano S, and Shimamura T.(2016) Clustering cancer evolutionary trees. (submitted). 
