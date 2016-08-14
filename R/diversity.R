@@ -71,49 +71,49 @@ if(is.null(color)){
   }
   
   if(plotit){
-    dat <- vector("list",length(nlist))
-    for(i in seq_along(nlist)){
-      tmp <- data.frame(x = ax,y = nlist[[i]],z = label[i],cluster = cluster[i])
-      dat[[i]] <- tmp
-    }
-    dat <- do.call(rbind,dat)
-    dat$cluster <- factor(dat$cluster,ordered = T)
-#    dat$z <- factor(dat$z)
-    
-    p <- ggplot(dat,aes(x,y,group = z,color=cluster)) + theme(legend.position="none") + scale_color_manual(values = color) + geom_line(size=1) + labs(list(x="The relative number of SSNVs accumulated",y="The number of sub-clones"))
-    #+coord_cartesian(xlim = c(min(dat$x), max(dat$x) + 0.1))
-    
-    #p <- p + geom_text_repel(data = subset(dat,x==max(x)),aes(label=z),size=3, nudge_x=45)
-    
-    
-    mean_dat <- vector("list",length(div.mean))
-    for(i in seq_along(div.mean)){
-      mean_dat[[i]] <- data.frame(x = ax, y = div.mean[[i]], cluster = i)
-    }
-    mean_dat <- do.call(rbind,mean_dat)
-    mean_dat$cluster <- factor(mean_dat$cluster,ordered = T)
-    p <- p + geom_line(aes(x,y,group = cluster),linetype= 2,data = mean_dat,size = 1.5)
+#     dat <- vector("list",length(nlist))
+#     for(i in seq_along(nlist)){
+#       tmp <- data.frame(x = ax,y = nlist[[i]],z = label[i],cluster = cluster[i])
+#       dat[[i]] <- tmp
+#     }
+#     dat <- do.call(rbind,dat)
+#     dat$cluster <- factor(dat$cluster,ordered = T)
+# #    dat$z <- factor(dat$z)
+#     
+#     p <- ggplot(dat,aes(x,y,group = z,color=cluster)) + theme(legend.position="none") + scale_color_manual(values = color) + geom_line(size=1) + labs(list(x="The relative number of SSNVs accumulated",y="The number of sub-clones"))
+#     #+coord_cartesian(xlim = c(min(dat$x), max(dat$x) + 0.1))
+#     
+#     #p <- p + geom_text_repel(data = subset(dat,x==max(x)),aes(label=z),size=3, nudge_x=45)
+#     
+#     
+#     mean_dat <- vector("list",length(div.mean))
+#     for(i in seq_along(div.mean)){
+#       mean_dat[[i]] <- data.frame(x = ax, y = div.mean[[i]], cluster = i)
+#     }
+#     mean_dat <- do.call(rbind,mean_dat)
+#     mean_dat$cluster <- factor(mean_dat$cluster,ordered = T)
+#     p <- p + geom_line(aes(x,y,group = cluster),linetype= 2,data = mean_dat,size = 1.5)
 
     
-#     if(is.null(color)){color <- (min(cluster)):(max(cluster))}
-#     par(mar=c(4,4,1,1))
-#     maxnum <- max(unlist(nlist))+1
-#     plot(ax,nlist[[1]],type="n",xlim=c(0,1),ylim=c(0,maxnum),ann=F,axes=F)
-# 
-#     u <- par("usr") # The coordinates of the plot area
-#     rect(u[1], u[3], u[2], u[4], col="#f0f0f0", border=NA)
-#     
-#     grid(col = "white",lwd = 2,lty="solid")
-#     for(i in seq_along(nlist)){
-#       lines(ax,nlist[[i]],col=color[cluster[i]],lwd=1)
-#     }
-#     for(i in seq_along(div.mean)){
-#       lines(ax,div.mean[[i]],col=color[i],lwd=5,lty=2)
-#     }
-#     mtext("The relative number of SSNVs accumulated",side=1,line = 3,col="#969696",cex = 1.2)
-#     mtext("The number of sub-clones",side=2,line = 3,col = "#969696",cex = 1.2)
-#     axis(side = 1,col = "grey",font=5,col.ticks = "#969696")
-#     axis(side = 2,col = "grey",font=5,col.ticks = "#969696")
+    if(is.null(color)){color <- (min(cluster)):(max(cluster))}
+    par(mar=c(4,4,1,1))
+    maxnum <- max(unlist(nlist))+1
+    plot(ax,nlist[[1]],type="n",xlim=c(0,1),ylim=c(0,maxnum),ann=F,axes=F)
+
+    u <- par("usr") # The coordinates of the plot area
+    rect(u[1], u[3], u[2], u[4], col="#f0f0f0", border=NA)
+    
+    grid(col = "white",lwd = 2,lty="solid")
+    for(i in seq_along(nlist)){
+      lines(ax,nlist[[i]],col=color[cluster[i]],lwd=1)
+    }
+    for(i in seq_along(div.mean)){
+      lines(ax,div.mean[[i]],col=color[i],lwd=5,lty=2)
+    }
+    mtext("The relative number of SSNVs accumulated",side=1,line = 3,col="#969696",cex = 1.2)
+    mtext("The number of sub-clones",side=2,line = 3,col = "#969696",cex = 1.2)
+    axis(side = 1,col = "grey",font=5,col.ticks = "#969696")
+    axis(side = 2,col = "grey",font=5,col.ticks = "#969696")
     
   }
   return(list(ind.div=nlist,div=div.mean))

@@ -17,11 +17,16 @@
 #' @author Yusuke Matsui & Teppei Shimamura
 #' @export
 #'
-par.tree <- function(vaf,thr = 0.05){
-  if("normal"%in%colnames(vaf)){
-    ind <- which(colnames(vaf)=="normal")
-    colnames(vaf)[ind] <- "Normal"
+par.tree <- function(vaf,thr = 0.05,normal=1){
+  #if("normal"%in%colnames(vaf)){
+  if(is.character(normal)){
+    if(length(grep("normal",colnames(vaf),ignore.case = F)!=0)){
+      ind <- grep("normal",colnames(vaf),ignore.case = T)
+      colnames(vaf)[ind] <- "Normal"
     }
+  }else if(is.numeric(normal)){
+    colnames(vaf)[normal] <- "Normal"
+  }
   if(!all(apply(vaf,2,class)=="numeric")){
     stop("Invalid data type. Input data must be only vaf values\n")
   }
