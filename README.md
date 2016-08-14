@@ -85,7 +85,7 @@ install_git(url = "https://github.com/ymatts/PhyC")
 ```
 
 #####Tree reconstruction from VAF profile
-The phyC implement two reconstruction methods from VAF profiles: Maximum parsimony method implemented as acctran in phangorn package by (Klaus, 2011) and LICHeE (Popic et al. 2015).
+The phyC implement a reconstruction method from VAF profiles based on maximum parsimony method implemented as acctran in phangorn package by (Klaus, 2011).
 
 ######par.tree
 ```r:par_tree.R
@@ -107,27 +107,7 @@ edgeList <- lapply(trees,function(x)x$edge) ## obtain edge list
 edgeLenList <- lapply(trees,function(x)x$edge.length) ## obtain edge length list
 ```
 
-######lichee2edge
-The other method is LICHeE (Popic et al. 2015). You need to get the LICHeE engine from <a href="url">http://viq854.github.io/lichee/</a>. Here we provide the utility function to utilize the LICHeE from R. The input is VAF matrix (the format is described in the above site). You can specify the parameters of LICHeE as you need. If you don't specify them, lichee2edge automatically set the default values that are suggested in (Popic et al. 2015). The output is edge matrix and edge length. 
-```r:lichee2edge.R
-tree <- lichee2edge('Path to lichee.jar', VAF, parameters)
-```
-```r:lichee2edge.R
-absent <- c(rep(0.005,6),0.01,0.005)
-present <- c(rep(0.005,6),0.01,0.005)
-minPrivateClusterSize  <- c(rep(1,7),2)
-maxClusterDist <- c(rep(0.2,8))
 
-trees <- vector("list",length(vaf))
-for(i in seq_along(vaf)){  
-  licheeParamIO <- list(normal=1) ## INPUT/OUTPUT AND DISPLAY OPTIONS
-  licheeParamFilter <- list(absent=absent[i],present=present[i]) ## SSNV FILTERING AND CALLING parameter
-  licheeParamPhy <- list(minPrivateClusterSize=minPrivateClusterSize[i],maxClusterDist=maxClusterDist[i]) ## PHYLOGENETIC NETWORK CONSTRUCTION AND TREE SEARCH parameter
-  trees[[i]] <- lichee2edge("LICHeE/release",ccRCC[[i]],licheeParamIO,licheeParamFilter,licheeParamPhy)
-  edgeList <- lapply(trees,function(x)x$edge) ## obtain edge list
-  edgeLenList <- lapply(trees,function(x)x$edge.length) ## obtain edge length list
-}
-```
 #####Registrating trees and Clustering
 ######phyC
 The main function phyC needs the edgeList, edgeLenList and cluster(the number of the cluster) in minimal. 
@@ -165,7 +145,7 @@ result3 <- phyCMD(phyC.obj)
 Here is an example.
 
 ```r:phyCMD.R
-result3 <- phyCMD(result) # Output the plot as Figure 6.
+result3 <- phyCMD(result)
 ```
 
 ## References
