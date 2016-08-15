@@ -81,7 +81,7 @@ For visualization of clustering results for interpretation, we develop the two t
 
 ```r:install_git.R
 library(devtools)
-install_git(url = "https://github.com/ymatts/PhyC")
+install_git(url = "https://github.com/ymatts/phyC")
 ```
 
 #####Tree reconstruction from VAF profile
