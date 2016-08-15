@@ -16,4 +16,5 @@ Depends: igraph,
     grDevices,
     RColorBrewer,
     png,
-    phangorn
+    phangorn,
+    ggrepel
