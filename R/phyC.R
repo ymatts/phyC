@@ -1,7 +1,7 @@
-phyC <- function (edgeList, edgeLenList, cluster, scale=TRUE, type = "h", method = "ward") 
+phyC <- function (edgeList, edgeLenList, cluster=2, min.nc = NULL, max.nc=NULL, label = NULL, scale=TRUE, type = "h", method = "ward.D") 
 {
-  library(igraph)
-  library(ape)
+  #library(igraph)
+  #library(ape)
   cat("staring to resolve mono and multifurcations \n")
   new.edgeList <- vector("list", length(edgeList))
   for (i in 1:length(edgeList)) {
@@ -194,7 +194,12 @@ phyC <- function (edgeList, edgeLenList, cluster, scale=TRUE, type = "h", method
     regis[[i]] <- meta.regis.tree(meta, treelist[[i]])
     cat(i, "th registration finished\n")
   }
+  
+  
   coord <- t(sapply(regis, function(x) x$edge.length))
+  if(!is.null(label)){
+    rownames(coord) <- label
+  }
   d <- dist(coord)
   if (type == "nh") {
     cat("non-hierarchical clustering")
@@ -214,10 +219,14 @@ phyC <- function (edgeList, edgeLenList, cluster, scale=TRUE, type = "h", method
   else if (type == "h") {
     cat("hierarchical clustering")
     if (is.null(method)) {
-      method <- "ward.D2"
+      method <- "ward.D"
     }
     hc <- hclust(d, method = method)
-    cls <- cutree(hc, cluster)
+    if(!any(c(is.null(min.nc),is.null(max.nc)))){
+	cls <- NbClust(data = coord,diss = dist(coord),distance = NULL,min.nc = min.nc, max.nc = max.nc, method="ward.D",index = "gap")$Best.partition
+    }else{
+	cls <- cutree(hc, cluster)
+    }
     unique_cls <- unique(cls)
     ave_tree <- vector("list", length(unique_cls))
     for (i in seq_along(unique_cls)) {
@@ -229,7 +238,7 @@ phyC <- function (edgeList, edgeLenList, cluster, scale=TRUE, type = "h", method
       ave_tree[[i]] <- ref_tree
     }
   }
-  return(list(trees = treelist, regis.trees = regis, cluster = cls, 
+  return(list(trees = treelist, regis.trees = regis, cluster = cls,
               dist = d, edgeList = edgeList, edgeLenList = edgeLenList, 
-              coord = coord, ave_tree = ave_tree))
+              coord = coord, ave_tree = ave_tree, hc=hc))
 }
