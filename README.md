@@ -152,5 +152,5 @@ result3 <- phyCMD(result)
 1. Beerenwinkel N, Schwarz RF, Gerstung M, Markowetz F. (2014)  Cancer  evolution:   mathematical  models  and computational inference. Syst Biol. 6(1):e-2
 2. Billera LJ, Holmes SP, Vogtmann K. (2001) Geometry of the Space of Phylogenetic Trees. Adv. Appl.Math. 27(4),733-767.
 3. Klaus,P.S. (2011) phangorn: phylogenetic analysis in R. Bioinformatics, 27, 592-593.
-4. Matsui Y, Niida A, Uchi R. Mimori K, Miyano S, and Shimamura T.(2016) Clustering cancer evolutionary trees. (submitted, preprint version: BIORXIV/2016/069302).
+4. Matsui Y, Niida A, Uchi R. Mimori K, Miyano S, and Shimamura T.(2017) Clustering cancer evolutionary trees. PLoS Comput Biol. 13(5):e1005509. doi: 10.1371/journal.pcbi.1005509.
 5. Popic V, Salari R, Hajirasouliha I, Kashef-Haghighi D, West RB, Batzoglou S.(2015) Fast and scalable inference of multi-sample cancer lineages. Genome Biol. 16:91.
