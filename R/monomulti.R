@@ -128,7 +128,7 @@ resolve.monomulti <- function(edgelist,edgeLenList){
     nodepath <- vector("list",length(pair))
     tips <- vector("list",length(pair))
     for(j in seq_along(pair)){
-      if(class(pair[[j]])=="matrix"){
+      if(inherits(pair[[j]], "matrix")){
         temp.node <- pair[[j]][1,-ncol(pair[[j]])]
         temp.tips <- pair[[j]][,ncol(pair[[j]])]
       }else{

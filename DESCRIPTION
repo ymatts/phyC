@@ -10,6 +10,9 @@ Description: This package includes the tree registration, clustering,
 License: GPL (>= 2)
 LazyData: true
 RoxygenNote: 5.0.1
+Suggests:
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
 Depends: igraph,
     ape,
     ggplot2,

@@ -1,7 +1,40 @@
-phyC <- function (edgeList, edgeLenList, cluster=2, min.nc = NULL, max.nc=NULL, label = NULL, scale=TRUE, type = "h", method = "ward.D") 
+phyC <- function (edgeList, edgeLenList, cluster=2, min.nc = NULL, max.nc=NULL, label = NULL, scale=TRUE, type = "h", method = "ward.D")
 {
-  #library(igraph)
-  #library(ape)
+  # Input validation
+  if (is.null(edgeList) || !is.list(edgeList) || length(edgeList) == 0) {
+    stop("edgeList must be a non-empty list of edge matrices")
+  }
+  if (is.null(edgeLenList) || !is.list(edgeLenList)) {
+    stop("edgeLenList must be a list of edge length vectors")
+  }
+  if (length(edgeList) != length(edgeLenList)) {
+    stop("edgeList and edgeLenList must have the same length")
+  }
+  if (!is.numeric(cluster) || cluster < 1) {
+    stop("cluster must be a positive integer")
+  }
+  if (cluster > length(edgeList)) {
+    stop("cluster number cannot exceed the number of trees (", length(edgeList), ")")
+  }
+  # Validate each edge matrix
+
+  for (i in seq_along(edgeList)) {
+    if (!is.matrix(edgeList[[i]]) || ncol(edgeList[[i]]) < 2) {
+      stop("Each element of edgeList must be a matrix with at least 2 columns (tree ", i, ")")
+    }
+    if (length(edgeLenList[[i]]) != nrow(edgeList[[i]])) {
+      stop("Edge length vector must match number of edges (tree ", i, ")")
+    }
+  }
+
+  # =============================================================================
+  # STEP 1: Resolve mono-furcations and multi-furcations
+  # =============================================================================
+  # Trees with mono-furcations (nodes with single child) or multi-furcations
+
+  # (nodes with >2 children) are converted to binary trees for consistent
+  # comparison. Mono-furcations get dummy child nodes; multi-furcations are
+  # resolved using random binary subtrees (with fixed seed for reproducibility).
   cat("staring to resolve mono and multifurcations \n")
   new.edgeList <- vector("list", length(edgeList))
   for (i in 1:length(edgeList)) {
@@ -53,6 +86,13 @@ phyC <- function (edgeList, edgeLenList, cluster=2, min.nc = NULL, max.nc=NULL, 
     }
     new.edgeList[[i]] <- new.edge
   }
+
+  # =============================================================================
+  # STEP 2: Build path pairs for tree registration
+  # =============================================================================
+  # For each tree, compute shortest paths from root to all tips.
+  # Identify sibling pairs (tips that differ by exactly 2 nodes in their paths).
+  # These pairs are used for consistent node ordering during registration.
   pair.list <- vector("list", length(new.edgeList))
   for (i in seq_along(new.edgeList)) {
     edge <- new.edgeList[[i]]
@@ -87,6 +127,13 @@ phyC <- function (edgeList, edgeLenList, cluster=2, min.nc = NULL, max.nc=NULL, 
     }
     pair.list[[i]] <- temp.pair
   }
+
+  # =============================================================================
+  # STEP 3: Build node transformation matrices
+  # =============================================================================
+  # Create mapping from original node IDs to standardized IDs.
+  # Tips are numbered 1..n, internal nodes start at n+1.
+  # This enables consistent comparison across different tree structures.
   trans.list <- vector("list", length(pair.list))
   for (i in seq_along(pair.list)) {
     edge <- new.edgeList[[i]]
@@ -115,7 +162,7 @@ phyC <- function (edgeList, edgeLenList, cluster=2, min.nc = NULL, max.nc=NULL, 
     nodepath <- vector("list", length(pair))
     tips <- vector("list", length(pair))
     for (j in seq_along(pair)) {
-      if (class(pair[[j]]) == "matrix") {
+      if (inherits(pair[[j]], "matrix")) {
         temp.node <- pair[[j]][1, -ncol(pair[[j]])]
         temp.tips <- pair[[j]][, ncol(pair[[j]])]
       }
@@ -146,6 +193,11 @@ phyC <- function (edgeList, edgeLenList, cluster=2, min.nc = NULL, max.nc=NULL, 
     }
     trans.list[[i]] <- trans
   }
+
+  # =============================================================================
+  # STEP 4: Apply transformations to create standardized edge lists
+  # =============================================================================
+  # Apply the node ID transformations to create normalized edge matrices.
   new.g.edge.list <- vector("list", length(new.edgeList))
   for (i in seq_along(new.edgeList)) {
     edge <- new.edgeList[[i]]
@@ -165,6 +217,11 @@ phyC <- function (edgeList, edgeLenList, cluster=2, min.nc = NULL, max.nc=NULL, 
     }
     new.g.edge.list[[i]] <- cbind(new.g.edge, edge[, 3])
   }
+
+  # =============================================================================
+  # STEP 5: Convert edge matrices to phylo objects
+  # =============================================================================
+  # Create ape::phylo objects from the standardized edge matrices.
   treelist <- vector("list", length(new.g.edge.list))
   for (i in seq_along(new.g.edge.list)) {
     edge <- new.g.edge.list[[i]][, -3, drop = F]
@@ -177,11 +234,20 @@ phyC <- function (edgeList, edgeLenList, cluster=2, min.nc = NULL, max.nc=NULL, 
     class(temp.tree) <- "phylo"
     treelist[[i]] <- temp.tree
   }
+
+  # Optionally normalize edge lengths to sum to 1 for each tree
   if(scale){
     for (i in seq_along(treelist)) {
       treelist[[i]]$edge.length <- treelist[[i]]$edge.length/sum(treelist[[i]]$edge.length)
     }
   }
+
+  # =============================================================================
+  # STEP 6: Create meta-tree and register all trees
+  # =============================================================================
+  # Create a balanced binary "meta-tree" with enough leaves to accommodate
+  # all input trees. Each tree is then registered (embedded) onto this meta-tree.
+  # The resulting edge length vectors form a coordinate representation.
   maxdep <- depth.max(treelist)
   cat("creating maximum tree\n")
   cat(paste0("depth=", maxdep, " and #leaves=", 2^(maxdep), 
@@ -196,11 +262,18 @@ phyC <- function (edgeList, edgeLenList, cluster=2, min.nc = NULL, max.nc=NULL, 
   }
   
   
+  # =============================================================================
+  # STEP 7: Clustering trees based on their coordinate representation
+  # =============================================================================
+  # Trees are now represented as vectors (edge lengths on meta-tree).
+  # Compute pairwise distances and perform clustering.
   coord <- t(sapply(regis, function(x) x$edge.length))
   if(!is.null(label)){
     rownames(coord) <- label
   }
   d <- dist(coord)
+
+  # Non-hierarchical clustering (k-means)
   if (type == "nh") {
     cat("non-hierarchical clustering")
     km <- kmeans(coord, cluster)
@@ -216,6 +289,7 @@ phyC <- function (edgeList, edgeLenList, cluster=2, min.nc = NULL, max.nc=NULL, 
       ave_tree[[i]] <- ref_tree
     }
   }
+  # Hierarchical clustering (default)
   else if (type == "h") {
     cat("hierarchical clustering")
     if (is.null(method)) {

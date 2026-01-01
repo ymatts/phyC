@@ -18,7 +18,28 @@
 #' @export
 #'
 par.tree <- function(vaf,thr = 0.05,normal=1){
-  #if("normal"%in%colnames(vaf)){
+  # Input validation
+  if (is.null(vaf) || (!is.data.frame(vaf) && !is.matrix(vaf))) {
+    stop("vaf must be a data frame or matrix")
+  }
+  if (ncol(vaf) < 2) {
+    stop("VAF data must have at least 2 columns (Normal + at least 1 sample)")
+  }
+  if (!is.numeric(thr) || thr < 0 || thr > 1) {
+    stop("thr must be a numeric value between 0 and 1")
+  }
+
+  # Check if all values are numeric
+  vaf_matrix <- as.matrix(vaf)
+  if (!is.numeric(vaf_matrix)) {
+    stop("Invalid data type. Input data must be only vaf values")
+  }
+
+  # Check VAF values are in valid range [0, 1]
+  if (any(vaf_matrix < 0 | vaf_matrix > 1, na.rm = TRUE)) {
+    stop("VAF values must be between 0 and 1")
+  }
+
   if(is.character(normal)){
     if(length(grep("normal",colnames(vaf),ignore.case = F)!=0)){
       ind <- grep("normal",colnames(vaf),ignore.case = T)
@@ -27,9 +48,7 @@ par.tree <- function(vaf,thr = 0.05,normal=1){
   }else if(is.numeric(normal)){
     colnames(vaf)[normal] <- "Normal"
   }
-  if(!all(apply(vaf,2,class)=="numeric")){
-    stop("Invalid data type. Input data must be only vaf values\n")
-  }
+
   vaf_bin <- vaf
   vaf_bin[vaf>=thr] <- 1
   vaf_bin[vaf<thr] <- 0
